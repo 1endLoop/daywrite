@@ -1,20 +1,41 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import S from './style';
 
 const Layout = () => {
   return (
-    <div>
-      <div>
-        <Link to="/">메인</Link>
-        <Link to="/category">카테고리</Link>
-        <Link to="/archive/history">아카이브</Link>
-        <Link to="/community">커뮤니티</Link>
-        <Link to="/mypage">마이페이지</Link>
-        <Link to="/login">Log in</Link>
-      </div>
-      <Outlet />
-    </div>
+    <S.Container>
+      <S.Background />
+
+      <S.Header>
+        <S.HeaderContent>
+          <Link to="/">
+            <S.Logo src="/assets/images/logo.png" alt="logo" />
+          </Link>
+
+          <S.Nav>
+            <Link to="/category">category</Link>
+            <Link to="/archive">archive</Link>
+            <Link to="/community">community</Link>
+            <Link to="/mypage">my page</Link>
+          </S.Nav>
+
+          <S.Login>
+            <Link to="/login">login</Link>
+          </S.Login>
+        </S.HeaderContent>
+      </S.Header>
+
+      <S.Wrapper>
+        <Outlet />
+      </S.Wrapper>
+    </S.Container>
   );
 };
 
 export default Layout;
+
+
+
+
+
