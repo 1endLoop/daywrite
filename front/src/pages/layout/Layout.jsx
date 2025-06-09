@@ -1,10 +1,17 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const Layout = () => {
   return (
     <div>
-      {/* 자식 요소를 보여주는 컴포넌트 */}
+      <div>
+        <Link to="/">메인</Link>
+        <Link to="/category">카테고리</Link>
+        <Link to="/archive/history">아카이브</Link>
+        <Link to="/community">커뮤니티</Link>
+        <Link to="/mypage">마이페이지</Link>
+        <Link to="/login">Log in</Link>
+      </div>
       <Outlet />
     </div>
   );
