@@ -1,0 +1,16 @@
+// 공통 css를 변수로 사용하기 위한 common.js
+import { css } from "styled-components";
+
+export const flexCenterRow = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+
+export const flexCenterColumn = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
