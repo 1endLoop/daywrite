@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import S from './style';
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
+import S from "./style";
 
 const Layout = () => {
   return (
@@ -31,8 +31,3 @@ const Layout = () => {
 };
 
 export default Layout;
-
-
-
-
-
