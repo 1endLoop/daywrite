@@ -5,7 +5,7 @@ const BookmarkTypedList = () => {
   const [open, setOpen] = useState(false); 
 
   return (
-    <S.wrap>
+    <div>
       <S.HeaderWrap>
         <S.HeaderBox>
           <img src="" alt="" />
@@ -55,7 +55,7 @@ const BookmarkTypedList = () => {
 
 
 
-    </S.wrap>
+    </div>
   );
 };
 

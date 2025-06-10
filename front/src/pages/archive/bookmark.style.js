@@ -75,24 +75,27 @@ S.HeaderBox = styled.div`
     }
 `
 S.Seaech = styled.div`
-    width: 350px;
+    width: 300px;
     height: 40px;
     margin-top: 25px;
+    margin-right: 25px;
     display: flex;
+    position: relative;
+    border: solid 1px red;
 
     input {
-        width: 350px;
+        width: 300px;
         height: 40px;
         border: solid 1px black;
         border-radius: 5px;
-        margin-right: 50px;
+        /* margin-right: 50px; */
     }
     // 검색 돋보기
     img {
         border: solid 1px black;
         width: 25px;
         height: 25px;
-        position: absolute; right: 150px; top: 70px;
+        position: absolute; right: 0px; top: 0px;
     }
 `
 
