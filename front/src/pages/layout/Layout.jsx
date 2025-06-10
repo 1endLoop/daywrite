@@ -20,9 +20,6 @@ const Layout = () => {
             <Link to="/mypage">my page</Link>
           </S.Nav>
 
-          <S.Login>
-            <Link to="/login">login</Link>
-          </S.Login>
         </S.HeaderContent>
       </S.Header>
 
