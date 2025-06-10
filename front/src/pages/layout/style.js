@@ -54,7 +54,7 @@ S.Nav = styled.nav`
     text-decoration: none;
 
     &:hover {
-      color: #f26c44;
+      color: #F96F3D;
     }
   }
 `;
@@ -68,7 +68,7 @@ S.Login = styled.div`
     text-decoration: none;
 
     &:hover {
-      color: #f26c44;
+      color: #F96F3D;
     }
   }
 `;
