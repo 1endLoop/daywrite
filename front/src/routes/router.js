@@ -49,6 +49,10 @@ import Terms from "../pages/my_page/Terms";
 
 const router = createBrowserRouter([
   {
+    path: "/login",
+    element: <Login />,
+  },
+  {
     path: "/",
     element: <Layout />,
     children: [
@@ -56,10 +60,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <MainContainer />,
-      },
-      {
-        path: "login",
-        element: <Login />,
       },
 
       // 카테고리
@@ -79,7 +79,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Navigate to ="history" replace />,
+            element: <Navigate to="history" replace />,
           },
           {
             path: "history",

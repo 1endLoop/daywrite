@@ -26,9 +26,12 @@ const dummyData = [
 const HistoryList = () => {
   return (
     <Container>
-      <SearchBarWrapper>
-        <input type="text" placeholder="검색어를 입력하세요" />
-      </SearchBarWrapper>
+      <TopRow>
+        <Title>History</Title>
+        <SearchBarWrapper>
+          <input type="text" placeholder="검색어를 입력하세요" />
+        </SearchBarWrapper>
+      </TopRow>
       <CardList>
         {dummyData.map((item) => (
           <HistoryCard key={item.id} data={item} />
@@ -40,14 +43,23 @@ const HistoryList = () => {
 
 const Container = styled.div`
   width: 100%;
-  padding-top: 24px
+  padding-top: 24px;
+`;
+
+const TopRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+`;
+
+const Title = styled.h2`
+  font-size: 22px;
+  font-weight: 700;
+  color: #131313;
 `;
 
 const SearchBarWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 24px;
-
   input {
     width: 260px;
     padding: 8px 12px;

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import S from './style';
+import React from "react";
+import { Link } from "react-router-dom";
+import S from "./style";
 
 const Layout = () => {
   return (
@@ -25,17 +25,8 @@ const Layout = () => {
           </S.Login>
         </S.HeaderContent>
       </S.Header>
-
-      <S.Wrapper>
-        <Outlet />
-      </S.Wrapper>
     </S.Container>
   );
 };
 
 export default Layout;
-
-
-
-
-
