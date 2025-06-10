@@ -73,24 +73,7 @@ S.Login = styled.div`
   }
 `;
 
-// // 내부 콘텐츠 스크롤 가능 영역
-// S.Wrapper = styled.div`
-//   position: absolute;
-//   top: 72px; /* header 높이 */
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   overflow-y: auto;
-//   z-index: 5;
 
-//   width: 1250px;
-//   margin: 0 auto;
-//   padding: 40px;
-//   background-color: white;
-//   border-radius: 16px;
-//   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-//   box-sizing: border-box;
-// `;
 
 export default S;
 

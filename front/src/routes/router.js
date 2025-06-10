@@ -49,10 +49,6 @@ import Terms from "../pages/my_page/Terms";
 
 const router = createBrowserRouter([
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
     path: "/",
     element: <Layout />,
     children: [
@@ -207,6 +203,10 @@ const router = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
   {
     path: "*",

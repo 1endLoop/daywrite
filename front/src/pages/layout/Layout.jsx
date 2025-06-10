@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import S from "./style";
 
 const Layout = () => {
@@ -25,6 +25,10 @@ const Layout = () => {
           </S.Login>
         </S.HeaderContent>
       </S.Header>
+
+      <S.Wrapper>
+        <Outlet />
+      </S.Wrapper>
     </S.Container>
   );
 };
