@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import MainContainer from "../pages/main/MainContainer";
 import NotFound from "../pages/not_found/NotFound";
 import Layout from "../pages/layout/Layout";
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
         path: "archive",
         element: <ArchiveContainer />,
         children: [
+          {
+            index: true,
+            element: <Navigate to ="history" replace />,
+          },
           {
             path: "history",
             element: <HistoryList />,
