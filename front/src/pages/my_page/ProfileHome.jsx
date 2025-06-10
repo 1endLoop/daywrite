@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Following from './Following';
+import Followers from './Followers';
 import S from './style';
 
 const ProfileHome = () => {
@@ -31,7 +32,7 @@ const ProfileHome = () => {
             <span>5</span>
             <label>공유한 글</label>
           </S.StatBox>
-          <S.StatBox>
+          <S.StatBox >
             <span>1000</span>
             <label>팔로워</label>
           </S.StatBox>

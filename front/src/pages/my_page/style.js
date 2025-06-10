@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const S = {};
 
-
 S.Wrapper = styled.div`
   width: 1250px;
   min-height: calc(100vh - 30px); /* ⬆️ 위 여백을 뺀 만큼 최소 높이 설정 */
@@ -20,8 +19,8 @@ S.Sidebar = styled.aside`
   width: 220px;
   padding: 100px 24px;
   font-size: 20px;
-
-  margin-top: -40px;
+  margin-top: -60px;
+  margin-left: -14px;
 `;
 
 S.Title = styled.h5`
@@ -34,19 +33,27 @@ S.Title = styled.h5`
 S.MenuSection = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 20px;
   margin-bottom: 24px;
 `;
 
 S.MenuItem = styled.div`
-  font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
-  color: ${({ active }) => (active ? '#f26c44' : '#000')};
+  font-size: 18px;
+  padding: 8px 0;
   cursor: pointer;
-
-  &:hover {
-    color: #F96F3D;
-  }
+  color: ${({ active }) => (active ? '#f26c44' : '#000000')};
+  font-weight: ${({ active }) => (active ? '700' : 'normal')};
 `;
+
+// S.MenuItem = styled.div`
+//   font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
+//   color: ${({ active }) => (active ? '#f26c44' : '#000')};
+//   cursor: pointer;
+
+//   &:hover {
+//     color: #F96F3D;
+//   }
+// `;
 
 S.Divider = styled.hr`
   border: none;
@@ -88,6 +95,7 @@ S.ProfileTopRow = styled.div`
   justify-content: flex-start;     // 왼쪽 정렬
   align-items: center;
   gap: 200px;                        // 👉 프로필과 통계 사이 간격
+  margin-top: -10px;
 `;
 
 // 📍 왼쪽 프로필 정보
