@@ -93,12 +93,3 @@ S.Wrapper = styled.div`
 `;
 
 export default S;
-
-
-
-
-
-
-
-
-
