@@ -5,7 +5,7 @@ const S = {}
 // Bookmark Hoom
 S.TypedTitle = styled.div`
     width: 100%;
-    margin-left: 0;
+    margin-top: 30px;
 `
 S.TypedWrapper = styled.div`
     border: solid 1px red;
@@ -22,19 +22,60 @@ S.TypedBox = styled.div`
     height: 100%;
 
     img {
-        border: solid 1px red;
-        margin-top: 20px;
+        /* border: solid 1px red; */
         width: 100%;
-        height: 140px;
+        height: 160px;
     }
 `
 // Typed 제목, ...
 S.LetterBox = styled.div`
+    /* border: solid 1px yellow; */
     width: 100%;
-    height: 48px;
-    border: solid 1px yellow;
+    height: 50px;
     justify-content: space-between;
+    position: relative;
+
+    h6 {
+        margin-top: 5px;
+    }
+    p {
+        margin-top: 8px;
+        font-size: 15px;
+        color: #787878;
+    }
 `
+// 드롭다운
+S.dd = styled.div`
+    border: solid 1px red;
+    width: 18px;
+    height: 18px;
+    position: absolute; right: 0px; top: 0px;
+`
+S.Wrapper = styled.div`
+  position: relative;
+`
+
+S.Menu = styled.div`
+  position: absolute;
+  top: 24px;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+`
+S.Item = styled.div`
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+`
+
 
 // Played Wrap
 S.PlayedTitle = styled.div`
@@ -49,9 +90,9 @@ S.PlayedWrapper = styled.div`
     margin-top: 10px;
 `
 
-// Played List
+// 북마크 리스트
 S.HeaderWrap = styled.div`
-    border: solid 1px red;
+    /* border: solid 1px red; */
     width: 100%;
     height: 100px;
     display: flex;
@@ -63,39 +104,45 @@ S.HeaderBox = styled.div`
     height: 100%;
     display: flex;
     gap: 15px;
+    margin-left: 55px;
     justify-content: center; //수직 가운데 정렬
     align-items: center; // 수평 가운데 정렬
 
     // 뒤로가기 화살표 
     img{
-        border: solid 1px red;
-        width: 30px;
-        height: 30px;
+        /* border: solid 1px red; */
+        width: 25px;
+        height: 25px;
         /* position: absolute; top: 50px; left: 10px; */
+    }
+    p {
+        font-size : 15px;
+        color: #787878;
     }
 `
 S.Seaech = styled.div`
-    width: 300px;
-    height: 40px;
+    width: 250px;
+    height: 30px;
     margin-top: 25px;
-    margin-right: 25px;
+    margin-right: 120px;
     display: flex;
     position: relative;
-    border: solid 1px red;
 
     input {
-        width: 300px;
-        height: 40px;
-        border: solid 1px black;
+        margin-top: 10px;
+        width: 350px;
+        height: 30px;
         border-radius: 5px;
-        /* margin-right: 50px; */
+        border: 1px solid #BFBFBF;
+        border-radius: 5px;
+       
     }
     // 검색 돋보기
     img {
-        border: solid 1px black;
+        border: solid 1px #BFBFBF;
         width: 25px;
         height: 25px;
-        position: absolute; right: 0px; top: 0px;
+        position: absolute; right: 8px; top: 14px;
     }
 `
 
@@ -110,11 +157,11 @@ S.BookBox = styled.div`
     border: solid 1px black;
     width: 200px;
     height: 250px;
-    margin-top: 30px;
-    margin-left: 30px;
+    margin-top: 0;
+    margin-left: 100px;
     //책 표지
     img {
-        border: solid 1px red;
+        /* border: solid 1px red; */
         width: 100%;
         height: 170px;
     }
@@ -129,6 +176,7 @@ S.BookInfo = styled.div`
         width: 100px;
         height: 100%;
         p{
+            margin-top: 10px;
             font-size: 15px;
             color: #787878;
         }
@@ -142,12 +190,18 @@ S.BookInfo = styled.div`
 //북마크 리스트
 S.TypeInfo = styled.div`
     border: solid 1px black;
-    width: 600px;
-    height: 570px;
-    margin-top: 30px;
-    margin-right: 50px;
+    width: 650px;
+    height: 600px;
+    margin-top: 0;
+    margin-right: 120px;
+`
+S.TypedCard = styled.div`
+    border: solid 1px red;
+    width: 100%;
+    height: 180px;
 `
 
+// 플레이 모음 상세
 S.PlayInfo = styled.div`
     border: solid 1px red;
     width: 600px;
@@ -163,7 +217,7 @@ S.PlayBox = styled.div`
 `
 
 //=====================================
-
+// 팝업
 /* 전체 컨테이너 */
 S.PopupContainer = styled.div`
   /* height: 100vh; */
