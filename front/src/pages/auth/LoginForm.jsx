@@ -7,21 +7,18 @@ import BasicButton from '../../components/button/BasicButton'
 const LoginForm = () => {
   
   const [showPassword, setShowPassword] = useState(false);
-
   const {
     register, handleSubmit, getValues, formState: {isSubmitting, isSubmitted, errors }
   } = useForm({ mode: "onChange" })
-
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/;
-
   const onSubmit = async (data) => {
     console.log(data);
   };
 
+
   return (
     <S.LoginContainer>
-
 
       <S.LoginLeftBox>
         <S.ImageWrapper>
@@ -73,8 +70,7 @@ const LoginForm = () => {
         )}
         </S.Label>
 
-          <BasicButton>버튼
-          </BasicButton>
+        <BasicButton> 로그인 </BasicButton>
 
         </S.Form>
       </S.LoginRightBox>
