@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import HistoryCard from "./HistoryCard";
+import HistoryDetail from "./HistoryDetail";
+import React, { useState } from "react";
 
 const dummyData = [
   {
@@ -15,7 +17,8 @@ const dummyData = [
   {
     id: 2,
     date: "2025. 05. 26",
-    content: "살아남은 자들이 부끄러워하던 시대는 가고, 곧 1등이든 2등이든 무조건 살아남는 것이 최선이라는 시대가 왔다. 지금은 너를 떨어뜨리지 않으면 내가 죽는다는, 오직 단 한명만이 살아남는다는 ‘오징어 게임’, 서바이벌 게임의 세계관이 스크린을 지배하는 세상이 되었다. 그러나 나는 은밀히 믿고 있다. 액정화면 밖 진짜 세상은 다르다고, 거기에는 조용히, 그러나 치열하게, 자기만의 방식으로 살아남아 어떻게든 삶의 의미를 찾기 위해 싸우는 이들이 있다는 것을.",
+    content:
+      "살아남은 자들이 부끄러워하던 시대는 가고, 곧 1등이든 2등이든 무조건 살아남는 것이 최선이라는 시대가 왔다. 지금은 너를 떨어뜨리지 않으면 내가 죽는다는, 오직 단 한명만이 살아남는다는 ‘오징어 게임’, 서바이벌 게임의 세계관이 스크린을 지배하는 세상이 되었다. 그러나 나는 은밀히 믿고 있다. 액정화면 밖 진짜 세상은 다르다고, 거기에는 조용히, 그러나 치열하게, 자기만의 방식으로 살아남아 어떻게든 삶의 의미를 찾기 위해 싸우는 이들이 있다는 것을.",
     title: "단 한 번의 삶",
     author: "김영하",
     music: "Rainy Days",
@@ -24,6 +27,8 @@ const dummyData = [
 ];
 
 const HistoryList = () => {
+  const [selectedCard, setSelectedCard] = useState(null);
+
   return (
     <Container>
       <TopRow>
@@ -34,9 +39,11 @@ const HistoryList = () => {
       </TopRow>
       <CardList>
         {dummyData.map((item) => (
-          <HistoryCard key={item.id} data={item} />
+          <HistoryCard key={item.id} data={item} onClick={() => setSelectedCard(item)} />
         ))}
       </CardList>
+
+      {selectedCard && <HistoryDetail data={selectedCard} onClose={() => setSelectedCard(null)} />}
     </Container>
   );
 };
