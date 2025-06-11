@@ -1,15 +1,12 @@
 import styled from "styled-components";
-import GlobalStyle from "../../global/global";
 
-const Card = {}
+const Card = {};
 
 Card.Card = styled.div`
   background-color: #fff;
   padding: 24px 22px 24px 22px;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
-  cursor: pointer;
-  /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.08); */
   font-family: pretendard;
 `;
 
@@ -17,20 +14,48 @@ Card.Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
-`
-
-Card.Date = styled.div`
-  font-size: 14px;
-  font-weight: 600;
-  color: #282828;
-  margin-bottom: 12px;
+  margin-bottom: 17px;
 `;
 
-Card.MoreBtn = styled.div`
-  cursor: pointer;
+Card.HeaderLeft = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #282828;
+  }
+
+  .author {
+    font-size: 13px;
+    color: #787878;
+  }
+`;
+
+Card.MetaText = styled.div`
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  align-items: center;
+
+  .title {
+    font-size: 16px;
+    color: #282828;
+    font-weight: 600;
+  }
+
+  .author {
+    font-size: 13px;
+    color: #787878;
+  }
+`;
+
+Card.LikeIcon = styled.div`
   font-size: 18px;
-  color: #666;
+  cursor: pointer;
+  vertical-align: middle; // 또는 position + top 조정도 가능
 `;
 
 Card.Content = styled.p`
@@ -48,42 +73,14 @@ Card.Content = styled.p`
 `;
 
 Card.Divider = styled.div`
-  border: none;
   border-top: 1px solid #e0e0e0;
-  margin: 0 0 20px 0;
-`
+  margin: 16px 0;
+`;
 
-Card.MetaWrapper = styled.div`
+Card.BottomWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-Card.MetaLeft = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 6px;
-
-  .title {
-    font-size: 14px;
-    color: #282828;
-    font-weight: 500;
-  }
-
-  .author {
-    font-size: 13px;
-    color: #787878;
-  }
-`;
-
-Card.MetaRight = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 14px;
-`;
-
-Card.Icon = styled.span`
-  font-size: 14px;
 `;
 
 Card.Action = styled.div`
@@ -91,7 +88,7 @@ Card.Action = styled.div`
   cursor: pointer;
 `;
 
-Card.Music = styled.div`
+Card.MusicInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
@@ -107,5 +104,9 @@ Card.Music = styled.div`
   }
 `;
 
+Card.Date = styled.div`
+  font-size: 13px;
+  color: #787878;
+`;
 
 export default Card;

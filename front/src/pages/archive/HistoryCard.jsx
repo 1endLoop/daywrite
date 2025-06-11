@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Card from "./history.card.style";
 import Dropdown from "./dropdown.style";
 
-const HistoryCard = ({ data }) => {
+const HistoryCard = ({ data, onClick }) => {
   const { date, content, title, author, music, artist } = data;
   const [openDropdown, setOpenDropdown] = useState(false);
   const dropdownRef = useRef(null);
@@ -20,18 +20,17 @@ const HistoryCard = ({ data }) => {
   }, []);
 
   return (
-    <Card.Card>
+    <Card.Card onClick={onClick}>
       <Card.Header>
         <Card.Date>{date}</Card.Date>
-        <Dropdown.Wrapper ref={dropdownRef}>
-
-        <Card.MoreBtn onClick={() => setOpenDropdown((prev) => !prev)}>⋯</Card.MoreBtn>
-        {openDropdown && (
-          <Dropdown.Menu>
-            <Dropdown.Item onClick={() => alert("공유하기!")}>공유하기</Dropdown.Item>
-            <Dropdown.Item onClick={() => alert("삭제하기!")}>삭제하기</Dropdown.Item>
-          </Dropdown.Menu>
-        )}
+        <Dropdown.Wrapper ref={dropdownRef} onClick={(e) => e.stopPropagation()}>
+          <Card.MoreBtn onClick={() => setOpenDropdown((prev) => !prev)}>⋯</Card.MoreBtn>
+          {openDropdown && (
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={() => alert("공유하기!")}>공유하기</Dropdown.Item>
+              <Dropdown.Item onClick={() => alert("삭제하기!")}>삭제하기</Dropdown.Item>
+            </Dropdown.Menu>
+          )}
         </Dropdown.Wrapper>
       </Card.Header>
       <Card.Content>{content}</Card.Content>
