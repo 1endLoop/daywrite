@@ -24,9 +24,7 @@ const LoginForm = () => {
 
 
       <S.LoginLeftBox>
-        <S.ImageWrapper>
-          <img src={process.env.PUBLIC_URL + '/asset/images/logo.png'} alt="로고" />
-        </S.ImageWrapper>
+        <S.Logo src="/assets/images/logo.png" alt="logo" />
         <S.LoginSubText>글과 음악이 함께하는 공간.</S.LoginSubText>
       </S.LoginLeftBox>
 
