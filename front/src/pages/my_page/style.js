@@ -45,16 +45,6 @@ S.MenuItem = styled.div`
   font-weight: ${({ active }) => (active ? '700' : 'normal')};
 `;
 
-// S.MenuItem = styled.div`
-//   font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
-//   color: ${({ active }) => (active ? '#f26c44' : '#000')};
-//   cursor: pointer;
-
-//   &:hover {
-//     color: #F96F3D;
-//   }
-// `;
-
 S.Divider = styled.hr`
   border: none;
   border-top: 1px solid black;

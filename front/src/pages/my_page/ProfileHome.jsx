@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import Following from './Following';
-import Followers from './Followers';
 import S from './style';
+import ProfileHomePopup from './ProfileHomePopup';
 
 const ProfileHome = () => {
-  const [isFollowingOpen, setIsFollowingOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupTab, setPopupTab] = useState('following');
+
+  const openPopup = (tab) => {
+    setPopupTab(tab);
+    setIsPopupOpen(true);
+  };
 
   return (
     <S.ProfileContainer>
@@ -28,15 +33,15 @@ const ProfileHome = () => {
         </S.ProfileHeader>
 
         <S.StatsRow>
-          <S.StatBox>
+          <S.StatBox onClick={() => openPopup('shared')} style={{ cursor: 'pointer' }}>
             <span>5</span>
             <label>공유한 글</label>
           </S.StatBox>
-          <S.StatBox >
+          <S.StatBox onClick={() => openPopup('followers')} style={{ cursor: 'pointer' }}>
             <span>1000</span>
             <label>팔로워</label>
           </S.StatBox>
-          <S.StatBox onClick={() => setIsFollowingOpen(true)} style={{ cursor: 'pointer' }}>
+          <S.StatBox onClick={() => openPopup('following')} style={{ cursor: 'pointer' }}>
             <span>100</span>
             <label>팔로잉</label>
           </S.StatBox>
@@ -76,7 +81,6 @@ const ProfileHome = () => {
             <span>댓글 283</span>
           </div>
         </S.InfoCard>
-
       </S.InfoGrid>
 
       <S.LevelBarWrapper>
@@ -95,11 +99,18 @@ const ProfileHome = () => {
         <S.LevelLabel>1,810 / 2,250</S.LevelLabel>
       </S.LevelBarWrapper>
 
-      {isFollowingOpen && <Following onClose={() => setIsFollowingOpen(false)} />}
+      {isPopupOpen && (
+        <ProfileHomePopup
+          onClose={() => setIsPopupOpen(false)}
+          initialTab={popupTab}
+        />
+      )}
     </S.ProfileContainer>
   );
 };
 
 export default ProfileHome;
+
+
 
 
