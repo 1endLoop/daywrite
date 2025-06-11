@@ -6,7 +6,7 @@ const S = {};
 S.Container = styled.div`
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 `;
 
@@ -71,6 +71,17 @@ S.Login = styled.div`
       color: #f26c44;
     }
   }
+`;
+
+// 로그인폼
+S.ContentWrapper = styled.div`
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 `;
 
 
