@@ -5,10 +5,10 @@ const Card = {}
 
 Card.Card = styled.div`
   background-color: #fff;
-  /* border-radius: 8px; */
   padding: 24px 22px 24px 22px;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
+  cursor: pointer;
   /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.08); */
   font-family: pretendard;
 `;
