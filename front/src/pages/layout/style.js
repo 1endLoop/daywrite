@@ -14,7 +14,7 @@ S.Container = styled.div`
 S.Background = styled.div`
   position: absolute;
   inset: 0;
-  background-image: url('/assets/images/snow.jpg');
+  background-image: url('/assets/images/background/snow.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -54,7 +54,7 @@ S.Nav = styled.nav`
     text-decoration: none;
 
     &:hover {
-      color: #f26c44;
+      color: #F96F3D;
     }
   }
 `;
@@ -68,7 +68,7 @@ S.Login = styled.div`
     text-decoration: none;
 
     &:hover {
-      color: #f26c44;
+      color: #F96F3D;
     }
   }
 `;

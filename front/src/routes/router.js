@@ -35,9 +35,6 @@ import CollectionDetail from "../pages/community/CollectionDetail";
 // My Page
 import MyPageContainer from "../pages/my_page/MyPageContainer";
 import ProfileHome from "../pages/my_page/ProfileHome";
-import SharedPosts from "../pages/my_page/SharedPosts";
-import Followers from "../pages/my_page/Followers";
-import Following from "../pages/my_page/Following";
 import TypingSetting from "../pages/my_page/TypingSetting";
 import EditUserInfo from "../pages/my_page/EditUserInfo";
 import CategoryData from "../pages/my_page/CategoryData";
@@ -47,6 +44,7 @@ import Faq from "../pages/my_page/Faq";
 import InquiryHome from "../pages/my_page/InquiryHome";
 import InquiryWrite from "../pages/my_page/InquiryWrite";
 import Terms from "../pages/my_page/Terms";
+import ProfileHomePopup from "../pages/my_page/ProfileHomePopup";
 
 const router = createBrowserRouter([
   {
@@ -155,15 +153,15 @@ const router = createBrowserRouter([
           },
           {
             path: "shared",
-            element: <SharedPosts />,
+            element: <ProfileHomePopup />,
           },
           {
             path: "followers",
-            element: <Followers />,
+            element: <ProfileHomePopup />,
           },
           {
             path: "following",
-            element: <Following />,
+            element: <ProfileHomePopup />,
           },
           {
             path: "typing-setting",

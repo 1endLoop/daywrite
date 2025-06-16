@@ -19,7 +19,6 @@ const Layout = () => {
             <Link to="/community">community</Link>
             <Link to="/mypage">my page</Link>
           </S.Nav>
-
           <S.Login>
             <Link to="/login">login</Link>
           </S.Login>
