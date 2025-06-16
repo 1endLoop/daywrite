@@ -87,7 +87,7 @@ S.Wrapper = styled.div`
   margin: 0 auto;
   padding: 40px;
   background-color: white;
-  border-radius: 16px;
+  /* border-radius: 16px; */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 `;
