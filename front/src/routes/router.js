@@ -129,11 +129,11 @@ const router = createBrowserRouter([
             path: "collection",
             element: <CommunityCollection />,
           },
+          {
+            path: ":id",
+            element: <PostDetail />,
+          },
         ],
-      },
-      {
-        path: "community/post/:id",
-        element: <PostDetail />,
       },
       {
         path: "community/write",

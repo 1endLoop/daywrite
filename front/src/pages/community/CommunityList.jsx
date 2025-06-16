@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import CommunityCard from "./CommunityCard";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const dummyData = [
   {
@@ -30,8 +31,8 @@ const dummyData = [
 ];
 
 const CommunityList = () => {
-  const [selectedCard, setSelectedCard] = useState(null);
-
+  const navigate = useNavigate();
+  
   return (
     <Container>
       <TopRow>
@@ -47,7 +48,11 @@ const CommunityList = () => {
       </TopRow>
       <CardList>
         {dummyData.map((item) => (
-          <CommunityCard key={item.id} data={item} onClick={() => setSelectedCard(item)} />
+          <CommunityCard 
+          key={item.id} 
+          data={item} 
+          onClick={() => navigate(`/community/${item.id}`, { state: { post: item } })}
+          />
         ))}
       </CardList>
     </Container>
