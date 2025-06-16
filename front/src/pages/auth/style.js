@@ -86,6 +86,4 @@ S.ContentWrapper = styled.div`
 
 
 
-
 export default S;
-

@@ -6,6 +6,7 @@ import Layout from "../pages/layout/Layout";
 
 // Auth
 import Login from "../pages/auth/Login";
+import Signup from "../pages/auth/SignUp";
 
 // Category
 import CategoryContainer from "../pages/category/CategoryContainer";
@@ -205,6 +206,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
   },
   {
     path: "*",

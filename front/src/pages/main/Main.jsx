@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import S from "./style";
-import LoginForm from "./LoginForm";
+import MainContainer from "./MainContainer";
 
-const Login = () => {
+const Main = () => {
   return (
     <S.Container>
       <S.Background />
@@ -27,11 +27,10 @@ const Login = () => {
         </S.HeaderContent>
       </S.Header>
       <S.ContentWrapper>
-      <LoginForm />
+      <MainContainer />
       </S.ContentWrapper>
     </S.Container>
   );
 };
 
-export default Login;
-
+export default Main;
