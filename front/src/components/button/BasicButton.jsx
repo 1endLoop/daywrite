@@ -1,10 +1,10 @@
 import React from 'react';
 import Button from './style';
+import { css } from 'styled-components';
 
-const BasicButton = ({children, ...rest}) => {
+const BasicButton = ({ children, customStyle, ...rest }) => {
   return (
-    // variant, shape, size, border, color, font
-    <Button {...rest}>
+    <Button css={customStyle} {...rest}>
       {children}
     </Button>
   );

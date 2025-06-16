@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
 import S from "./style";
-import SignUpForm from './SignUpForm';
+import MainContainer from "./MainContainer";
 
-const Signup = () => {
+const Main = () => {
   return (
     <S.Container>
       <S.Background />
@@ -27,10 +27,10 @@ const Signup = () => {
         </S.HeaderContent>
       </S.Header>
       <S.ContentWrapper>
-      <SignUpForm />
+      <MainContainer />
       </S.ContentWrapper>
     </S.Container>
   );
 };
 
-export default Signup;
+export default Main;

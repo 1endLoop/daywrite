@@ -8,6 +8,13 @@ export const flexCenterRow = css`
   align-items: center;
 `
 
+export const justifyContentLeft = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+`
+
 export const flexCenterColumn = css`
   display: flex;
   flex-direction: column;
