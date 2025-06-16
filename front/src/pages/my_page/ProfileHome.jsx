@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import S from './style';
 import ProfileHomePopup from './ProfileHomePopup';
+import LevelPopup from './LevelPopup'; // ✅ 레벨 팝업 컴포넌트 import
 
 const ProfileHome = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupTab, setPopupTab] = useState('following');
+  const [isLevelPopupOpen, setIsLevelPopupOpen] = useState(false); // ✅ 레벨 팝업 상태
 
   const openPopup = (tab) => {
     setPopupTab(tab);
@@ -84,15 +86,19 @@ const ProfileHome = () => {
       </S.InfoGrid>
 
       <S.LevelBarWrapper>
-        <S.LevelText>
-          <img
-            src="/assets/images/icons/star.png"
-            alt="level"
-            width="28"
-            style={{ marginRight: '8px', verticalAlign: 'middle' }}
-          />
-          레벨 10
-        </S.LevelText>
+        <S.LevelTopRow>
+          <S.LevelText>
+            <img
+              src="/assets/images/icons/lv10.png"
+              alt="level"
+              width="25"
+              style={{ marginRight: '6px', verticalAlign: 'middle' }}
+            />
+            레벨 10
+          </S.LevelText>
+          <S.LevelButton onClick={() => setIsLevelPopupOpen(true)}>모든 레벨 보기</S.LevelButton>
+        </S.LevelTopRow>
+
         <S.LevelBar>
           <S.LevelProgress style={{ width: '80%' }} />
         </S.LevelBar>
@@ -105,11 +111,15 @@ const ProfileHome = () => {
           initialTab={popupTab}
         />
       )}
+
+      {/* ✅ 레벨 팝업 */}
+      {isLevelPopupOpen && <LevelPopup onClose={() => setIsLevelPopupOpen(false)} />}
     </S.ProfileContainer>
   );
 };
 
 export default ProfileHome;
+
 
 
 
