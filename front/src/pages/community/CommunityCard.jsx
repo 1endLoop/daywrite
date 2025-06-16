@@ -24,9 +24,9 @@ const CommunityCard = ({ data, onClick }) => {
           </Card.TitleWrapper>
         </Card.LeftInfo>
         <Card.RightInfo>
-          <Card.LikeIcon src="/assets/icons/like.svg" alt="like" />
+          <Card.LikeIcon src="../assets/images/icons/like-on-color.png" alt="like" />
           <span>{likes}</span>
-          <Card.CommentIcon src="/assets/icons/comment.svg" alt="comment" />
+          <Card.CommentIcon src="../assets/images/icons/comment.png" alt="comment" />
           <span>{comments}</span>
         </Card.RightInfo>
       </Card.Header>
