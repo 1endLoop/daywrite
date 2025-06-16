@@ -50,15 +50,15 @@ const BookmarkTypedList = () => {
     <div>
       <S.HeaderWrap>
         <S.HeaderBox>
-          <img src="" alt="" />
+          <img src="/assets/images/icons/left.png" alt="" />
           <h2>북마크</h2>
           <p>{bookmarkData.length}개의 글</p>
         </S.HeaderBox>
-        <S.Seaech>
+        <S.Search>
           <input type="text" />
-          <img src="" alt="" />
+          <img src="/assets/images/icons/search.png" alt="" />
           <p></p>
-        </S.Seaech>
+        </S.Search>
       </S.HeaderWrap>
       <S.BodyWrap>
         <S.BookBox>

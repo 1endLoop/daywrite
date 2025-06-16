@@ -131,7 +131,7 @@ S.HeaderBox = styled.div`
     width: 250px;
     height: 100%;
     display: flex;
-    gap: 15px;
+    gap: 10px;
     margin-left: 55px;
     justify-content: center; //수직 가운데 정렬
     align-items: center; // 수평 가운데 정렬
@@ -139,8 +139,8 @@ S.HeaderBox = styled.div`
     // 뒤로가기 화살표 
     img{
         /* border: solid 1px red; */
-        width: 25px;
-        height: 25px;
+        width: 30px;
+        height: 30px;
         /* position: absolute; top: 50px; left: 10px; */
     }
     p {
@@ -148,7 +148,7 @@ S.HeaderBox = styled.div`
         color: #787878;
     }
 `
-S.Seaech = styled.div`
+S.Search = styled.div`
     width: 250px;
     height: 30px;
     margin-top: 25px;
@@ -163,7 +163,6 @@ S.Seaech = styled.div`
         border-radius: 5px;
         border: 1px solid #BFBFBF;
         border-radius: 5px;
-       
     }
     // 검색 돋보기
     img {
@@ -171,6 +170,7 @@ S.Seaech = styled.div`
         width: 25px;
         height: 25px;
         position: absolute; right: 8px; top: 14px;
+        border: none;
     }
 `
 
@@ -245,6 +245,7 @@ S.TypedCard = styled.div`
     width: 100%;
     height: 180px;
     margin-top: 10px;
+    border-radius: 5px;
 `
 S.TypedCardTitle = styled.div`
     display: flex;
