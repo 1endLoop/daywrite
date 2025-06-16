@@ -249,22 +249,34 @@ S.TypedCard = styled.div`
 S.TypedCardTitle = styled.div`
     display: flex;
     gap: 10px;
-
+    margin-top: 15px;
+    h3{
+        margin-left: 15px;
+        font-size: 18px;
+    }
     p {
-        font-size: 16px;
+        font-size: 15px;
         color: #787878;
     }
     /* 북마크 아이콘 */
     img {
         width: 20px;
         height: 20px;
+        position: absolute;
+        transform: translateX(650px);
     }
 `
 S.TypedCardDetail = styled.div`
     margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    p{
+        font-size: 16px;
+    }
 `
 S.CardAuthor = styled.div`
-margin-top: 20px;
+    margin-top: 20px;
+    margin-left: 15px;
     display: flex;
     /* 하트아이콘 */
     img{
@@ -273,6 +285,7 @@ margin-top: 20px;
     }
     p{
         margin-left: 15px;
+        font-size: 16px;
     }
 `
 // 북마크 드롭다운
@@ -347,12 +360,16 @@ S.PlayedCardBox = styled.div`
         border: 1px solid #F96F3D; // 선택 시 테두리
     }
     .num{
-        border: solid 1px black;
+        /* border: solid 1px black; */
         width: 20px;
         height: 20px;
         margin-left: 12px;
-
-        
+        display: flex;
+        p{
+            font-size: 15px;
+            text-align: center;
+            margin: auto;
+        }
     }
     .album{
         border: solid 1px black;
@@ -365,12 +382,24 @@ S.PlayedCardBox = styled.div`
         width: 230px;
         height: 35px;
         margin-left: 30px;
+        display: flex;
+        p{
+            text-align: center;
+            font-size: 16px;
+            margin: auto;
+        }
     }
     .artistName{
         border: solid 1px black;
         width: 100px;
         height: 35px;
         margin-left: 20px;
+        display: flex;
+        p{
+            text-align: center;
+            font-size: 14px;
+            margin: auto;
+        }
     }
     .like{
         border: solid 1px black;
