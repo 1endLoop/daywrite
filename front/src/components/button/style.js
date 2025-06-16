@@ -91,6 +91,11 @@ const sizeCSS = {
     aspect-ratio: 8 / 1;
     padding: 16px 0;
   `,
+  custom: css`
+    width: 423px;
+    height: 57px;
+    padding: 11px 184px;
+  `,
 }
 
 const fontCSS = {
@@ -102,7 +107,7 @@ const fontCSS = {
     font-size: ${({theme}) => theme.FONT_SIZE["h2"]};
     line-height: ${({theme}) => theme.FONT_LINE["h2"]};
   `,
-  h33 : css`
+  h3 : css`
     font-size: ${({theme}) => theme.FONT_SIZE["h3"]};
     line-height: ${({theme}) => theme.FONT_LINE["h3"]};
   `,
@@ -139,6 +144,73 @@ const Button = styled.button`
   ${({border}) => borderCSS[border]}
   ${({variant}) => variantCSS[variant]}
   ${({shape}) => shapeCSS[shape]}
+  ${({ css: customStyle }) => customStyle && css`${customStyle}`}
 `
+
+// Filled Button 스타일
+export const filledButtonCSS = css`
+  width: 423px;
+  padding: 17px 90px;
+  background: #282828;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+
+  color: white;
+  font-size: 20px;
+  font-family: Pretendard;
+  font-weight: 600;
+  line-height: 30px;
+  word-wrap: break-word;
+
+  &:hover {
+    background-color: #F96F3D;
+  }
+
+  &:active {
+    background-color: #663C2D;
+  }
+
+  &:disabled {
+    background-color: #BFBFBF;
+    color: white;
+    cursor: not-allowed;
+  }
+`;
+
+// Outline Button 스타일
+export const outlineButtonCSS = css`
+  width: 100%;
+  height: 57px;
+  padding: 11px 0;
+  border: 2px solid #282828;
+  font-size: 20px;
+  font-family: Pretendard;
+  font-weight: 600;
+  line-height: 30px;
+  background-color: white;
+  color: #282828;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    border-color: #F96F3D;
+    color: #F96F3D;
+  }
+
+  &:active {
+    border-color: #663C2D;
+    color: #663C2D;
+  }
+
+  &:disabled {
+    border-color: #BFBFBF;
+    color: #BFBFBF;
+    cursor: not-allowed;
+  }
+`;
+
 
 export default Button;
