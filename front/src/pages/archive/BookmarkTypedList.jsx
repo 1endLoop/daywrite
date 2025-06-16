@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import S from './bookmark.style';
 
 
@@ -22,10 +22,29 @@ import S from './bookmark.style';
       music: "Rainy Days",
       artist: "Lee Moon",
     },
+        {
+      id: 3,
+      date: "2025. 05. 27",
+      content:
+        "진정한 사랑이란, 반드시 두 사람의 자유가 서로 상대방을 인정하는 기초 위에 세워져야 한다. 이때 두 사람은 서로를 자기 자신처럼 또는 타자처럼 느끼면서, 어느 한편에서도 자기 초월을 포기하지 않고 또 자기를 불구로 만드는 일 없이 함께 세계 속에서 가치와 목적을 발견할 것이다. 또한 자기를 줌으로써 자기 자신을 찾고 세계를 풍요롭게 할 것이다.",
+      title: "제2의 성",
+      author: "시몬느 드 보부아르",
+      music: "Love on Top",
+      artist: "John Canada",
+    },
+
   ];
 
 const BookmarkTypedList = () => {
   const [open, setOpen] = useState(false); 
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [editMode, setEditMode] = useState(false); // 편집 모드 on/off
+  const [selectedItems, setSelectedItems] = useState([]); // 선택된 항목 id 배열
+  const [bookmarkData, setBookmarkData] = useState(dummyData);
+
+  
 
   return (
     <div>
@@ -33,7 +52,7 @@ const BookmarkTypedList = () => {
         <S.HeaderBox>
           <img src="" alt="" />
           <h2>북마크</h2>
-          <p>1개의 글</p>
+          <p>{bookmarkData.length}개의 글</p>
         </S.HeaderBox>
         <S.Seaech>
           <input type="text" />
@@ -47,51 +66,128 @@ const BookmarkTypedList = () => {
           <S.BookInfo>
             <div id='title'>
               <h4>제목</h4>
-              <p>편집</p>
+              <p
+                onClick={() => {
+                  if (editMode) {
+                    // 편집 종료: 선택된 항목 삭제
+                    setBookmarkData((prev) =>
+                      prev.filter((item) => !selectedItems.includes(item.id))
+                    );
+                    setSelectedItems([]); // 선택 초기화
+                  }
+                  setEditMode((prev) => !prev);
+                }}
+              >
+                {editMode ? "삭제" : "편집"}
+              </p>
+
             </div>
-            <div id='img'>
-            </div>
+            <div id='imgEditBox'>
+              <div id='imgEdit' onClick={() => setOpenDropdown((prev) => !prev)}></div>
+              <p
+                onClick={() => {
+                  setEditMode((prev) => !prev);
+                  setSelectedItems([]); // 편집 모드 꺼질 때 초기화
+                }}
+              >
+              {editMode ? `${selectedItems.length}개 선택됨` : ""}
+              </p> 
+            </div>           
           </S.BookInfo>
+          {/* 북마크 리스트 이름변경, 폴더삭제 드롭다운 */}
+          <S.DropdownWrapper ref={dropdownRef}>
+            {openDropdown && (
+              <S.TypedMenu>
+                <S.TypedItem onClick={() => alert("이름을 변경하겠습니다!")}>이름변경</S.TypedItem>
+                <S.TypedItem onClick={() => alert("폴더를 삭제하겠습니다!")}>폴더삭제</S.TypedItem>
+              </S.TypedMenu>
+            )}
+          </S.DropdownWrapper>
+            
         </S.BookBox>
         <S.TypeInfo>
           {/* <S.TypedCard>
             북마크 정보
           </S.TypedCard> */}
-          {dummyData.map((item) => (
-          <S.TypedCard onClick={() => setOpen(true)} key={item.id}>
-            <h3>{item.title}</h3>
-            <p><strong>Author:</strong> {item.author}</p>
-            <p><strong>Date:</strong> {item.date}</p>
-            <p><strong>Music:</strong> {item.music} - {item.artist}</p>
-            <p>{item.content}</p>
-        </S.TypedCard>
-      ))}
+          {bookmarkData.map((item) => (
+              <S.TypedCard
+                onClick={() => {
+                  if (editMode) {
+                    setSelectedItems((prev) =>
+                      prev.includes(item.id)
+                        ? prev.filter((id) => id !== item.id)
+                        : [...prev, item.id]
+                    );
+                  } else {
+                    setSelectedItem(item);
+                    setOpen(true);
+                  }
+                }}
+                key={item.id}
+                style={{
+                  border: editMode
+                    ? selectedItems.includes(item.id)
+                      ? '1.5px solid #F96F3D'
+                      : '1px solid #e0e0e0'
+                    : '1px solid #e0e0e0',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+              <S.TypedCardTitle>
+                <h3>{item.title}</h3>
+                <p><strong>Author:</strong> {item.author}</p>
+                <img src="" alt="" />
+              </S.TypedCardTitle>
+              <S.TypedCardDetail>
+                <p>{item.content}</p>
+              </S.TypedCardDetail>
+              <S.CardAuthor>
+                <img src="" alt="" />
+                <p><strong>Music:</strong> {item.music} - {item.artist}</p>
+              </S.CardAuthor>
+            </S.TypedCard> 
+          ))}
         </S.TypeInfo>
       </S.BodyWrap>
 
-    {/* 팝업 테스트 */}
-    {/* onClick={() => setOpen(true)} 붙여넣기기*/}
     <S.PopupContainer>
-      {/* 팝업 */}
-      {open && (
-        <div className="popup">
+      {/* 팝업  setOpen(true)*/}
+      {open && selectedItem && (
+        <div className="popup"
+          // onClick={(e) => {
+          //   if (e.target.className === 'popup') {
+          //     setOpen(false); // 배경 클릭 시 팝업 닫기
+          //   }
+          // }}
+        >
           <div className="popup-box">
-            <span className="close-btn" onClick={() => setOpen(false)}>
-              &times;
-            </span>
-            <h2>팝업 제목</h2>
-            <p>팝업 내용입니다.</p>
+            <div className='popupHeader'>
+              <span className='PopupBook'>책 정보</span>
+              <span className="close-btn" onClick={() => setOpen(false)}>
+                &times;
+              </span>
+            </div>
+            <div className='popBody'>
+              <div className='bookImg'>
+                <img src="" alt="" />
+              </div>
+              {/* 팝업 내용 */}
+              <div className='bookDetail'>
+                <h3 className='detailTitle'>{selectedItem.title}</h3>
+                <p className='con'>{selectedItem.content}</p>
+                <p><strong>Author:</strong> {selectedItem.author}</p>
+                <p><strong>Music:</strong> {selectedItem.music} - {selectedItem.artist}</p>
+              </div>
+            </div>
           </div>
         </div>
       )}
     </S.PopupContainer>
 
-
-
-
-
     </div>
   );
 };
+
 
 export default BookmarkTypedList;

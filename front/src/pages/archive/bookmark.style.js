@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 const S = {}
@@ -8,19 +9,25 @@ S.TypedTitle = styled.div`
     margin-top: 30px;
 `
 S.TypedWrapper = styled.div`
-    border: solid 1px red;
+    /* border: solid 1px #787878; */
     display: flex;
     width: 100%;
     height: 220px;
     display: flex;
     margin-top: 10px;
+    overflow-x: auto;
+    /* overflow-x: hidden; // 가로스크롤 숨김 */
+    &::-webkit-scrollbar {
+        display: none; // 스크롤바 숨김 (선택)
+    }
 `
 // Typed 이미지
 S.TypedBox = styled.div`
-    border: solid 1px black;
+    /* border: solid 1px black; */
     width: 180px;
     height: 100%;
-
+    margin-right: 10px;
+    min-width: 180px;  // 박스 하나 너비 고정
     img {
         /* border: solid 1px red; */
         width: 100%;
@@ -37,19 +44,40 @@ S.LetterBox = styled.div`
 
     h6 {
         margin-top: 5px;
+        margin-left: 3px;
     }
     p {
         margin-top: 8px;
         font-size: 15px;
         color: #787878;
+        margin-left: 3px;
     }
 `
+// 스크롤
+S.SliderWrapper = styled.div`
+    position: relative;
+    display: flex;
+    align-items: center;
+`;
+
+S.ArrowButton = styled.button`
+    /* position: absolute; right: 10px; 포지션 이동X*/ 
+    background: white;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    z-index: 2;
+`;
+
 // 드롭다운
 S.dd = styled.div`
     border: solid 1px red;
     width: 18px;
     height: 18px;
     position: absolute; right: 0px; top: 0px;
+    z-index: 1;
 `
 S.Wrapper = styled.div`
   position: relative;
@@ -76,11 +104,10 @@ S.Item = styled.div`
   }
 `
 
-
 // Played Wrap
 S.PlayedTitle = styled.div`
     width: 100%;
-    margin-top: 50px;
+    margin-top: 20px;
 `
 S.PlayedWrapper = styled.div`
     border: solid 1px red;
@@ -90,6 +117,7 @@ S.PlayedWrapper = styled.div`
     margin-top: 10px;
 `
 
+// ========================================
 // 북마크 리스트
 S.HeaderWrap = styled.div`
     /* border: solid 1px red; */
@@ -153,11 +181,12 @@ S.BodyWrap = styled.div`
     display: flex;
     justify-content: space-between;
 `
+// 북마크 상세 이미지, 제목, 편집
 S.BookBox = styled.div`
     border: solid 1px black;
     width: 200px;
     height: 250px;
-    margin-top: 0;
+    margin-top: 10px;
     margin-left: 100px;
     //책 표지
     img {
@@ -179,41 +208,182 @@ S.BookInfo = styled.div`
             margin-top: 10px;
             font-size: 15px;
             color: #787878;
+            cursor: pointer;
         }
     }
-    #img{
-        border: solid 1px red;
-        width: 20px;
-        height: 20px;
+    #imgEditBox{
+        /* border: solid 1px red; */
+        width: 70px;
+        height: 70px;
+        // ...드롭다운
+        div {
+            margin-top: 0px;
+            margin-left: 45px;
+            border: solid 1px red;
+            width: 15px;
+            height: 15px;
+        }
+        // 편집 누를 시 나오는 카운트
+        p{
+            margin-top: 10px;
+            margin-left: 10px;
+            font-size: 12px;
+            color: #787878;
+        }
     }
 `
 //북마크 리스트
 S.TypeInfo = styled.div`
-    border: solid 1px black;
-    width: 650px;
+    /* border: solid 1px black; */
+    width: 700px;
     height: 600px;
-    margin-top: 0;
+    margin-top: 0px;
     margin-right: 120px;
 `
 S.TypedCard = styled.div`
-    border: solid 1px red;
+    /* border: solid 1px #787878; */
     width: 100%;
     height: 180px;
+    margin-top: 10px;
+`
+S.TypedCardTitle = styled.div`
+    display: flex;
+    gap: 10px;
+
+    p {
+        font-size: 16px;
+        color: #787878;
+    }
+    /* 북마크 아이콘 */
+    img {
+        width: 20px;
+        height: 20px;
+    }
+`
+S.TypedCardDetail = styled.div`
+    margin-top: 20px;
+`
+S.CardAuthor = styled.div`
+margin-top: 20px;
+    display: flex;
+    /* 하트아이콘 */
+    img{
+        width: 15px;
+        height: 15px;
+    }
+    p{
+        margin-left: 15px;
+    }
+`
+// 북마크 드롭다운
+S.DropdownWrapper = styled.div`
+  position: relative;
 `
 
-// 플레이 모음 상세
-S.PlayInfo = styled.div`
-    border: solid 1px red;
-    width: 600px;
-    height: 50px;
-    margin-right: 30px;
+S.TypedMenu = styled.div`
+  position: absolute; right: -15px; top: -40px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 `
+S.TypedItem = styled.div`
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+`
+// ===================================
+// 플레이 모음 상세
 S.PlayBox = styled.div`
-    border-top: solid 1px black;
-    width: 600px;
-    height: 570px;
-    margin-top: 50px;
-    margin-right: 30px;
+    /* border: solid 1px black; */
+    width: 700px;
+    height: 100%;
+    margin-right: 120px;
+`
+S.PlayInfo = styled.div`
+    border-bottom: solid 1px black;
+    width: 700px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #787878;
+
+    .num{
+        margin-left: 15px;
+    }
+    .album{
+        margin-left: 32px;
+    }
+    .singName{
+        margin-left: 120px;
+    }
+    .artistName{
+        margin-left: 120px;
+    }
+    .like{
+        margin-left: 55px;
+    }
+    .play{
+        margin-left: 60px;
+    }
+`
+S.PlayedCardBox = styled.div`
+    /* border: solid 1px red; */
+    width: 700px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    border-bottom: solid 1px #e0e0e0;
+    
+    &.selected {
+        border: 1px solid #F96F3D; // 선택 시 테두리
+    }
+    .num{
+        border: solid 1px black;
+        width: 20px;
+        height: 20px;
+        margin-left: 12px;
+
+        
+    }
+    .album{
+        border: solid 1px black;
+        width: 35px;
+        height: 35px;
+        margin-left: 27px;
+    }
+    .singName{
+        border: solid 1px black;
+        width: 230px;
+        height: 35px;
+        margin-left: 30px;
+    }
+    .artistName{
+        border: solid 1px black;
+        width: 100px;
+        height: 35px;
+        margin-left: 20px;
+    }
+    .like{
+        border: solid 1px black;
+        width: 70px;
+        height: 35px;
+        margin-left: 20px;
+    }
+    .play{
+        border: solid 1px black;
+        width: 90px;
+        height: 35px;
+        margin-left: 20px;
+    }
 `
 
 //=====================================
@@ -232,7 +402,6 @@ S.PopupContainer = styled.div`
   top: 0; left: 0;
   width: 100vw;
   height: 100vh;
-  /* overflow: auto; */
   background: rgba(0, 0, 0, 0.5); //백그라운드 흐리게
   display: flex;
   justify-content: center;
@@ -247,9 +416,13 @@ S.PopupContainer = styled.div`
   min-width: 300px;
   position: relative;
   text-align: center;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 550px;
   overflow: auto;
+}
+.PopupBook {
+    font-size: 16px;
+    color: #787878;
 }
 
 /* 닫기 버튼 */
@@ -265,13 +438,38 @@ S.PopupContainer = styled.div`
 .close-btn:hover {
   color: black;
 }
-`
-// wrap 1400
-S.wrap = styled.div`
-    border: solid 1px red;
-    width: 1250px;
-    height: 730px;
-    margin: auto;
+
+// 팝업 내용
+.popupHeader{
+  display: flex;
+  justify-content: space-between;
+}
+.popBody{
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    width: 600px;
+    height: 500px;
+    margin-top: 15px;
+    display: flex;
+}
+.bookImg{
+    border: 1px solid red;
+    margin-top: 20px;
+    width: 200px;
+    height: 270px;
+}
+.bookDetail{
+    /* border: solid 1px black; */
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 350px;
+    height: 420px;
+    padding: 6px;
+    
+}
+.detailTitle{
+    margin-left: 0px;
+}
 `
 
 
