@@ -41,7 +41,7 @@ const CommunityMyPosts = () => {
         <Left>
           <ToggleButton isTemp={isTemp} onToggle={setIsTemp} />
         </Left>
-        <WriteButton>나만의 글 쓰기</WriteButton>
+        <WriteButton onClick={() => navigate("/community/write")}>나만의 글 쓰기</WriteButton>
       </TopRow>
       <CardList>
         {dummyData.map((item) => (
