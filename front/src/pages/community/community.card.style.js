@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Card = {}
+const Card = {};
 
 Card.Card = styled.div`
   background-color: #fff;
@@ -56,7 +56,6 @@ Card.Divider = styled.div`
   margin: 16px 0;
 `;
 
-
 Card.Title = styled.div`
   font-size: 15px;
   font-weight: 600;
@@ -71,25 +70,32 @@ Card.Author = styled.div`
 Card.RightInfo = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
+  gap: 10px; /* 좋아요/댓글 묶음 사이 간격 넓힘 */
+  font-size: 15px;
   color: #444;
 `;
 
+Card.RightGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px; /* 아이콘과 숫자 간 간격 */
+`;
+
+
 Card.LikeIcon = styled.img`
-  width: 16px;
+  width: 20px;
 `;
 
 Card.CommentIcon = styled.img`
-  width: 16px;
+  width: 20px;
 `;
-
 
 Card.Content = styled.p`
   font-size: 15px;
   color: #282828;
   line-height: 1.7;
   margin-bottom: 20px;
+  padding: 0 2px;
 
   display: -webkit-box;
   -webkit-line-clamp: 4;
@@ -103,7 +109,7 @@ Card.Divider = styled.div`
   border: none;
   border-top: 1px solid #e0e0e0;
   margin: 0 0 20px 0;
-`
+`;
 
 Card.MetaWrapper = styled.div`
   display: flex;
@@ -168,6 +174,5 @@ Card.MusicLeft = styled.div`
 Card.MusicRight = styled.div`
   font-size: 16px;
 `;
-
 
 export default Card;
