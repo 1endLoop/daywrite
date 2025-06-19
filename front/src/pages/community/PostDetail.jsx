@@ -84,9 +84,7 @@ const PostDetail = () => {
         <Post.Divider />
         <Post.MusicRow>
           <Post.Music>
-            <span role="img" aria-label="like">
-              ❤️
-            </span>
+            <img src="/assets/images/icons/svg/like=on.svg" alt="like" style={{ width: "18px", height: "18px" }} />
             <span role="img" aria-label="music">
               🎵
             </span>

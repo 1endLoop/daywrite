@@ -116,7 +116,7 @@ Post.Music = styled.div`
   font-size: 13px;
 
   .music-name {
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .artist {

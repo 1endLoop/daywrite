@@ -24,10 +24,14 @@ const CommunityCard = ({ data, onClick }) => {
           </Card.TitleWrapper>
         </Card.LeftInfo>
         <Card.RightInfo>
-          <Card.LikeIcon src="../assets/images/icons/like-on-color.png" alt="like" />
-          <span>{likes}</span>
-          <Card.CommentIcon src="../assets/images/icons/comment.png" alt="comment" />
-          <span>{comments}</span>
+          <Card.RightGroup>
+            <Card.LikeIcon src="../assets/images/icons/svg/like.svg" alt="like" />
+            <span>{likes}</span>
+          </Card.RightGroup>
+          <Card.RightGroup>
+            <Card.CommentIcon src="../assets/images/icons/svg/comment.svg" alt="comment" />
+            <span>{comments}</span>
+          </Card.RightGroup>
         </Card.RightInfo>
       </Card.Header>
 
@@ -35,9 +39,7 @@ const CommunityCard = ({ data, onClick }) => {
       <Card.Divider />
       <Card.MusicInfo>
         <Card.MusicLeft>
-          <span role="img" aria-label="like">
-            ❤️
-          </span>
+          <img src="/assets/images/icons/svg/like=on.svg" alt="like" style={{ width: "18px", height: "18px" }} />
           <span role="img" aria-label="music">
             🎵
           </span>
