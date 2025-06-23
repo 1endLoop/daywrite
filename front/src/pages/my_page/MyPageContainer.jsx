@@ -6,7 +6,12 @@ const MyPageContainer = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isActive = (path) => location.pathname === path || location.pathname === `/mypage/${path}`;
+  const isActive = (path) => {
+    return (
+      location.pathname === `/mypage/${path}` ||
+      location.pathname.startsWith(`/mypage/${path}/`)
+    );
+  };
 
   return (
     <S.Wrapper>
@@ -80,3 +85,4 @@ const MyPageContainer = () => {
 };
 
 export default MyPageContainer;
+
