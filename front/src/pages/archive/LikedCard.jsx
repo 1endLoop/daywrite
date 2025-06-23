@@ -13,8 +13,8 @@ const LikedCard = ({ data }) => {
           <span className="author">{author}</span>
         </Card.HeaderLeft>
 
-        <Card.LikeIcon role="img" aria-label="like">
-          👍
+        <Card.LikeIcon>
+          <img src="../assets/images/icons/svg/like.svg" alt="like" />
         </Card.LikeIcon>
       </Card.Header>
       <Card.Content>{content}</Card.Content>
@@ -23,7 +23,9 @@ const LikedCard = ({ data }) => {
 
       <Card.BottomWrapper>
         <Card.MusicInfo>
-          <Card.Action>❤️</Card.Action>
+          <Card.Action>
+            <img src="../assets/images/icons/svg/like=on.svg" alt="like" />
+          </Card.Action>
           <span role="img" aria-label="music">
             🎵
           </span>

@@ -61,32 +61,30 @@ const PostDetail = () => {
       <Post.Card>
         <Post.Header>
           <Post.LeftInfo>
-            <Post.Profile src={post.profileImg || "/assets/images/default-profile.png"} />
+            <Post.Profile src={post.profileImg || "../assets/images/profiles/profile2.jpeg"} />
             <Post.TitleWrapper>
               <span className="title">{post.title}</span>
               <span className="author">{post.author}</span>
             </Post.TitleWrapper>
           </Post.LeftInfo>
 
-          <Post.Right>
-            <span role="img" aria-label="like">
-              👍
-            </span>{" "}
-            {post.likes}
-            <span role="img" aria-label="comment">
-              💬
-            </span>{" "}
-            {post.comments}
-          </Post.Right>
+          <Post.RightInfo>
+            <Post.IconGroup>
+              <img src="/assets/images/icons/svg/like.svg" alt="like" />
+              <span>{post.likes}</span>
+            </Post.IconGroup>
+            <Post.IconGroup>
+              <img src="/assets/images/icons/svg/comment.svg" alt="comment" />
+              <span>{post.comments}</span>
+            </Post.IconGroup>
+          </Post.RightInfo>
         </Post.Header>
 
         <Post.Content>{post.content}</Post.Content>
         <Post.Divider />
         <Post.MusicRow>
           <Post.Music>
-            <span role="img" aria-label="like">
-              ❤️
-            </span>
+            <img src="/assets/images/icons/svg/like=on.svg" alt="like" style={{ width: "18px", height: "18px" }} />
             <span role="img" aria-label="music">
               🎵
             </span>

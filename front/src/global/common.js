@@ -22,3 +22,14 @@ export const flexCenterColumn = css`
   align-items: center;
 `
 
+export const justifyContentStart = css`
+  justify-content: start;
+  align-items: center;
+  display: inline-flex;
+`
+
+export const justifyContentCenter = css`
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+`
