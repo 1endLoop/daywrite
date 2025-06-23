@@ -1,127 +1,7 @@
-
 import styled from "styled-components";
 
-const S = {}
+const S = {};
 
-// Bookmark Hoom
-S.TypedTitle = styled.div`
-    width: 100%;
-    margin-top: 20px;
-    h2{
-        font-size: 22px;
-    }
-`
-S.TypedWrapper = styled.div`
-    /* border: solid 1px #787878; */
-    display: flex;
-    width: 100%;
-    height: 210px;
-    display: flex;
-    margin-top: 5px;
-    overflow-x: auto;
-    /* overflow-x: hidden; // 가로스크롤 숨김 */
-    &::-webkit-scrollbar {
-        display: none; // 스크롤바 숨김 (선택)
-    }
-`
-// Typed 이미지
-S.TypedBox = styled.div`
-    /* border: solid 1px black; */
-    width: 150px;
-    height: 100%;
-    margin-right: 10px;
-    min-width: 180px;  // 박스 하나 너비 고정
-    img {
-        /* border: solid 1px red; */
-        width: 100%;
-        height: 160px;
-    }
-`
-// Typed 제목, ...
-S.LetterBox = styled.div`
-    /* border: solid 1px yellow; */
-    width: 100%;
-    height: 50px;
-    justify-content: space-between;
-    position: relative;
-
-    h6 {
-        margin-top: 5px;
-        margin-left: 3px;
-    }
-    p {
-        margin-top: 8px;
-        font-size: 15px;
-        color: #787878;
-        margin-left: 3px;
-    }
-`
-// 스크롤
-S.SliderWrapper = styled.div`
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-`;
-
-S.ArrowButton = styled.button`
-    /* position: absolute; right: 10px; 포지션 이동X*/ 
-    background: white;
-    border-radius: 50%;
-    border: 1px solid #ccc;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 5px 10px;
-    z-index: 2;
-`;
-
-// 드롭다운
-S.dd = styled.div`
-    border: solid 1px red;
-    width: 18px;
-    height: 18px;
-    position: absolute; right: 0px; top: 0px;
-    z-index: 1;
-`
-S.Wrapper = styled.div`
-  position: relative;
-`
-
-S.Menu = styled.div`
-  position: absolute;
-  top: 24px;
-  right: 0;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-`
-S.Item = styled.div`
-  padding: 10px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  white-space: nowrap;
-
-  &:hover {
-    background-color: #f2f2f2;
-  }
-`
-
-// Played Wrap
-S.PlayedTitle = styled.div`
-    width: 100%;
-    margin-top: 20px;
-`
-S.PlayedWrapper = styled.div`
-    border: solid 1px red;
-    width: 100%;
-    height: 240px;
-    display: flex;
-    margin-top: 10px;
-`
-
-// ========================================
 // 북마크 리스트
 S.HeaderWrap = styled.div`
     /* border: solid 1px red; */
@@ -136,7 +16,7 @@ S.HeaderBox = styled.div`
     height: 100%;
     display: flex;
     gap: 10px;
-    margin-left: 55px;
+    margin-left: 20px;
     justify-content: center; //수직 가운데 정렬
     align-items: center; // 수평 가운데 정렬
 
@@ -147,34 +27,20 @@ S.HeaderBox = styled.div`
         height: 30px;
         /* position: absolute; top: 50px; left: 10px; */
     }
-    p {
-        font-size : 15px;
-        color: #787878;
-    }
 `
-S.Search = styled.div`
-    width: 250px;
-    height: 30px;
-    margin-top: 25px;
+S.EditBox = styled.div`
+    /* border: solid 1px red; */
+    width: 40px;
+    height: 25px;
     margin-right: 120px;
-    display: flex;
-    position: relative;
+    margin-top: 75px;
+    justify-content: center;
+    align-items: center;
 
-    input {
-        margin-top: 10px;
-        width: 350px;
-        height: 30px;
-        border-radius: 5px;
-        border: 1px solid #BFBFBF;
-        border-radius: 5px;
-    }
-    // 검색 돋보기
-    img {
-        border: solid 1px #BFBFBF;
-        width: 25px;
-        height: 25px;
-        position: absolute; right: 8px; top: 14px;
-        border: none;
+    .detailEdit{
+        font-size: 15px;
+        color: #787878;
+        cursor: pointer;
     }
 `
 
@@ -188,14 +54,14 @@ S.BodyWrap = styled.div`
 // 북마크 상세 이미지, 제목, 편집
 S.BookBox = styled.div`
     /* border: solid 1px black; */
-    width: 200px;
-    height: 250px;
+    width: 150px;
+    height: 200px;
     margin-top: 10px;
     margin-left: 100px;
     //책 표지
     img {
         width: 100%;
-        height: 170px;
+        height: 150px;
     }
 `
 S.BookInfo = styled.div`
@@ -208,11 +74,11 @@ S.BookInfo = styled.div`
         width: 120px;
         height: 100%;
         h4{
-            font-size: 16px;
+            font-size: 15px;
         }
         p{
             margin-top: 10px;
-            font-size: 15px;
+            font-size: 13px;
             color: #787878;
             cursor: pointer;
         }
@@ -242,6 +108,11 @@ S.BookInfo = styled.div`
         }
     }
 `
+S.DetailSolid = styled.div`
+    border: solid 1px #e0e0e0;
+    height: 100%;
+`
+
 //북마크 리스트
 S.TypeInfo = styled.div`
     /* border: solid 1px black; */
@@ -281,15 +152,18 @@ S.TypedCardDetail = styled.div`
     margin-top: 20px;
     margin-left: 15px;
     margin-right: 15px;
-    
     p{
-        height: 72px;
         font-size: 16px;
-        overflow-y: hidden;
     }
 `
+S.BlankSolid = styled.div`
+    width: 650px;
+    border: solid 1px #787878;
+    margin-top: 10px;
+    margin-left: 15px;
+`
 S.CardAuthor = styled.div`
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 15px;
     display: flex;
     /* 하트아이콘 */
@@ -306,7 +180,6 @@ S.CardAuthor = styled.div`
 S.DropdownWrapper = styled.div`
   position: relative;
 `
-
 S.TypedMenu = styled.div`
   position: absolute; right: -15px; top: -40px;
   background: white;
@@ -325,111 +198,6 @@ S.TypedItem = styled.div`
     background-color: #f2f2f2;
   }
 `
-// ===================================
-// 플레이 모음 상세
-S.PlayBox = styled.div`
-    /* border: solid 1px black; */
-    width: 700px;
-    height: 100%;
-    margin-right: 120px;
-`
-S.PlayInfo = styled.div`
-    border-bottom: solid 1px black;
-    width: 700px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    color: #787878;
-
-    .num{
-        margin-left: 15px;
-    }
-    .album{
-        margin-left: 32px;
-    }
-    .singName{
-        margin-left: 120px;
-    }
-    .artistName{
-        margin-left: 120px;
-    }
-    .like{
-        margin-left: 55px;
-    }
-    .play{
-        margin-left: 60px;
-    }
-`
-S.PlayedCardBox = styled.div`
-    /* border: solid 1px red; */
-    width: 700px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-    border-bottom: solid 1px #e0e0e0;
-    
-    &.selected {
-        border: 1px solid #F96F3D; // 선택 시 테두리
-    }
-    .num{
-        /* border: solid 1px black; */
-        width: 20px;
-        height: 20px;
-        margin-left: 12px;
-        display: flex;
-        p{
-            font-size: 15px;
-            text-align: center;
-            margin: auto;
-        }
-    }
-    .album{
-        border: solid 1px black;
-        width: 35px;
-        height: 35px;
-        margin-left: 27px;
-    }
-    .singName{
-        border: solid 1px black;
-        width: 230px;
-        height: 35px;
-        margin-left: 30px;
-        display: flex;
-        p{
-            text-align: center;
-            font-size: 16px;
-            margin: auto;
-        }
-    }
-    .artistName{
-        border: solid 1px black;
-        width: 100px;
-        height: 35px;
-        margin-left: 20px;
-        display: flex;
-        p{
-            text-align: center;
-            font-size: 14px;
-            margin: auto;
-        }
-    }
-    .like{
-        border: solid 1px black;
-        width: 70px;
-        height: 35px;
-        margin-left: 20px;
-    }
-    .play{
-        border: solid 1px black;
-        width: 90px;
-        height: 35px;
-        margin-left: 20px;
-    }
-`
-
-//=====================================
 // 팝업
 /* 전체 컨테이너 */
 S.PopupContainer = styled.div`
@@ -496,7 +264,7 @@ S.PopupContainer = styled.div`
     display: flex;
 }
 .bookImg{
-    /* border: 1px solid red; */
+    border: 1px solid red;
     margin-top: 20px;
     margin-left: 10px;
     width: 200px;
@@ -514,7 +282,6 @@ S.PopupContainer = styled.div`
     width: 450px;
     height: 450px;
     padding: 8px;
-    overflow-y: auto;
     /* position: relative; */
     
 }
@@ -532,27 +299,21 @@ S.PopupContainer = styled.div`
 .author{
     margin-top: 15px;
     display: flex;
-    justify-content: space-between;
     strong{
         font-size: 16px;
         color: #787878;
-        
     }
     p{
         margin-left: 8px;
         font-size: 16px;
-        margin-right: 0px;
     }
 }
-.popupTitleBox{
-    width: 210px;
-    display: flex;
-    margin-left: 10px;
+.blank{
+    width: 80px;
 }
 .bookDate{
     margin-top: 8px;
     display: flex;
-    justify-content: space-between;
     strong{
         font-size: 16px;
         color: #787878;
@@ -567,8 +328,4 @@ S.PopupContainer = styled.div`
     margin-top: 20px;
 }
 `
-
-
-
-
-export default S
+export default S;

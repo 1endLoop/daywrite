@@ -31,6 +31,7 @@ import CommunityCollection from "../pages/community/CommunityCollection";
 import PostDetail from "../pages/community/PostDetail";
 import PostWrite from "../pages/community/PostWrite";
 import CollectionDetail from "../pages/community/CollectionDetail";
+import CollectionAllview from "../pages/community/CollectionAllview"; // 추가
 
 // My Page
 import MyPageContainer from "../pages/my_page/MyPageContainer";
@@ -128,6 +129,14 @@ const router = createBrowserRouter([
             element: <CommunityCollection />,
           },
           {
+            path: "collection/collectionAllview", // 추가
+            element: <CollectionAllview />
+          },
+          {
+            path: "collection/detail", // push올리기 전 수정
+            element: <CollectionDetail />,
+          },
+          {
             path: ":id",
             element: <PostDetail />,
           },
@@ -137,10 +146,10 @@ const router = createBrowserRouter([
         path: "community/write",
         element: <PostWrite />,
       },
-      {
-        path: "collection/:id",
-        element: <CollectionDetail />,
-      },
+      // {
+      //   path: "collection/detail", // push올리기 전 수정
+      //   element: <CollectionDetail />,
+      // },
 
       // 마이페이지
       {
