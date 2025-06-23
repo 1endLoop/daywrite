@@ -32,7 +32,7 @@ const dummyData = [
 
 const CommunityList = () => {
   const navigate = useNavigate();
-  
+
   return (
     <Container>
       <TopRow>
@@ -44,14 +44,14 @@ const CommunityList = () => {
             <button>최신순</button>
           </SortMenu>
         </Left>
-        <WriteButton>나만의 글 쓰기</WriteButton>
+        <WriteButton onClick={() => navigate("/community/write")}>나만의 글 쓰기</WriteButton>
       </TopRow>
       <CardList>
         {dummyData.map((item) => (
-          <CommunityCard 
-          key={item.id} 
-          data={item} 
-          onClick={() => navigate(`/community/${item.id}`, { state: { post: item } })}
+          <CommunityCard
+            key={item.id}
+            data={item}
+            onClick={() => navigate(`/community/${item.id}`, { state: { post: item } })}
           />
         ))}
       </CardList>
@@ -102,12 +102,16 @@ const SortMenu = styled.div`
 `;
 
 const WriteButton = styled.button`
+  font-family: Pretendard;
+  font-weight: 500;
   background-color: #ff6f3f;
+  width: 110px;
+  height: 36px;
   color: white;
   font-size: 14px;
   padding: 8px 14px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
 `;
 
