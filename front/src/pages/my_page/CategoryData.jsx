@@ -4,9 +4,9 @@ import styled from 'styled-components';
 const mockData = [
   { name: '사랑', icon: '💖', percent: 45, color: '#f79bb3' },
   { name: '이별', icon: '💔', percent: 45, color: '#f27b87' },
-  { name: '우울한 감정', icon: '😞', percent: 45, color: '#f8c279' },
-  { name: '그 외의 감정', icon: '🥺', percent: 30, color: '#3c2f2f' },
-  { name: '소설', icon: '📖', percent: 80, color: '#f9dc8b' },
+  { name: '우울한 감정', icon: '😞', percent: 30, color: '#f8c279' },
+  { name: '그 외의 감정', icon: '🥺', percent: 100,color: '#3c2f2f' },
+  { name: '소설', icon: '📖', percent: 100, color: '#f9dc8b' },
   { name: '시', icon: '💥', percent: 15, color: '#dcdcf9' },
   { name: '에세이', icon: '📝', percent: 20, color: '#f2a0a0' },
   { name: '역사', icon: '🏺', percent: 30, color: '#f4e2b7' },
@@ -64,8 +64,8 @@ export default CategoryData;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 70px;
-  margin-top: -40px;
+  gap: 50px;
+  margin-top: -50px;
 `;
 
 const Header = styled.div`
@@ -82,12 +82,14 @@ font-weight: 600;
 const Select = styled.select`
   padding: 6px 12px;
   font-size: 14px;
+  transform: translateX(-110px);
+  margin-top: 40px;
 `;
 
 const List = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;   // ✅ 가로 2열
-  gap: 50px 10px;                   // ✅ 세로 24px, 가로 60px 간격
+  grid-template-columns: 0.4fr 0.4fr;
+  gap: 50px 60px;                   // ✅ 세로 24px, 가로 60px 간격
   align-items: flex-start;  
 `;
 
@@ -105,7 +107,7 @@ const Label = styled.div`
 const BarWrap = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 `;
 
 const Bar = styled.div`
