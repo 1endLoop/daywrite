@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import MainContainer from "../pages/main/MainContainer";
+import Main from "../pages/main/Main";
 import NotFound from "../pages/not_found/NotFound";
 import Layout from "../pages/layout/Layout";
 
@@ -31,7 +31,6 @@ import CommunityCollection from "../pages/community/CommunityCollection";
 import PostDetail from "../pages/community/PostDetail";
 import PostWrite from "../pages/community/PostWrite";
 import CollectionDetail from "../pages/community/CollectionDetail";
-import CollectionAllview from "../pages/community/CollectionAllview"; // 추가
 
 // My Page
 import MyPageContainer from "../pages/my_page/MyPageContainer";
@@ -50,14 +49,12 @@ import ProfileHomePopup from "../pages/my_page/ProfileHomePopup";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Main />,
+  },
+  {
+    path: "/",
+    element: <Layout/>,
     children: [
-      // 메인
-      {
-        index: true,
-        element: <MainContainer />,
-      },
-
       // 카테고리
       {
         path: "category",
@@ -129,14 +126,6 @@ const router = createBrowserRouter([
             element: <CommunityCollection />,
           },
           {
-            path: "collection/collectionAllview", // 추가
-            element: <CollectionAllview />
-          },
-          {
-            path: "collection/detail", // push올리기 전 수정
-            element: <CollectionDetail />,
-          },
-          {
             path: ":id",
             element: <PostDetail />,
           },
@@ -146,10 +135,10 @@ const router = createBrowserRouter([
         path: "community/write",
         element: <PostWrite />,
       },
-      // {
-      //   path: "collection/detail", // push올리기 전 수정
-      //   element: <CollectionDetail />,
-      // },
+      {
+        path: "collection/:id",
+        element: <CollectionDetail />,
+      },
 
       // 마이페이지
       {
