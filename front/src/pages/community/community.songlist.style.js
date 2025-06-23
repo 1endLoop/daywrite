@@ -105,8 +105,7 @@ S.MusicCard = styled.div`
 
   &:hover {
     background-color: #fff8f4;
-    box-shadow: inset 0 0 0 1px #f97e48;
-    /* border-radius: 8px; */
+    /* box-shadow: inset 0 0 0 1px #f97e48; */
   }
 
   .num {
