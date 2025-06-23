@@ -80,7 +80,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     letter-spacing: -0.16px;
     text-decoration: none;
-    color : #131313;
+    color : #282828;
   }
 
   h2 {
@@ -90,7 +90,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     letter-spacing: -0.16px;
     text-decoration: none;
-    color : #131313;
+    color : #282828;
   }
 
   h3 {
@@ -100,7 +100,29 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     letter-spacing: -0.16px;
     text-decoration: none;
-    color : #131313;
+    color : #282828;
+  }
+
+  h4 {
+    font-family: 'Pretendard';
+    font-size: 18px;
+    font-weight: 500;
+    box-sizing: border-box;
+    letter-spacing: -0.16px;
+    line-height: 24px;
+    text-decoration: none;
+    color: #282828;
+  }
+
+  h5 {
+    font-family: 'Pretendard';
+    font-size: 16px;
+    font-weight: 400;
+    box-sizing: border-box;
+    letter-spacing: -0.16px;
+    line-height: 24px;
+    text-decoration: none;
+    color: #282828;
   }
 
   body {
@@ -110,7 +132,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     letter-spacing: -0.16px;
     text-decoration: none;
-    color : #131313;
+    color : #282828;
   }
 
   small {
@@ -120,7 +142,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     letter-spacing: -0.16px;
     text-decoration: none;
-    color : #131313;
+    color : #282828;
   }
 
   caption {
@@ -130,12 +152,12 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     line-height: 1.3;
     text-decoration: none;
-    color : #131313;
+    color : #282828;
   }
 
   a {
     text-decoration: none;
-    color : #131313;
+    color : #282828;
   }
 
   button {

@@ -84,13 +84,15 @@ S.Wrapper = styled.div`
   z-index: 5;
 
   width: 1250px;
-  margin: 0 auto;
+  margin: 0 auto 32px;
   padding: 40px;
   background-color: white;
-  /* border-radius: 16px; */
+  border-radius: 5px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 `;
+
+
 
 export default S;
 
