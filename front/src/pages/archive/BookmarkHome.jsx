@@ -22,6 +22,7 @@ const BookmarkHome = () => {
     <div>
       <S.TypedTitle>
         <h2>Typed</h2>
+        
       </S.TypedTitle>
 
       <S.SliderWrapper>
@@ -29,7 +30,7 @@ const BookmarkHome = () => {
         <S.TypedWrapper ref={typedScrollRef}>
           {[...Array(12)].map((_, i) => (
           <S.TypedBox key={i}>
-            <img src="" alt="" id='ss'/>
+            <img src="/assets/images/profiles/cat.JPG" alt="" id='ss'/>
             <S.LetterBox>
               <div>
                 <h6>제목</h6>
@@ -64,7 +65,7 @@ const BookmarkHome = () => {
         <S.TypedWrapper ref={playedScrollRef}>
           {[...Array(12)].map((_, i) => (
           <S.TypedBox key={i}>
-            <img src="" alt="" id='ss'/>
+            <img src="/assets/images/profiles/cat.JPG" alt="" id='ss'/>
             <S.LetterBox>
               <div>
                 <h6>제목</h6>

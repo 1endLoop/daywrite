@@ -6,15 +6,18 @@ const S = {}
 // Bookmark Hoom
 S.TypedTitle = styled.div`
     width: 100%;
-    margin-top: 30px;
+    margin-top: 20px;
+    h2{
+        font-size: 22px;
+    }
 `
 S.TypedWrapper = styled.div`
     /* border: solid 1px #787878; */
     display: flex;
     width: 100%;
-    height: 220px;
+    height: 210px;
     display: flex;
-    margin-top: 10px;
+    margin-top: 5px;
     overflow-x: auto;
     /* overflow-x: hidden; // 가로스크롤 숨김 */
     &::-webkit-scrollbar {
@@ -24,7 +27,7 @@ S.TypedWrapper = styled.div`
 // Typed 이미지
 S.TypedBox = styled.div`
     /* border: solid 1px black; */
-    width: 180px;
+    width: 150px;
     height: 100%;
     margin-right: 10px;
     min-width: 180px;  // 박스 하나 너비 고정
@@ -58,6 +61,7 @@ S.SliderWrapper = styled.div`
     position: relative;
     display: flex;
     align-items: center;
+    margin-top: 20px;
 `;
 
 S.ArrowButton = styled.button`
@@ -112,7 +116,7 @@ S.PlayedTitle = styled.div`
 S.PlayedWrapper = styled.div`
     border: solid 1px red;
     width: 100%;
-    height: 220px;
+    height: 240px;
     display: flex;
     margin-top: 10px;
 `
@@ -183,14 +187,13 @@ S.BodyWrap = styled.div`
 `
 // 북마크 상세 이미지, 제목, 편집
 S.BookBox = styled.div`
-    border: solid 1px black;
+    /* border: solid 1px black; */
     width: 200px;
     height: 250px;
     margin-top: 10px;
     margin-left: 100px;
     //책 표지
     img {
-        /* border: solid 1px red; */
         width: 100%;
         height: 170px;
     }
@@ -201,9 +204,12 @@ S.BookInfo = styled.div`
     height: 70px;
     justify-content: space-between;
     #title{
-        /* border: solid 1px red; */
-        width: 100px;
+        margin-top: 10px;
+        width: 120px;
         height: 100%;
+        h4{
+            font-size: 16px;
+        }
         p{
             margin-top: 10px;
             font-size: 15px;
@@ -217,11 +223,15 @@ S.BookInfo = styled.div`
         height: 70px;
         // ...드롭다운
         div {
-            margin-top: 0px;
+            margin-top: 10px;
             margin-left: 45px;
             border: solid 1px red;
             width: 15px;
             height: 15px;
+            img{
+                width: 15px;
+                height: 15px;
+            }
         }
         // 편집 누를 시 나오는 카운트
         p{
@@ -271,8 +281,11 @@ S.TypedCardDetail = styled.div`
     margin-top: 20px;
     margin-left: 15px;
     margin-right: 15px;
+    
     p{
+        height: 72px;
         font-size: 16px;
+        overflow-y: hidden;
     }
 `
 S.CardAuthor = styled.div`
@@ -445,8 +458,8 @@ S.PopupContainer = styled.div`
   border-radius: 10px;
   min-width: 300px;
   position: relative;
-  text-align: center;
-  width: 600px;
+  /* text-align: center; */
+  width: 750px;
   height: 550px;
   overflow: auto;
 }
@@ -477,28 +490,82 @@ S.PopupContainer = styled.div`
 .popBody{
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
-    width: 600px;
+    width: 750px;
     height: 500px;
     margin-top: 15px;
     display: flex;
 }
 .bookImg{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin-top: 20px;
+    margin-left: 10px;
     width: 200px;
     height: 270px;
+    img{
+        width: 200px;
+        height: 270px;
+    }
 }
+// 팝업 내용
 .bookDetail{
-    /* border: solid 1px black; */
+    border: solid 1px black;
     margin-top: 20px;
-    margin-left: 20px;
-    width: 350px;
-    height: 420px;
-    padding: 6px;
+    margin-left: 50px;
+    width: 450px;
+    height: 450px;
+    padding: 8px;
+    overflow-y: auto;
+    /* position: relative; */
     
 }
 .detailTitle{
-    margin-left: 0px;
+    justify-items: left;
+    h3{
+        font-size: 18px;
+        text-align: left;
+    }
+    p{
+        font-size: 16px;
+        margin-top: 8px;
+        color: #787878;
+    }
+}
+.author{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    strong{
+        font-size: 16px;
+        color: #787878;
+        
+    }
+    p{
+        margin-left: 8px;
+        font-size: 16px;
+        margin-right: 0px;
+    }
+}
+.popupTitleBox{
+    width: 210px;
+    display: flex;
+    margin-left: 10px;
+}
+.bookDate{
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    strong{
+        font-size: 16px;
+        color: #787878;
+    }
+    p{
+        margin-left: 8px;
+        font-size: 16px;
+    }
+}
+.con{
+    font-size: 16px;
+    margin-top: 20px;
 }
 `
 
