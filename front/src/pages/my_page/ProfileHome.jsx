@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import S from './style';
 import ProfileHomePopup from './ProfileHomePopup';
 import LevelPopup from './LevelPopup'; // ✅ 레벨 팝업 컴포넌트 import
+import { useNavigate } from 'react-router-dom';
 
 const ProfileHome = () => {
+  const navigate = useNavigate(); 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupTab, setPopupTab] = useState('following');
   const [isLevelPopupOpen, setIsLevelPopupOpen] = useState(false); // ✅ 레벨 팝업 상태
@@ -28,6 +30,7 @@ const ProfileHome = () => {
                 alt="수정"
                 width="24"
                 style={{ marginLeft: '6px', cursor: 'pointer', verticalAlign: 'middle' }}
+                onClick={() => navigate('/mypage/user-info')} 
               />
             </S.Nickname>
             <S.Email>yedam@email.com</S.Email>
