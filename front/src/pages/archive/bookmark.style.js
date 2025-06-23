@@ -519,9 +519,10 @@ S.PopupContainer = styled.div`
     
 }
 .detailTitle{
-    margin-left: 0;
+    justify-items: left;
     h3{
         font-size: 18px;
+        text-align: left;
     }
     p{
         font-size: 16px;
