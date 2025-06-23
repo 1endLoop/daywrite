@@ -7,7 +7,7 @@ import S from './bookmark.style';
       id: 1,
       date: "2025. 05. 27",
       content:
-        "진정한 사랑이란, 반드시 두 사람의 자유가 서로 상대방을 인정하는 기초 위에 세워져야 한다. 이때 두 사람은 서로를 자기 자신처럼 또는 타자처럼 느끼면서, 어느 한편에서도 자기 초월을 포기하지 않고 또 자기를 불구로 만드는 일 없이 함께 세계 속에서 가치와 목적을 발견할 것이다. 또한 자기를 줌으로써 자기 자신을 찾고 세계를 풍요롭게 할 것이다.",
+        "진정한 사랑이란, 반드시 두 사람의 자유가 서로 상대방을 인정하는 기초 위에 세워져야 한다. 이때 두 사람은 서로를 자기 자신처럼 또는 타자처럼 느끼면서, 어느 한편에서도 자기 초월을 포기하지 않고 또 자기를 불구로 만드는 일 없이 함께 세계 속에서 가치와 목적을 발견할 것이다. 또한 자기를 줌으로써 자기 자신을 찾고 세계를 풍요롭게 할 것이다.진정한 사랑이란, 반드시 두 사람의 자유가 서로 상대방을 인정하는 기초 위에 세워져야 한다. 이때 두 사람은 서로를 자기 자신처럼 또는 타자처럼 느끼면서, 어느 한편에서도 자기 초월을 포기하지 않고 또 자기를 불구로 만드는 일 없이 함께 세계 속에서 가치와 목적을 발견할 것이다. 또한 자기를 줌으로써 자기 자신을 찾고 세계를 풍요롭게 할 것이다.진정한 사랑이란, 반드시 두 사람의 자유가 서로 상대방을 인정하는 기초 위에 세워져야 한다. 이때 두 사람은 서로를 자기 자신처럼 또는 타자처럼 느끼면서, 어느 한편에서도 자기 초월을 포기하지 않고 또 자기를 불구로 만드는 일 없이 함께 세계 속에서 가치와 목적을 발견할 것이다. 또한 자기를 줌으로써 자기 자신을 찾고 세계를 풍요롭게 할 것이다.진정한 사랑이란, 반드시 두 사람의 자유가 서로 상대방을 인정하는 기초 위에 세워져야 한다. 이때 두 사람은 서로를 자기 자신처럼 또는 타자처럼 느끼면서, 어느 한편에서도 자기 초월을 포기하지 않고 또 자기를 불구로 만드는 일 없이 함께 세계 속에서 가치와 목적을 발견할 것이다. 또한 자기를 줌으로써 자기 자신을 찾고 세계를 풍요롭게 할 것이다.진정한 사랑이란, 반드시 두 사람의 자유가 서로 상대방을 인정하는 기초 위에 세워져야 한다. 이때 두 사람은 서로를 자기 자신처럼 또는 타자처럼 느끼면서, 어느 한편에서도 자기 초월을 포기하지 않고 또 자기를 불구로 만드는 일 없이 함께 세계 속에서 가치와 목적을 발견할 것이다. 또한 자기를 줌으로써 자기 자신을 찾고 세계를 풍요롭게 할 것이다.진정한 사랑이란, 반드시 두 사람의 자유가 서로 상대방을 인정하는 기초 위에 세워져야 한다. 이때 두 사람은 서로를 자기 자신처럼 또는 타자처럼 느끼면서, 어느 한편에서도 자기 초월을 포기하지 않고 또 자기를 불구로 만드는 일 없이 함께 세계 속에서 가치와 목적을 발견할 것이다. 또한 자기를 줌으로써 자기 자신을 찾고 세계를 풍요롭게 할 것이다.진정한 사랑이란, 반드시 두 사람의 자유가 서로 상대방을 인정하는 기초 위에 세워져야 한다. 이때 두 사람은 서로를 자기 자신처럼 또는 타자처럼 느끼면서, 어느 한편에서도 자기 초월을 포기하지 않고 또 자기를 불구로 만드는 일 없이 함께 세계 속에서 가치와 목적을 발견할 것이다. 또한 자기를 줌으로써 자기 자신을 찾고 세계를 풍요롭게 할 것이다.진정한 사랑이란, 반드시 두 사람의 자유가 서로 상대방을 인정하는 기초 위에 세워져야 한다. 이때 두 사람은 서로를 자기 자신처럼 또는 타자처럼 느끼면서, 어느 한편에서도 자기 초월을 포기하지 않고 또 자기를 불구로 만드는 일 없이 함께 세계 속에서 가치와 목적을 발견할 것이다. 또한 자기를 줌으로써 자기 자신을 찾고 세계를 풍요롭게 할 것이다.",
       title: "제2의 성",
       author: "시몬느 드 보부아르",
       music: "Love on Top",
@@ -62,10 +62,10 @@ const BookmarkTypedList = () => {
       </S.HeaderWrap>
       <S.BodyWrap>
         <S.BookBox>
-          <img src="" alt="" />
+          <img src="/assets/images/profiles/cat.JPG" alt="" />
           <S.BookInfo>
             <div id='title'>
-              <h4>제목</h4>
+              <h4>북마크한 모든 글</h4>
               <p
                 onClick={() => {
                   if (editMode) {
@@ -80,10 +80,11 @@ const BookmarkTypedList = () => {
               >
                 {editMode ? "삭제" : "편집"}
               </p>
-
             </div>
             <div id='imgEditBox'>
-              <div id='imgEdit' onClick={() => setOpenDropdown((prev) => !prev)}></div>
+              <div id='imgEdit' onClick={() => setOpenDropdown((prev) => !prev)}>
+                <img src="" alt="" />
+              </div>
               <p
                 onClick={() => {
                   setEditMode((prev) => !prev);
@@ -170,14 +171,35 @@ const BookmarkTypedList = () => {
             </div>
             <div className='popBody'>
               <div className='bookImg'>
-                <img src="" alt="" />
+                <img src="/assets/images/profiles/cat.JPG" alt="" />
               </div>
               {/* 팝업 내용 */}
               <div className='bookDetail'>
-                <h3 className='detailTitle'>{selectedItem.title}</h3>
+                <div className='detailTitle'>
+                  <h3 className=''>{selectedItem.title}</h3>
+                  <p className='subTitle'>부제목</p>
+                </div>
+                <div className='author'>
+                  <div className='popupTitleBox'>
+                  <strong>저자</strong>
+                  <p>{selectedItem.author}</p>
+                  </div>
+                  <div className='popupTitleBox'>
+                  <strong>출판사</strong>
+                  <p>{selectedItem.author}</p>
+                  </div>
+                </div>
+                <div className='bookDate'>
+                  <div className='popupTitleBox'>
+                  <strong>발행</strong>
+                  <p>{selectedItem.date}</p>
+                  </div>
+                  <div className='popupTitleBox'>
+                  <strong>편곡</strong>
+                  <p>{selectedItem.author}</p>
+                  </div>
+                </div>
                 <p className='con'>{selectedItem.content}</p>
-                <p><strong>Author:</strong> {selectedItem.author}</p>
-                <p><strong>Music:</strong> {selectedItem.music} - {selectedItem.artist}</p>
               </div>
             </div>
           </div>
