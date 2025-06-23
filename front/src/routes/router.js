@@ -31,7 +31,8 @@ import CommunityCollection from "../pages/community/CommunityCollection";
 import PostDetail from "../pages/community/PostDetail";
 import PostWrite from "../pages/community/PostWrite";
 import CollectionDetail from "../pages/community/CollectionDetail";
-
+import CollectionAllview from "../pages/community/CollectionAllview";
+import CommunitySongList from "../pages/community/CommunitySongList";
 // My Page
 import MyPageContainer from "../pages/my_page/MyPageContainer";
 import ProfileHome from "../pages/my_page/ProfileHome";
@@ -129,16 +130,28 @@ const router = createBrowserRouter([
             path: ":id",
             element: <PostDetail />,
           },
+          {
+            path: "communitysonglist",
+            element: <CommunitySongList />,
+          },
+          {
+            path: "collection/collectionAllview", // 추가
+            element: <CollectionAllview />
+          },
+          {
+            path: "collection/detail", // detail 수정(/:id)
+            element: <CollectionDetail />,
+          },
         ],
       },
       {
         path: "community/write",
         element: <PostWrite />,
       },
-      {
-        path: "collection/:id",
-        element: <CollectionDetail />,
-      },
+      // {
+      //   path: "collection/:id",
+      //   element: <CollectionDetail />,
+      // },
 
       // 마이페이지
       {

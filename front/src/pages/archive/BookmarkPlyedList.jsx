@@ -51,11 +51,11 @@ const BookmarkPlyedList = () => {
           <h2>음악</h2>
           <p>{bookmarkData.length}개의 글</p>
         </S.HeaderBox>
-        <S.Seaech>
+        <S.Search>
           <input type="text" />
-          <img src="" alt="" />
+          <img src="/assets/images/icons/search.png" alt="" />
           <p></p>
-        </S.Seaech>
+        </S.Search>
       </S.HeaderWrap>
       <S.BodyWrap>
         <S.BookBox>
