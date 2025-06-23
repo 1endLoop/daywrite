@@ -30,7 +30,9 @@ const ArchiveContainer = () => {
           </S.TabItem>
         </Link>
       </S.TabMenu>
-      <Outlet />
+      <S.OutletWrapper>
+        <Outlet />
+      </S.OutletWrapper>
     </div>
   );
 };
