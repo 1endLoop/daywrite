@@ -26,56 +26,71 @@ S.Modal = styled.div`
 `;
 
 S.Header = styled.div`
+  width: 100%;
+  margin-bottom: 18px;
+`;
+
+S.DateRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 18px;
+  width: 100%;
+`;
+
+S.IconGroup = styled.div`
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+  }
+`;
+
+S.Divider = styled.hr`
+  height: 1px;
+  background-color: #ddd;
+  border: none;
+  margin: 16px 0 24px;
+`;
+
+S.SourceBox = styled.div`
+  font-size: 14px;
+  margin-bottom: 20px;
+
+  .label {
+    margin-right: 7px;
+    color: #666;
+  }
+
+  .title {
+    color: #282828;
+    font-weight: 600;
+  }
+
+  .author {
+    margin-left: 7px;
+    color: #666;
+  }
 `;
 
 S.Date = styled.div`
   font-size: 14px;
   font-weight: 600;
-  color: #555;
+  color: #282828;
 `;
 
 S.CloseBtn = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+  margin-right: -8px;
+  margin-top: 2px;
 
   img {
-    width: 24px;
-    height: 24px;
-  }
-`;
-
-S.Title = styled.div`
-  display: flex;
-  align-items: center; // 수직 정렬
-  gap: 6px;
-  margin-bottom: 7px;
-  .title {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1; // 폰트 크기에 딱 맞게 줄 높이 설정
-  }
-
-  .author {
-    font-size: 16px;
-    font-weight: 500;
-    color: #444;
-    line-height: 1; // 동일하게 맞춰줌
-  }
-`;
-
-S.SubInfo = styled.div`
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 18px;
-
-  strong {
-    font-weight: 600;
-    margin-left: 4px;
+    width: 28px;
+    height: 28px;
   }
 `;
 
@@ -85,15 +100,15 @@ S.Content = styled.p`
   color: #222;
   margin-bottom: 24px;
   white-space: pre-wrap;
+  text-align: justify;
 `;
 
 S.MusicSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fafafa;
-  padding: 12px 16px;
-  border-radius: 8px;
+  background: none; // ✅ 회색 배경 제거
+  border-radius: 0;
   margin-bottom: 24px;
 `;
 
@@ -104,15 +119,14 @@ S.MusicInfo = styled.div`
 `;
 
 S.LikeIcon = styled.img`
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   margin-right: 4px;
 `;
 
 S.AlbumImg = styled.img`
   width: 40px;
   height: 40px;
-  border-radius: 4px;
   object-fit: cover;
 `;
 
@@ -123,6 +137,7 @@ S.MusicTitle = styled.div`
 
 S.MusicArtist = styled.div`
   font-size: 12px;
+  margin-top: 4px;
   color: #666;
 `;
 
@@ -132,55 +147,56 @@ S.MusicControls = styled.div`
   gap: 16px;
 
   img {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
   }
 `;
 
 S.MetaSection = styled.div`
   display: flex;
-  justify-content: space-between; // ⭐ 핵심!
+  justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  font-size: 14px;
-  color: #444;
+  margin-top: 26px;
+  font-size: 13px;
+  color: #282828;
   gap: 12px;
-`;
-
-S.BookmarkIcon = styled.img`
-  width: 18px;
-  height: 18px;
 `;
 
 S.MetaText = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 4px;
 
   ${S.Tags} {
     margin-left: 6px;
     color: #888;
-    font-size: 13px;
+    font-size: 12px;
   }
 `;
 
 S.Tags = styled.span`
   margin-left: 6px;
   color: #888;
-  font-size: 13px;
+  font-size: 12px;
 `;
 
-S.RefillWrapper = styled.div`
-  text-align: right;
-  margin-top: 20px;
-`;
-
-S.RefillBtn = styled.button`
+S.ReWrite = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 5px;
   border: none;
   background: none;
-  color: #131313;
+  color: #282828;
   font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
+  margin-right: -6px;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export default S;

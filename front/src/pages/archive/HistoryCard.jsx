@@ -20,7 +20,7 @@ const HistoryCard = ({ data, onClick }) => {
   }, []);
 
   return (
-    <Card.Card onClick={onClick}>
+    <Card.Card>
       <Card.Header>
         <Card.Date>{date}</Card.Date>
         <Dropdown.Wrapper ref={dropdownRef} onClick={(e) => e.stopPropagation()}>
@@ -33,19 +33,23 @@ const HistoryCard = ({ data, onClick }) => {
           )}
         </Dropdown.Wrapper>
       </Card.Header>
-      <Card.Content>{content}</Card.Content>
+      <Card.Content onClick={onClick}>{content}</Card.Content>
 
       <Card.Divider />
 
       <Card.MetaWrapper>
         <Card.MetaLeft>
-          <Card.Icon>🔖</Card.Icon>
+          <Card.Icon>
+            <img src="../assets/images/icons/svg/bookmark=on.svg" alt="bookmark" />
+          </Card.Icon>
           <span className="title">{title}</span>
           <span className="author">{author}</span>
         </Card.MetaLeft>
 
         <Card.MetaRight>
-          <Card.Action>❤️</Card.Action>
+          <Card.Action>
+            <img src="../assets/images/icons/svg/like=on.svg" alt="like" />
+          </Card.Action>
           <Card.Music>
             <span role="img" aria-label="music">
               🎵

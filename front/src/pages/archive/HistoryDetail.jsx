@@ -8,26 +8,32 @@ const HistoryDetail = ({ data, onClose }) => {
     <S.Overlay>
       <S.Modal>
         <S.Header>
-          <S.Date>{date}</S.Date>
-          <S.CloseBtn onClick={onClose}>
-            <img src="/assets/icons/close.svg" alt="close" />
-          </S.CloseBtn>
+          <S.DateRow>
+            <S.Date>{date}</S.Date>
+            <S.IconGroup>
+              <img src="../assets/images/icons/svg/bookmark=on.svg" alt="bookmark" />
+              <S.CloseBtn onClick={onClose}>
+                <img src="../assets/images/icons/svg/close.svg" alt="close" />
+              </S.CloseBtn>
+            </S.IconGroup>
+          </S.DateRow>
         </S.Header>
 
-        <S.Title>
-          <div className="title">{title}</div>
-          <span className="author">{author}</span>
-        </S.Title>
-        <S.SubInfo>
-          그때의 기분 <strong>평온함</strong>
-        </S.SubInfo>
+        <S.Divider />
 
         <S.Content>{content}</S.Content>
 
+        <S.SourceBox>
+          <span className="label">출처</span>
+          <span className="title">{title}</span>
+          <span className="author">{author}</span>
+        </S.SourceBox>
+        <S.Divider />
+
         <S.MusicSection>
           <S.MusicInfo>
-            <S.LikeIcon src="/assets/icons/like.svg" alt="like" />
-            <S.AlbumImg src="/assets/images/sample_album.jpg" alt="album" />
+            <S.LikeIcon src="../assets/images/icons/svg/like=on.svg" alt="like" />
+            <S.AlbumImg src="../assets/images/album-image.png" alt="album" />
             <div>
               <S.MusicTitle>{music}</S.MusicTitle>
               <S.MusicArtist>{artist}</S.MusicArtist>
@@ -35,21 +41,24 @@ const HistoryDetail = ({ data, onClose }) => {
           </S.MusicInfo>
 
           <S.MusicControls>
-            <img src="/assets/icons/prev.svg" alt="prev" />
-            <img src="/assets/icons/play.svg" alt="play" />
-            <img src="/assets/icons/next.svg" alt="next" />
+            <img src="../assets/images/icons/svg/music_prev.svg" alt="prev" />
+            <img src="../assets/images/icons/svg/music_play.svg" alt="play" />
+            <img src="../assets/images/icons/svg/music_next.svg" alt="next" />
           </S.MusicControls>
         </S.MusicSection>
 
         <S.MetaSection>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <S.BookmarkIcon src="/assets/icons/bookmark.svg" alt="bookmark" />
             <S.MetaText>
               내가 선택한 카테고리 <S.Tags>위로 | 평온한 | 활력 | 짜증나는</S.Tags>
             </S.MetaText>
           </div>
 
-          <S.RefillBtn>다시 필사하기 →</S.RefillBtn>
+          <S.ReWrite>
+            {" "}
+            다시 필사하기
+            <img src="../assets/images/icons/svg/arrow_forward.svg" alt="arrow" />
+          </S.ReWrite>
         </S.MetaSection>
       </S.Modal>
     </S.Overlay>

@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import GlobalStyle from "../../global/global";
 
-const Card = {}
+const Card = {};
 
 Card.Card = styled.div`
   background-color: #fff;
   padding: 24px 22px 24px 22px;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
-  cursor: pointer;
   /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.08); */
   font-family: pretendard;
 `;
@@ -18,7 +17,7 @@ Card.Header = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 5px;
-`
+`;
 
 Card.Date = styled.div`
   font-size: 14px;
@@ -40,18 +39,19 @@ Card.Content = styled.p`
   margin-bottom: 20px;
 
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  word-break: brea-word;
+  text-align: justify;
+  cursor: pointer;
 `;
 
 Card.Divider = styled.div`
   border: none;
   border-top: 1px solid #e0e0e0;
   margin: 0 0 20px 0;
-`
+`;
 
 Card.MetaWrapper = styled.div`
   display: flex;
@@ -79,7 +79,7 @@ Card.MetaLeft = styled.div`
 Card.MetaRight = styled.div`
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 7px;
 `;
 
 Card.Icon = styled.span`
@@ -87,7 +87,6 @@ Card.Icon = styled.span`
 `;
 
 Card.Action = styled.div`
-  font-size: 14px;
   cursor: pointer;
 `;
 
@@ -106,6 +105,5 @@ Card.Music = styled.div`
     color: #999;
   }
 `;
-
 
 export default Card;
