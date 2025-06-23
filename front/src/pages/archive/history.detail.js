@@ -42,41 +42,42 @@ S.CloseBtn = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+  margin-right: -10px;
 
   img {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
   }
 `;
 
 S.Title = styled.div`
   display: flex;
-  align-items: center; // 수직 정렬
+  align-items: center;
   gap: 6px;
   margin-bottom: 7px;
   .title {
     font-size: 20px;
     font-weight: 700;
-    line-height: 1; // 폰트 크기에 딱 맞게 줄 높이 설정
+    line-height: 1;
   }
 
   .author {
     font-size: 16px;
     font-weight: 500;
     color: #444;
-    line-height: 1; // 동일하게 맞춰줌
+    line-height: 1;
   }
 `;
 
 S.SubInfo = styled.div`
   font-size: 14px;
-  color: #666;
+  color: #282828;
   margin-bottom: 18px;
 
   strong {
     font-weight: 600;
     margin-left: 4px;
-  }
+  } 
 `;
 
 S.Content = styled.p`
@@ -85,6 +86,7 @@ S.Content = styled.p`
   color: #222;
   margin-bottom: 24px;
   white-space: pre-wrap;
+  text-align: justify;
 `;
 
 S.MusicSection = styled.div`
@@ -104,15 +106,14 @@ S.MusicInfo = styled.div`
 `;
 
 S.LikeIcon = styled.img`
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   margin-right: 4px;
 `;
 
 S.AlbumImg = styled.img`
   width: 40px;
   height: 40px;
-  border-radius: 4px;
   object-fit: cover;
 `;
 
@@ -123,6 +124,7 @@ S.MusicTitle = styled.div`
 
 S.MusicArtist = styled.div`
   font-size: 12px;
+  margin-top: 4px;
   color: #666;
 `;
 
@@ -132,42 +134,38 @@ S.MusicControls = styled.div`
   gap: 16px;
 
   img {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
   }
 `;
 
 S.MetaSection = styled.div`
   display: flex;
-  justify-content: space-between; // ⭐ 핵심!
+  justify-content: space-between;
   align-items: center;
   margin-top: 20px;
-  font-size: 14px;
-  color: #444;
+  font-size: 13px;
+  color: #282828;
   gap: 12px;
-`;
-
-S.BookmarkIcon = styled.img`
-  width: 18px;
-  height: 18px;
 `;
 
 S.MetaText = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 4px;
 
   ${S.Tags} {
     margin-left: 6px;
     color: #888;
-    font-size: 13px;
+    font-size: 12px;
   }
 `;
 
 S.Tags = styled.span`
   margin-left: 6px;
   color: #888;
-  font-size: 13px;
+  font-size: 12px;
 `;
 
 S.RefillWrapper = styled.div`

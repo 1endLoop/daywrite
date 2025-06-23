@@ -10,7 +10,7 @@ const HistoryDetail = ({ data, onClose }) => {
         <S.Header>
           <S.Date>{date}</S.Date>
           <S.CloseBtn onClick={onClose}>
-            <img src="/assets/icons/close.svg" alt="close" />
+            <img src="../assets/images/icons/svg/close.svg" alt="close" />
           </S.CloseBtn>
         </S.Header>
 
@@ -26,8 +26,8 @@ const HistoryDetail = ({ data, onClose }) => {
 
         <S.MusicSection>
           <S.MusicInfo>
-            <S.LikeIcon src="/assets/icons/like.svg" alt="like" />
-            <S.AlbumImg src="/assets/images/sample_album.jpg" alt="album" />
+            <S.LikeIcon src="../assets/images/icons/svg/like=on.svg" alt="like" />
+            <S.AlbumImg src="../assets/images/album-image.png" alt="album" />
             <div>
               <S.MusicTitle>{music}</S.MusicTitle>
               <S.MusicArtist>{artist}</S.MusicArtist>
@@ -35,15 +35,14 @@ const HistoryDetail = ({ data, onClose }) => {
           </S.MusicInfo>
 
           <S.MusicControls>
-            <img src="/assets/icons/prev.svg" alt="prev" />
-            <img src="/assets/icons/play.svg" alt="play" />
-            <img src="/assets/icons/next.svg" alt="next" />
+            <img src="../assets/images/icons/svg/music_prev.svg" alt="prev" />
+            <img src="../assets/images/icons/svg/music_play.svg" alt="play" />
+            <img src="../assets/images/icons/svg/music_next.svg" alt="next" />
           </S.MusicControls>
         </S.MusicSection>
 
         <S.MetaSection>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <S.BookmarkIcon src="/assets/icons/bookmark.svg" alt="bookmark" />
             <S.MetaText>
               내가 선택한 카테고리 <S.Tags>위로 | 평온한 | 활력 | 짜증나는</S.Tags>
             </S.MetaText>
