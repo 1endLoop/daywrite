@@ -8,21 +8,27 @@ const HistoryDetail = ({ data, onClose }) => {
     <S.Overlay>
       <S.Modal>
         <S.Header>
-          <S.Date>{date}</S.Date>
-          <S.CloseBtn onClick={onClose}>
-            <img src="../assets/images/icons/svg/close.svg" alt="close" />
-          </S.CloseBtn>
+          <S.DateRow>
+            <S.Date>{date}</S.Date>
+            <S.IconGroup>
+              <img src="../assets/images/icons/svg/bookmark=on.svg" alt="bookmark" />
+              <S.CloseBtn onClick={onClose}>
+                <img src="../assets/images/icons/svg/close.svg" alt="close" />
+              </S.CloseBtn>
+            </S.IconGroup>
+          </S.DateRow>
         </S.Header>
 
-        <S.Title>
-          <div className="title">{title}</div>
-          <span className="author">{author}</span>
-        </S.Title>
-        <S.SubInfo>
-          그때의 기분 <strong>평온함</strong>
-        </S.SubInfo>
+        <S.Divider />
 
         <S.Content>{content}</S.Content>
+
+        <S.SourceBox>
+          <span className="label">출처</span>
+          <span className="title">{title}</span>
+          <span className="author">{author}</span>
+        </S.SourceBox>
+        <S.Divider />
 
         <S.MusicSection>
           <S.MusicInfo>
@@ -48,7 +54,11 @@ const HistoryDetail = ({ data, onClose }) => {
             </S.MetaText>
           </div>
 
-          <S.RefillBtn>다시 필사하기 →</S.RefillBtn>
+          <S.ReWrite>
+            {" "}
+            다시 필사하기
+            <img src="../assets/images/icons/svg/arrow_forward.svg" alt="arrow" />
+          </S.ReWrite>
         </S.MetaSection>
       </S.Modal>
     </S.Overlay>
