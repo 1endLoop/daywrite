@@ -69,7 +69,7 @@ Card.Content = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  word-break: brea-word;
+  text-align: justify;
 `;
 
 Card.Divider = styled.div`

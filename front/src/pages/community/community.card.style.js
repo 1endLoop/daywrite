@@ -22,12 +22,12 @@ Card.Header = styled.div`
 Card.LeftInfo = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 `;
 
 Card.Profile = styled.img`
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
 `;
@@ -70,7 +70,7 @@ Card.Author = styled.div`
 Card.RightInfo = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px; /* 좋아요/댓글 묶음 사이 간격 넓힘 */
+  gap: 12px; /* 좋아요/댓글 묶음 사이 간격 넓힘 */
   font-size: 15px;
   color: #444;
 `;
@@ -78,7 +78,7 @@ Card.RightInfo = styled.div`
 Card.RightGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: 4px; /* 아이콘과 숫자 간 간격 */
+  gap: 5px; /* 아이콘과 숫자 간 간격 */
 `;
 
 
@@ -102,7 +102,7 @@ Card.Content = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  word-break: brea-word;
+  text-align: justify;
 `;
 
 Card.Divider = styled.div`

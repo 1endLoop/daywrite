@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Post = {}
+const Post = {};
 
 Post.Wrapper = styled.div`
   padding: 40px 0;
@@ -37,8 +37,8 @@ Post.Header = styled.div`
 `;
 
 Post.Profile = styled.img`
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 `;
 
@@ -55,14 +55,14 @@ Post.Info = styled.div`
 
 Post.TitleWrapper = styled.div`
   display: flex;
-  align-items: center; 
+  align-items: center;
   gap: 8px;
 
   .title {
     font-size: 18px;
     font-weight: 600;
     color: #131313;
-    line-height: 1.2; 
+    line-height: 1.2;
   }
 
   .author {
@@ -73,26 +73,34 @@ Post.TitleWrapper = styled.div`
   }
 `;
 
-Post.Title = styled.div`
-  font-size: 16px;
-  font-weight: 600;
-`;
-
-Post.Author = styled.div`
-  font-size: 13px;
-  color: #777;
-`;
-
-Post.Right = styled.div`
-  font-size: 14px;
+Post.RightInfo = styled.div`
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
+`;
+
+Post.IconGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  span {
+    font-size: 15px;
+    color: #333;
+  }
 `;
 
 Post.Content = styled.p`
   margin: 20px 0;
-  line-height: 1.6;
+  color: #282828;
+  line-height: 1.7;
   font-size: 15px;
+  text-align: justify;
 `;
 
 Post.Divider = styled.div`
@@ -191,4 +199,3 @@ Post.CommentBottom = styled.div`
 `;
 
 export default Post;
-

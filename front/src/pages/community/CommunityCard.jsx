@@ -17,7 +17,7 @@ const CommunityCard = ({ data, onClick }) => {
     <Card.Card onClick={onClick}>
       <Card.Header>
         <Card.LeftInfo>
-          <Card.Profile src={profileImg || "/assets/images/default-profile.png"} alt="profile" />
+          <Card.Profile src={profileImg || "../assets/images/profiles/profile2.jpeg"} alt="profile" />
           <Card.TitleWrapper>
             <span className="title">{title}</span>
             <span className="author">{author}</span>
@@ -27,8 +27,6 @@ const CommunityCard = ({ data, onClick }) => {
           <Card.RightGroup>
             <Card.LikeIcon src="../assets/images/icons/svg/like.svg" alt="like" />
             <span>{likes}</span>
-          </Card.RightGroup>
-          <Card.RightGroup>
             <Card.CommentIcon src="../assets/images/icons/svg/comment.svg" alt="comment" />
             <span>{comments}</span>
           </Card.RightGroup>

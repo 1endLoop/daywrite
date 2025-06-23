@@ -74,13 +74,13 @@ const TopRow = styled.div`
 const Left = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 14px;
 `;
 
 const SortMenu = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 4px;
 
   button {
     font-size: 14px;
