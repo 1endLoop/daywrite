@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import MainContainer from "../pages/main/MainContainer";
+import Main from "../pages/main/Main";
 import NotFound from "../pages/not_found/NotFound";
 import Layout from "../pages/layout/Layout";
 
@@ -49,14 +49,12 @@ import ProfileHomePopup from "../pages/my_page/ProfileHomePopup";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Main />,
+  },
+  {
+    path: "/",
+    element: <Layout/>,
     children: [
-      // 메인
-      {
-        index: true,
-        element: <MainContainer />,
-      },
-
       // 카테고리
       {
         path: "category",
