@@ -26,7 +26,7 @@ const dummyFaqs = [
 
 const Faq = () => {
   const [search, setSearch] = useState('');
-  const [expanded, setExpanded] = useState(0);
+  const [expanded, setExpanded] = useState(-1);
 
   const handleToggle = (index) => {
     setExpanded(expanded === index ? -1 : index);
