@@ -79,7 +79,6 @@ const CommunitySongList = () => {
                 </div>
                 <div className="play">
                   <img src="/assets/images/icons/prev.svg" alt="이전 곡" /> 
-                  {/* 아이콘 아직 없음 해당 경로에 */}
                   <img src="" alt="재생" />
                   <img src="" alt="다음 곡" />
                 </div>
