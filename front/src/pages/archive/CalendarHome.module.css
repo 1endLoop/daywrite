@@ -1,0 +1,25 @@
+.content{
+    display: flex;
+    width: 100%;
+}
+
+.level{
+    position: relative;
+    display: flex;
+    align-items:center;
+    flex-direction:column;
+    gap: 5px;
+    padding:5px;
+    margin-right:10px;
+    
+}
+
+.level:after{
+    content: ""; 
+    position: absolute;
+    top: 0;
+    left: 75px;
+    width: 1.5px; 
+    height: 100%; 
+    background-color: #e0e0e0;
+}
