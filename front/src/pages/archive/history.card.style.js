@@ -81,7 +81,6 @@ Card.MetaRight = styled.div`
 `;
 
 Card.Icon = styled.span`
-  font-size: 14px;
   cursor: pointer;
 `;
 
