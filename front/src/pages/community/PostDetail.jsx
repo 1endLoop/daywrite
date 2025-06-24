@@ -70,7 +70,7 @@ const PostDetail = () => {
 
           <Post.RightInfo>
             <Post.IconGroup>
-              <img src="/assets/images/icons/svg/like.svg" alt="like" />
+              <img src="/assets/images/icons/svg/thumb=on.svg" alt="like" />
               <span>{post.likes}</span>
             </Post.IconGroup>
             <Post.IconGroup>

@@ -1,9 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
-import styled from "styled-components";
 import Card from "./liked.card.style";
+import { useState } from "react";
 
 const LikedCard = ({ data }) => {
   const { date, content, title, author, music, artist } = data;
+
+  // 좋아요 토글 버튼
+  const [liked, setLiked] = useState(true);
+  const [musicLiked, setMusicLiked] = useState(true);
 
   return (
     <Card.Card>
@@ -13,9 +16,12 @@ const LikedCard = ({ data }) => {
           <span className="author">{author}</span>
         </Card.HeaderLeft>
 
-        <Card.LikeIcon>
-          <img src="../assets/images/icons/svg/like.svg" alt="like" />
-        </Card.LikeIcon>
+        <Card.Icon onClick={() => setLiked((prev) => !prev)}>
+          <img
+            src={liked ? "../assets/images/icons/svg/thumb=on.svg" : "../assets/images/icons/svg/thumb=off.svg"}
+            alt="like"
+          />
+        </Card.Icon>
       </Card.Header>
       <Card.Content>{content}</Card.Content>
 
@@ -23,9 +29,12 @@ const LikedCard = ({ data }) => {
 
       <Card.BottomWrapper>
         <Card.MusicInfo>
-          <Card.Action>
-            <img src="../assets/images/icons/svg/like=on.svg" alt="like" />
-          </Card.Action>
+          <Card.Icon onClick={() => setMusicLiked((prev) => !prev)}>
+            <img
+              src={musicLiked ? "../assets/images/icons/svg/like=on.svg" : "../assets/images/icons/svg/like=off.svg"}
+              alt="like"
+            />
+          </Card.Icon>
           <span role="img" aria-label="music">
             🎵
           </span>

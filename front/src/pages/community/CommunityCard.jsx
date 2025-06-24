@@ -25,7 +25,7 @@ const CommunityCard = ({ data, onClick }) => {
         </Card.LeftInfo>
         <Card.RightInfo>
           <Card.RightGroup>
-            <Card.LikeIcon src="../assets/images/icons/svg/like.svg" alt="like" />
+            <Card.LikeIcon src="../assets/images/icons/svg/thumb=on.svg" alt="like" />
             <span>{likes}</span>
             <Card.CommentIcon src="../assets/images/icons/svg/comment.svg" alt="comment" />
             <span>{comments}</span>
