@@ -3,8 +3,8 @@ import styled from "styled-components";
 const Card = {}
 
 Card.Card = styled.div`
-  width:215px;
-  min-width:215px;
+  width:205px;
+  min-width:205px;
   background-color: #fff;
   padding: 24px 22px 24px 22px;
   border: 1px solid #e0e0e0;
