@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import GlobalStyle from "../../global/global";
 
 const Card = {};
 
@@ -84,9 +83,6 @@ Card.MetaRight = styled.div`
 
 Card.Icon = styled.span`
   font-size: 14px;
-`;
-
-Card.Action = styled.div`
   cursor: pointer;
 `;
 
