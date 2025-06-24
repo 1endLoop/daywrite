@@ -26,7 +26,9 @@ const CommunityContainer = () => {
           <S.TabItem $isActive={location.pathname === "/community/collection"}>컬렉션</S.TabItem>
         </Link>
       </S.TabMenu>
-      <Outlet />
+      <S.OutletWrapper>
+        <Outlet />
+      </S.OutletWrapper>
     </div>
   );
 };

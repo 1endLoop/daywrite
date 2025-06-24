@@ -5,7 +5,13 @@ const S = {};
 
 S.TabMenu = styled.div`
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
   width: 100%;
+  padding-top:25px;
+
   a {
     text-decoration: none;
     width: 25%;
@@ -27,4 +33,7 @@ S.TabItem = styled.div`
   position: relative;
 `;
 
+S.OutletWrapper=styled.div`
+  padding: 0px 60px;
+`
 export default S;
