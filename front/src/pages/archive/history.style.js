@@ -33,4 +33,7 @@ S.TabItem = styled.div`
   position: relative;
 `;
 
+S.OutletWrapper=styled.div`
+  padding: 0px 60px;
+`
 export default S;
