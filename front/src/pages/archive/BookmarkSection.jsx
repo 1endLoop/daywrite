@@ -112,7 +112,7 @@ const BookmarkSection = ({ title, type }) => {
     <S.Section>
       <S.TitleRow>
         <S.Title>{title}</S.Title>
-        <S.ViewAll>전체 보기</S.ViewAll>
+        <S.ViewAll>전체보기</S.ViewAll>
       </S.TitleRow>
       <S.ScrollWrapper>
         {showLeftBtn && <S.ScrollLeftBtn onClick={() => scroll("left")}>{"<"}</S.ScrollLeftBtn>}

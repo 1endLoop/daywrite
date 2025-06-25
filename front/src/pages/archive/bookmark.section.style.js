@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 const S = {};
 
+S.Container = styled.div`
+  position: relative;
+  padding: 40px 0 0 0;
+`;
+
 S.Section = styled.div`
   margin-bottom: 50px;
 `;
@@ -55,6 +60,7 @@ S.ScrollLeftBtn = styled.button`
   background: white;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   font-size: 18px;
+  color: #f96f3d;
   cursor: pointer;
 `;
 
@@ -70,6 +76,7 @@ S.ScrollRightBtn = styled.button`
   background: white;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   font-size: 18px;
+  color: #f96f3d;
   cursor: pointer;
 `;
 
@@ -84,7 +91,6 @@ S.Image = styled.img`
   width: 100%;
   height: 160px;
   object-fit: cover;
-  border-radius: 6px;
 `;
 
 S.InfoRow = styled.div`
@@ -113,7 +119,7 @@ S.MoreBtn = styled.button`
 `;
 
 S.DropdownMenu = styled.ul`
-text-align: center;
+  text-align: center;
   width: 88px;
   background: white;
   border: 1px solid #ddd;
