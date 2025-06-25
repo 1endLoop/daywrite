@@ -46,6 +46,7 @@ import InquiryHome from "../pages/my_page/InquiryHome";
 import InquiryWrite from "../pages/my_page/InquiryWrite";
 import Terms from "../pages/my_page/Terms";
 import ProfileHomePopup from "../pages/my_page/ProfileHomePopup";
+import BookmarkMain from "../pages/archive/BookmarkMain";
 
 const router = createBrowserRouter([
   {
@@ -89,7 +90,7 @@ const router = createBrowserRouter([
           },
           {
             path: "bookmark",
-            element: <BookmarkHome />,
+            element: <BookmarkMain />,
           },
           {
             path: "bookmark/typed",
