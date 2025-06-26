@@ -142,11 +142,22 @@ S.DropdownMenu = styled.ul`
 
 // 전체보기
 
+S.AllTitle = styled.h2`
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 0 24px; // ← 카드 그리드와 같은 패딩
+  box-sizing: border-box;
+`;
+
 S.AllCardGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
   margin-top: 20px;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); // 카드 최소 140px, 최대 1fr
+  gap: 24px; // 카드 사이 간격
+  justify-content: center; // ← 핵심: 가운데 정렬
+  padding: 0 24px; // 양쪽 여백 맞춤
+  box-sizing: border-box;
 `;
 
 export default S;

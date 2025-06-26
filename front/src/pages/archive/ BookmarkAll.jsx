@@ -70,7 +70,7 @@ const BookmarkAll = () => {
 
   return (
     <S.Container>
-      <S.Title>{title}</S.Title>
+      <S.AllTitle>{title}</S.AllTitle>
       <S.AllCardGrid>
         {filteredItems.map((item, idx) => (
           <BookmarkCard key={idx} {...item} />
