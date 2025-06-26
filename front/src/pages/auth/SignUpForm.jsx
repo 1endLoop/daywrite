@@ -380,7 +380,11 @@ const SignUpForm = () => {
               </div>
 
               <div>
-                <BasicButton type="submit" customStyle={filledButtonCSS} disabled={!isFormValid} >
+                <BasicButton 
+                  type="submit" 
+                  customStyle={filledButtonCSS} 
+                  disabled={!isFormValid} 
+                  style={{ width: '100%' }}>
                   회원가입
                 </BasicButton>
               </div>
