@@ -1,10 +1,12 @@
 import { useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import BookmarkCard from "./BookmarkCard";
 import S from "./bookmark.section.style";
 import useScrollX from "../../modules/hooks/useScrollX";
 import useClickOutside from "../../modules/hooks/useClickOutside";
 
 const BookmarkSection = ({ title, type }) => {
+  const navigate = useNavigate();
   const { ref: scrollRef, scroll } = useScrollX();
   const [showLeftBtn, setShowLeftBtn] = useState(false);
   const [showRightBtn, setShowRightBtn] = useState(true);
@@ -86,7 +88,7 @@ const BookmarkSection = ({ title, type }) => {
   const closeDropdown = () => setDropdownInfo(null);
 
   // 다른 곳 클릭하면 드롭다운 닫히도록
-  const dropdownRef = useRef(null)
+  const dropdownRef = useRef(null);
   useClickOutside(dropdownRef, closeDropdown);
 
   // 스크롤 상태에 따라 버튼 보여줄지 여부 계산
@@ -112,17 +114,15 @@ const BookmarkSection = ({ title, type }) => {
     <S.Section>
       <S.TitleRow>
         <S.Title>{title}</S.Title>
-        <S.ViewAll>전체보기</S.ViewAll>
+        <S.ViewAll onClick={() => navigate(`/archive/bookmark/${type === "글" ? "typed" : "played"}`)}>
+          전체보기
+        </S.ViewAll>
       </S.TitleRow>
       <S.ScrollWrapper>
         {showLeftBtn && <S.ScrollLeftBtn onClick={() => scroll("left")}>{"<"}</S.ScrollLeftBtn>}
         <S.CardRow ref={scrollRef}>
           {filteredItems.map((item, idx) => (
-            <BookmarkCard
-              key={idx}
-              {...item}
-              onMoreClick={(e) => handleMoreClick(e, item)} // ← 이 부분 추가!
-            />
+            <BookmarkCard key={idx} {...item} onMoreClick={(e) => handleMoreClick(e, item)} />
           ))}
         </S.CardRow>
         {showRightBtn && <S.ScrollRightBtn onClick={() => scroll("right")}>{">"}</S.ScrollRightBtn>}

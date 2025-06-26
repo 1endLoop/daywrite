@@ -47,6 +47,7 @@ import InquiryWrite from "../pages/my_page/InquiryWrite";
 import Terms from "../pages/my_page/Terms";
 import ProfileHomePopup from "../pages/my_page/ProfileHomePopup";
 import BookmarkMain from "../pages/archive/BookmarkMain";
+import BookmarkAll from "../pages/archive/ BookmarkAll";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Layout/>,
+    element: <Layout />,
     children: [
       // 카테고리
       {
@@ -93,12 +94,8 @@ const router = createBrowserRouter([
             element: <BookmarkMain />,
           },
           {
-            path: "bookmark/typed",
-            element: <BookmarkTypedList />,
-          },
-          {
-            path: "bookmark/played",
-            element: <BookmarkPlyedList />,
+            path: "bookmark/:type",
+            element: <BookmarkAll />,
           },
           {
             path: "liked",
@@ -137,7 +134,7 @@ const router = createBrowserRouter([
           },
           {
             path: "collection/collectionAllview", // 추가
-            element: <CollectionAllview />
+            element: <CollectionAllview />,
           },
           {
             path: "collection/detail", // detail 수정(/:id)

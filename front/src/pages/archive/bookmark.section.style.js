@@ -140,4 +140,13 @@ S.DropdownMenu = styled.ul`
   }
 `;
 
+// 전체보기
+
+S.AllCardGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 16px;
+`;
+
 export default S;
