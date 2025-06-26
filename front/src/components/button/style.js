@@ -149,7 +149,7 @@ const Button = styled.button`
 
 // Filled Button 스타일
 export const filledButtonCSS = css`
-  width: 423px;
+  /* width: 423px; */
   padding: 17px 90px;
   background: #282828;
   justify-content: center;
