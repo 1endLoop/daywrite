@@ -162,7 +162,7 @@ M.ContentBox = styled.div`
   width: 100%;
   height: 280px;
   overflow: hidden;
-  padding-right: 4px;
+  /* padding-right: 4px; */
   position: relative;
 
   display: flex;
@@ -199,9 +199,12 @@ M.TypingTextDisplay = styled.div`
 
 M.TypingOverlay = styled.div`
   position: absolute;
+  top: 0;
+  left: 0;
   pointer-events: none;
   color: transparent;
   z-index: 1;
+  letter-spacing: 0;
 
   span {
     color: inherit;
@@ -211,8 +214,13 @@ M.TypingOverlay = styled.div`
 
 M.HiddenInput = styled.textarea`
   position: absolute;
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
+  top: 0;
+  left: 0;
+  /* width: calc(100% - 20px);
+  height: calc(100% - 20px); */
+  width: 100%;
+  height: 100%;
+  padding: 0;
   border: none;
   background: transparent;
   color: transparent;
@@ -222,6 +230,7 @@ M.HiddenInput = styled.textarea`
   line-height: 30px;
   font-family: Pretendard;
   z-index: 2;
+  letter-spacing: 0;
 
   &:focus {
     outline: none;
