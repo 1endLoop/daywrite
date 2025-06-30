@@ -2,16 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import S from '../my_page/style';
 import C from './calendar.style'
-import styles from './CalendarHome.module.css';
+
 import { Link } from 'react-router-dom';
 import CalendarList from './CalendarList';
 
 const CalendarHome = () => {
   return (
-    <Container>
-      <Title>캘린더</Title> 
-      
-      <div className={styles.content}>   
+    <Container>     
+      <Content>   
         <div style={{marginRight:'30px'}}>
           <S.ProfileHeader>
             <S.Avatar src="/assets/images/profiles/profile.JPG" />
@@ -21,10 +19,10 @@ const CalendarHome = () => {
             </div>
           </S.ProfileHeader>
           <C.InfoCard>
-               <div className={styles.level}>
+               <Level>
                 <img src="/assets/images/icons/star.png" alt="star" width="24" />
                 <span>레벨 10</span>
-              </div>
+              </Level>
               <div style={{marginLeft:'15px'}}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '15px', paddingBottom:'5px' }}>
                   <img src="/assets/images/icons/keyboard.png" alt="keyboard" width="24" />
@@ -38,7 +36,7 @@ const CalendarHome = () => {
           </C.InfoCard>
         </div>
         <CalendarList/>
-      </div>
+      </Content>
 
 
     </Container>
@@ -49,13 +47,34 @@ const CalendarHome = () => {
 const Container = styled.div`
   width: 100%;
   padding-top: 24px;
+  padding-bottom: 24px;
+  margin-bottom:100px;
+
 `;
 
-const Title = styled.h2`
-  font-size: 22px;
-  font-weight: 700;
-  color: #131313;
-  margin-bottom: 24px;
+const Content = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+const Level = styled.div`
+  position: relative;
+  display: flex;
+  align-items:center;
+  flex-direction:column;
+  gap: 5px;
+  padding:5px;
+  margin-right:10px;
+
+  :after{
+    content: ""; 
+    position: absolute;
+    top: 0;
+    left: 75px;
+    width: 1.5px; 
+    height: 100%; 
+    background-color: #e0e0e0;
+  }
 `;
 
 export default CalendarHome;
