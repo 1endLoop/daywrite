@@ -53,18 +53,18 @@ const router = createBrowserRouter([
     element: <Main />,
   },
   {
+    path: "category",
+    element: <CategoryContainer />,
+  },
+  {
+    path: "category/typing",
+    element: <TypingPage />,
+  },
+  {
     path: "/",
     element: <Layout/>,
     children: [
       // 카테고리
-      {
-        path: "category",
-        element: <CategoryContainer />,
-      },
-      {
-        path: "category/typing",
-        element: <TypingPage />,
-      },
 
       // Archive
       {
