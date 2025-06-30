@@ -76,7 +76,7 @@ const Table = styled.table`
   }
 
   tbody tr:hover {
-    background-color: #f9f9f9;
+    background-color: #fff8f4;
     
   }
 `;
