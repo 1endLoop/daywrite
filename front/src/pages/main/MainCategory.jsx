@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CategoryContainerForm from "./CategoryContainerForm";
 import S from "./style";
+import MainContainer from "./MainContainer";
+import TypingPage from "../category/TypingPage";
 
-const CategoryContainer = () => {
+const Main = () => {
   return (
     <S.Container>
       <S.Background />
@@ -27,10 +28,10 @@ const CategoryContainer = () => {
         </S.HeaderContent>
       </S.Header>
       <S.ContentWrapper>
-      <CategoryContainerForm />
+      <TypingPage />
       </S.ContentWrapper>
     </S.Container>
   );
 };
 
-export default CategoryContainer;
+export default Main;

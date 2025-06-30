@@ -3,14 +3,75 @@ import { filledButtonCSS } from '../../components/button/style';
 import C from '../auth/category.container.form.style';
 import BasicButton from '../../components/button/BasicButton'
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import CategorySelect from './CategorySelect';
+import { Navigate, useNavigate } from 'react-router-dom';
+
+
+
+const keywordOptions = [
+  ['사랑', '기분좋은', '위로', '평온', '짜증나는'],
+  ['센치한', '이별', '걱정되는', '설렘', '우울한']
+];
+
+const genreOptions = [
+  ['소설', '시', '에세이', '철학', '과학'],
+  ['사회', '문화', '역사', '종교']
+];
 
 
 const CategoryContainerForm = () => {
+  const [selectedKeywords, setSelectedKeywords] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
+
   const {
     register, handleSubmit, getValues, formState: {isSubmitting, isSubmitted, errors }
   } = useForm({ mode: "onSubmit" })
 
-  const onSubmit = async (data) => { console.log(data); };
+  // 버튼 누르면 필사 화면으로 이동
+  const navigate =useNavigate();
+  
+  const onSubmit = async (data) => {
+    navigate("/category/typing", {
+      state: {
+        keywords: selectedKeywords,
+        genres: selectedGenres,
+      }
+    });
+  };
+
+
+  // 최대 3개까지 선택 허용하는
+  const toggleKeyword = (item) => {
+    setSelectedKeywords((prev) => {
+      if (prev.includes(item)) {
+        return prev.filter((i) => i !== item); 
+      } else {
+        if (prev.length >= 3) {
+          alert('키워드는 최대 3개까지만 선택할 수 있어요!');
+          return prev; 
+        }
+        return [...prev, item]; 
+      } 
+    });
+  };
+  const toggleGenre = (item) => {
+    setSelectedGenres((prev) => {
+      if(prev.includes(item)) {
+        return prev.filter((i) => i !== item);
+      }
+      else {
+        if(prev.length >= 2){
+          alert('장르는 최대 2개까지만 선택할 수 있어요!');
+          return prev;
+        }
+        return [...prev, item];
+      }
+    });
+  }
+
+
+
 
   return (
     <C.CategoryContainer>
@@ -26,17 +87,19 @@ const CategoryContainerForm = () => {
         <C.CategoryWrapper>
           <C.CategoryWrap>
             <C.CategoryTitle>마음에 드는 키워드를 골라보세요</C.CategoryTitle>
-            <C.OnOffBtnWrap>
-              <div>키워드 on/off-1번째줄</div>
-              <div>키워드 on/off-2번째줄</div>
-            </C.OnOffBtnWrap>
+            <CategorySelect
+              options={keywordOptions}
+              selectedOptions={selectedKeywords}
+              onToggle={toggleKeyword}
+            />
           </C.CategoryWrap>
           <C.CategoryWrap>
             <C.CategoryTitle>글의 장르를 골라보세요.</C.CategoryTitle>
-            <C.OnOffBtnWrap>
-              <div>장르 on/off-1번째줄</div>
-              <div>장르 on/off-2번째줄</div>
-            </C.OnOffBtnWrap>
+            <CategorySelect
+              options={genreOptions}
+              selectedOptions={selectedGenres}
+              onToggle={toggleGenre}
+            />
           </C.CategoryWrap>
         </C.CategoryWrapper>
 

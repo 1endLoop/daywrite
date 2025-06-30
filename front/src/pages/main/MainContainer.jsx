@@ -206,7 +206,7 @@ const [currentSong, setCurrentSong] = useState(dummyPlaylist[0]);
                 }
 
                 return (
-                  <span key={index} style={{ color }}>{typedChar ?? char}</span>
+                  <span key={index} style={{ whiteSpace: 'pre-wrap', color }}>{typedChar ?? char}</span>
                 );
               })}
             </M.TypingOverlay>
