@@ -1,11 +1,14 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import S from "./style";
+import { useBackground } from "../../contexts/BackgroundContext";
 
 const Layout = () => {
+  const { backgroundImage } = useBackground();
+
   return (
     <S.Container>
-      <S.Background />
+      <S.Background style={{ backgroundImage: `url(${backgroundImage})` }} />
 
       <S.Header>
         <S.HeaderContent>
@@ -22,7 +25,6 @@ const Layout = () => {
           <S.Login>
             <Link to="/login">login</Link>
           </S.Login>
-          
         </S.HeaderContent>
       </S.Header>
 
@@ -34,3 +36,4 @@ const Layout = () => {
 };
 
 export default Layout;
+

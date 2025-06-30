@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import S from './style';
+import { useBackground } from '../../contexts/BackgroundContext'; // ✅ Context import
 
 const TypingSetting = () => {
   const [fontSize, setFontSize] = useState(24);
@@ -11,7 +12,9 @@ const TypingSetting = () => {
   ]);
 
   const [selectedImage, setSelectedImage] = useState(0);
-  const [confirmedImage, setConfirmedImage] = useState(null); // ✅ 최종 선택된 이미지
+  const [confirmedImage, setConfirmedImage] = useState(null);
+
+  const { setBackgroundImage } = useBackground(); // ✅ Context 함수 사용
 
   // 이미지 삭제
   const handleDeleteImage = () => {
@@ -20,17 +23,17 @@ const TypingSetting = () => {
     const newImages = images.filter((_, idx) => idx !== selectedImage);
     setImages(newImages);
 
-    // 선택/확정 모두 초기화 또는 재설정
     if (newImages.length === 0) {
       setSelectedImage(null);
       setConfirmedImage(null);
+      setBackgroundImage(null); // ✅ 배경 초기화
     } else {
       const newSelected = Math.max(0, selectedImage - 1);
       setSelectedImage(newSelected);
 
-      // 삭제된 이미지가 확정된 이미지였을 경우 초기화
       if (confirmedImage === selectedImage) {
         setConfirmedImage(null);
+        setBackgroundImage(null); // ✅ 배경 초기화
       } else if (confirmedImage > selectedImage) {
         setConfirmedImage((prev) => prev - 1);
       }
@@ -116,9 +119,10 @@ const TypingSetting = () => {
               confirmed={i === confirmedImage}
               onClick={() => {
                 if (i === selectedImage) {
-                  setConfirmedImage(i); // ✅ 두 번 클릭 → 최종 확정
+                  setConfirmedImage(i);
+                  setBackgroundImage(src); // ✅ 전역 상태로 반영
                 } else {
-                  setSelectedImage(i); // ✅ 1회 클릭 → 선택
+                  setSelectedImage(i);
                 }
               }}
             />
@@ -130,6 +134,7 @@ const TypingSetting = () => {
 };
 
 export default TypingSetting;
+
 
 
 
