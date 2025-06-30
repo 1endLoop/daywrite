@@ -138,4 +138,42 @@ S.AllCardGrid = styled.div`
   box-sizing: border-box;
 `;
 
+// 폴더 상세
+// 폴더 상세: 썸네일 + 제목 + 편집
+S.FolderDetailWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 20px 0 30px;
+  padding: 0 24px;
+`;
+
+S.Thumbnail = styled.img`
+  width: 160px;
+  height: 120px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 4px;
+`;
+
+S.FolderName = styled.h3`
+  font-size: 18px;
+  margin-bottom: 8px;
+`;
+
+S.FolderEdit = styled.button`
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 14px;
+`;
+
+S.FolderCardList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 24px 40px;
+  box-sizing: border-box;
+`;
+
 export default S;

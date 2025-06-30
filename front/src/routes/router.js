@@ -48,6 +48,7 @@ import Terms from "../pages/my_page/Terms";
 import ProfileHomePopup from "../pages/my_page/ProfileHomePopup";
 import BookmarkMain from "../pages/archive/BookmarkMain";
 import BookmarkAll from "../pages/archive/ BookmarkAll";
+import BookmarkTyped from "../pages/archive/BookmarkTyped";
 
 const router = createBrowserRouter([
   {
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
           {
             path: "bookmark/:type",
             element: <BookmarkAll />,
+          },
+          {
+            path: "bookmark/:type/:id",
+            element: <BookmarkTyped />,
           },
           {
             path: "liked",
