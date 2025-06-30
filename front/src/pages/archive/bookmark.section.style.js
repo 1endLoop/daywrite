@@ -118,28 +118,6 @@ S.MoreBtn = styled.button`
   cursor: pointer;
 `;
 
-S.DropdownMenu = styled.ul`
-  text-align: center;
-  width: 88px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 15px;
-  list-style: none;
-  padding: 8px 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  position: fixed;
-
-  li {
-    padding: 7px 16px;
-    cursor: pointer;
-    &:hover {
-      background: #f1f1f1;
-    }
-  }
-`;
-
 // 전체보기
 
 S.AllTitle = styled.h2`

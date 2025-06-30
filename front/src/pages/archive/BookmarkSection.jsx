@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BookmarkCard from "./BookmarkCard";
+import Dropdown from "../../components/dropdown/Dropdown";
 import S from "./bookmark.section.style";
 import useScrollX from "../../modules/hooks/useScrollX";
 import useClickOutside from "../../modules/hooks/useClickOutside";
@@ -10,7 +11,11 @@ const BookmarkSection = ({ title, type }) => {
   const { ref: scrollRef, scroll } = useScrollX();
   const [showLeftBtn, setShowLeftBtn] = useState(false);
   const [showRightBtn, setShowRightBtn] = useState(true);
-  const [openIndex, setOpenIndex] = useState(null);
+
+  // 드롭다운
+  const [dropdownInfo, setDropdownInfo] = useState(null);
+  const dropdownRef = useRef(null);
+  useClickOutside(dropdownRef, () => setDropdownInfo(null));
 
   // 임시 북마크 목록 데이터
   const allItems = [
@@ -73,9 +78,6 @@ const BookmarkSection = ({ title, type }) => {
   // 글, 음악 구분 필터
   const filteredItems = allItems.filter((item) => item.type === type);
 
-  // 드롭다운 상태 관리 (아래 안 짤리도록)
-  const [dropdownInfo, setDropdownInfo] = useState(null);
-
   const handleMoreClick = (e, item) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setDropdownInfo({
@@ -84,12 +86,6 @@ const BookmarkSection = ({ title, type }) => {
       item,
     });
   };
-
-  const closeDropdown = () => setDropdownInfo(null);
-
-  // 다른 곳 클릭하면 드롭다운 닫히도록
-  const dropdownRef = useRef(null);
-  useClickOutside(dropdownRef, closeDropdown);
 
   // 스크롤 상태에 따라 버튼 보여줄지 여부 계산
   const handleScrollVisibility = () => {
@@ -128,19 +124,11 @@ const BookmarkSection = ({ title, type }) => {
         {showRightBtn && <S.ScrollRightBtn onClick={() => scroll("right")}>{">"}</S.ScrollRightBtn>}
       </S.ScrollWrapper>
       {dropdownInfo && (
-        <S.DropdownMenu
-          ref={dropdownRef}
-          style={{
-            position: "fixed",
-            top: `${dropdownInfo.y}px`,
-            left: `${dropdownInfo.x}px`,
-          }}
-          onClick={closeDropdown}
-        >
+        <Dropdown refProp={dropdownRef} x={dropdownInfo.x} y={dropdownInfo.y} onClose={() => setDropdownInfo(null)}>
           <li>이름변경</li>
           <li>폴더삭제</li>
           <li>공유하기</li>
-        </S.DropdownMenu>
+        </Dropdown>
       )}
     </S.Section>
   );
