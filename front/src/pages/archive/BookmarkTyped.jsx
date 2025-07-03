@@ -4,6 +4,7 @@ import S from "./bookmark.typed.style";
 import useClickOutside from "../../modules/hooks/useClickOutside";
 import Dropdown from "../../components/dropdown/Dropdown";
 import HistoryCard from "./HistoryCard";
+import BookmarkDetail from "./BookmarkDetail";
 
 const BookmarkTyped = () => {
   const { id } = useParams();
@@ -25,14 +26,28 @@ const BookmarkTyped = () => {
     });
   };
 
+  // 디테일 팝업
+  const [selectedCard, setSelectedCard] = useState(null);
+  const handleCardClick = (item) => {
+    setSelectedCard(item); // 클릭한 카드 데이터 저장
+  };
+
+  const handleClose = () => {
+    setSelectedCard(null); // 닫기
+  };
+
   const items = [
     {
       date: "2025.06.28",
-      title: "무기여 잘 있거라",
-      content: "언젠가 내가 없었겠지, 몇 년 전일 수도...",
-      author: "아니스톤 해밍웨이",
+      title: "끝내주는 인생",
+      content:
+        "영원히 멋진 타인 같은 건 없을 테지만 어느 시절 우리가 좋은 이야기 속에 있었다는 사실만은 잘 변하지 않는다. 최고의 순간을 같이 겪어준 누군가에게 권위를 부여하는 것이 나는 좋다. 그와 주고받은 시선과 언어가 자의식 천국의 건축 자재다. 천국은 지옥보다 터가 넓다. 거기선 평소처럼 굴어도 좋고 평소와 다르게 굴어도 좋고 끼 부려도 좋고 실수해도 좋고 세상에 없는 노래를 즉석에서 지어 불러도 좋다. ",
+      author: "이슬아",
+      publisher: "디플롯",
+      publishedDate: "2023.07.03",
       music: "Love on Top",
       artist: "John Canada",
+      coverUrl: "/assets/images/book-img.jpeg",
     },
   ];
 
@@ -75,9 +90,11 @@ const BookmarkTyped = () => {
         {/* 북마크 카드 리스트 */}
         <S.CardColumn>
           {items.map((item, idx) => (
-            <HistoryCard key={idx} data={item} />
+            <HistoryCard key={idx} data={item} onClick={() => handleCardClick(item)} />
           ))}
         </S.CardColumn>
+        {/* 팝업 */}
+        {selectedCard && <BookmarkDetail data={selectedCard} onClose={handleClose} />}
       </S.ContentWrapper>
     </>
   );
