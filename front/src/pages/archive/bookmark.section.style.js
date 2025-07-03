@@ -91,12 +91,14 @@ S.Image = styled.img`
   width: 100%;
   height: 160px;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 S.InfoRow = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 8px;
+  cursor: pointer;
 `;
 
 S.CardTitle = styled.div`

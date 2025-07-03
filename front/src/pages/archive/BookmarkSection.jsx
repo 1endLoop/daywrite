@@ -20,54 +20,63 @@ const BookmarkSection = ({ title, type }) => {
   // 임시 북마크 목록 데이터
   const allItems = [
     {
+      id: 1,
       title: "니체 명언집",
       count: 10,
       type: "글",
       imageUrl: "/assets/images/book-img.jpeg",
     },
     {
+      id: 2,
+      title: "쇼펜하우어 명언집",
+      count: 3,
+      type: "글",
+      imageUrl: "/assets/images/book-img.jpeg",
+    },
+    {
+      id: 3,
       title: "니체 명언집",
       count: 10,
       type: "글",
       imageUrl: "/assets/images/book-img.jpeg",
     },
     {
+      id: 4,
       title: "니체 명언집",
       count: 10,
       type: "글",
       imageUrl: "/assets/images/book-img.jpeg",
     },
     {
+      id: 5,
       title: "니체 명언집",
       count: 10,
       type: "글",
       imageUrl: "/assets/images/book-img.jpeg",
     },
     {
+      id: 6,
       title: "니체 명언집",
       count: 10,
       type: "글",
       imageUrl: "/assets/images/book-img.jpeg",
     },
     {
+      id: 7,
       title: "니체 명언집",
       count: 10,
       type: "글",
       imageUrl: "/assets/images/book-img.jpeg",
     },
     {
-      title: "니체 명언집",
-      count: 10,
-      type: "글",
-      imageUrl: "/assets/images/book-img.jpeg",
-    },
-    {
+      id: 8,
       title: "사랑에 빠졌을 때",
       count: 8,
       type: "곡",
       imageUrl: "/assets/images/album-image.png",
     },
     {
+      id: 9,
       title: "포근한",
       count: 8,
       type: "곡",
@@ -118,7 +127,12 @@ const BookmarkSection = ({ title, type }) => {
         {showLeftBtn && <S.ScrollLeftBtn onClick={() => scroll("left")}>{"<"}</S.ScrollLeftBtn>}
         <S.CardRow ref={scrollRef}>
           {filteredItems.map((item, idx) => (
-            <BookmarkCard key={idx} {...item} onMoreClick={(e) => handleMoreClick(e, item)} />
+            <BookmarkCard
+              key={idx}
+              {...item}
+              onMoreClick={(e) => handleMoreClick(e, item)}
+              onClick={() => navigate(`/archive/bookmark/${type === "글" ? "typed" : "played"}/${item.id}`)}
+            />
           ))}
         </S.CardRow>
         {showRightBtn && <S.ScrollRightBtn onClick={() => scroll("right")}>{">"}</S.ScrollRightBtn>}
