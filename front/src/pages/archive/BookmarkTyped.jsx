@@ -41,7 +41,7 @@ const BookmarkTyped = () => {
       {/* 상단 타이틀 영역 */}
       <S.TopRow>
         <S.BackBtn onClick={() => navigate(-1)}>◀</S.BackBtn>
-        <S.PageTitle>니체 명언집</S.PageTitle>
+        <S.PageTitle>북마크한 모든 글</S.PageTitle>
         <S.CountText>{items.length}개의 글</S.CountText>
         <S.SearchBar placeholder="검색어를 입력하세요" />
       </S.TopRow>

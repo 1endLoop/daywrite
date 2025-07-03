@@ -21,8 +21,8 @@ const BookmarkSection = ({ title, type }) => {
   const allItems = [
     {
       id: 1,
-      title: "니체 명언집",
-      count: 10,
+      title: "북마크한 모든 글",
+      count: 1230,
       type: "글",
       imageUrl: "/assets/images/book-img.jpeg",
     },
