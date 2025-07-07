@@ -405,7 +405,7 @@ M.ReplayBtn = styled.button`
 
 
 M.FadeWrapper = styled.div`
-  opacity: ${({ fade }) => (fade ? 1 : 0)};
+  opacity: ${({ $fade }) => ($fade ? 1 : 0)};
   transition: opacity 0.3s ease-in-out;
 `
 //-----------
