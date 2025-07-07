@@ -95,6 +95,10 @@ Post.IconGroup = styled.div`
   }
 `;
 
+Post.Icon = styled.div`
+  cursor: pointer;
+`;
+
 Post.Content = styled.p`
   margin: 20px 0;
   color: #282828;
