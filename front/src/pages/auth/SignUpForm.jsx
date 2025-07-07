@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import S from './signup.form.style';
 import BasicButton from '../../components/button/BasicButton'
 import { filledButtonCSS } from '../../components/button/style';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SignUpPopup from './SignUpPopup';
 
 const SignUpForm = () => {
@@ -15,7 +15,7 @@ const SignUpForm = () => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/;
   
-  const onSubmit = async (data) => { console.log(data); };
+  // const onSubmit = async (data) => { console.log(data); };
   
   const [showPassword, setShowPassword] = useState(false);  // 비밀번호
   const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);  // 비밀번호 확인
@@ -118,6 +118,8 @@ const SignUpForm = () => {
 // 팝업설정
   const [showPopup, setShowPopup] = useState(false);
 
+// 회원가입 성공 시 로그인 화면 이동
+  const navigate = useNavigate()
 
   return (
     <S.LoginContainer>
@@ -138,7 +140,34 @@ const SignUpForm = () => {
 
 
       <S.LoginRightBox>
-        <S.Form onSubmit={handleSubmit(onSubmit)}>
+        <S.Form onSubmit={handleSubmit( async (datas) => {
+          // submit이 클릭되었을 때 가로채어 데이터들을 처리한다.
+          await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/api/register`, {
+            method : "POST",
+            headers : {
+              "Content-Type" : "application/json"
+            },
+            body : JSON.stringify({ // JSON.stringify 자바스크립트의 값을 문자열로 변환
+              email: datas.email,
+              password: datas.password,
+              nickname : datas.nickname,
+              // name: datas.name
+            })
+          })
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res)
+            if(!res.registerSuccess){
+              alert(res.message)
+              return;
+            }else { // 회원가입 성공 메시지 후 로그인 패이지 이동
+              alert(res.message)
+              // navigate("/login)
+            }
+          })
+          .catch(console.log)
+          console.log(datas)
+        })}>
 
           <S.FormSection>
             <S.Title>회원가입</S.Title>
@@ -383,7 +412,7 @@ const SignUpForm = () => {
                 <BasicButton 
                   type="submit" 
                   customStyle={filledButtonCSS} 
-                  disabled={!isFormValid} 
+                  // disabled={!isFormValid} 
                   style={{ width: '100%' }}>
                   회원가입
                 </BasicButton>

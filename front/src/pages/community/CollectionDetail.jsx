@@ -94,10 +94,10 @@ const CollectionDetail = () => {
           {/* 북마크 리스트 이름변경, 폴더삭제 드롭다운 */}
           <S.DropdownWrapper ref={dropdownRef}>
             {openDropdown && (
-              <S.TypedCard>
+              <S.TypedMenu>
                 <S.TypedItem onClick={() => alert("이름을 변경하겠습니다!")}>이름변경</S.TypedItem>
                 <S.TypedItem onClick={() => alert("폴더를 삭제하겠습니다!")}>폴더삭제</S.TypedItem>
-              </S.TypedCard>
+              </S.TypedMenu>
             )}
           </S.DropdownWrapper>
             
@@ -125,7 +125,7 @@ const CollectionDetail = () => {
                 style={{
                   border: editMode
                     ? selectedItems.includes(item.id)
-                      ? '1.5px solid #F96F3D'
+                      ? '1px solid #F96F3D'
                       : '1px solid #e0e0e0'
                     : '1px solid #e0e0e0',
                   cursor: 'pointer',
@@ -135,7 +135,6 @@ const CollectionDetail = () => {
               <S.TypedCardTitle>
                 <h3>{item.title}</h3>
                 <p><strong>Author:</strong> {item.author}</p>
-                <img src="" alt="" />
               </S.TypedCardTitle>
               <S.TypedCardDetail>
                 <p>{item.content}</p>
@@ -178,18 +177,24 @@ const CollectionDetail = () => {
                   <p className='subTitle'>부제목</p>
                 </div>
                 <div className='author'>
+                  <div className='popupTitleBox'>
                   <strong>저자</strong>
                   <p>{selectedItem.author}</p>
-                  <div className='blank'></div>
+                  </div>
+                  <div className='popupTitleBox'>
                   <strong>출판사</strong>
                   <p>{selectedItem.author}</p>
+                  </div>
                 </div>
                 <div className='bookDate'>
+                  <div className='popupTitleBox'>
                   <strong>발행</strong>
                   <p>{selectedItem.date}</p>
-                  <div className='blank'></div>
+                  </div>
+                  <div className='popupTitleBox'>
                   <strong>편곡</strong>
                   <p>{selectedItem.author}</p>
+                  </div>
                 </div>
                 <p className='con'>{selectedItem.content}</p>
                 <p><strong>Music:</strong> {selectedItem.music} - {selectedItem.artist}</p>
