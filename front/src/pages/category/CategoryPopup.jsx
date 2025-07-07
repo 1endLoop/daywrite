@@ -67,7 +67,7 @@ const CategoryPopup = ({ onClose, onSave, defaultKeywords = [], defaultGenres = 
   ];
 
   const MAX_KEYWORDS = 3;
-  const MAX_GENRES = 1;
+  const MAX_GENRES = 2;
 
 
   const toggleKeyword = (item) => {
@@ -124,7 +124,17 @@ const CategoryPopup = ({ onClose, onSave, defaultKeywords = [], defaultGenres = 
           onToggle={toggleGenre}
         />
 
-        <SaveButton onClick={() => onSave(selectedKeywords, selectedGenres) }>
+        <SaveButton onClick={() => {
+          if(selectedKeywords.length === 0){
+            alert("키워드를 최소 1개 이상 선택해주세요!");
+            return;
+          }
+          if ( selectedGenres.length === 0){
+            alert("장르를 최소 1개 이상 선택해주세요!")
+            return
+          }
+          onSave(selectedKeywords, selectedGenres)
+        } }>
           수정
         </SaveButton>
       </PopupContainer>
