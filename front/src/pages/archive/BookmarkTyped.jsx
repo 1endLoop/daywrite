@@ -36,8 +36,9 @@ const BookmarkTyped = () => {
     setSelectedCard(null); // 닫기
   };
 
-  const items = [
+  const [items, setItems] = useState([
     {
+      id: 1,
       date: "2025.06.28",
       title: "끝내주는 인생",
       content:
@@ -49,7 +50,27 @@ const BookmarkTyped = () => {
       artist: "John Canada",
       coverUrl: "/assets/images/book-img.jpeg",
     },
-  ];
+  ]);
+
+  // 편집 모드
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [selectedIds, setSelectedIds] = useState([]);
+
+  const handleEditClick = () => {
+    setIsEditMode((prev) => !prev);
+    setSelectedIds([]); // 편집 모드 종료 시 초기화
+  };
+
+  const handleCardSelect = (id) => {
+    if (!isEditMode) return;
+    setSelectedIds((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]));
+  };
+
+  const handleDeleteSelected = () => {
+    const newItems = items.filter((item) => !selectedIds.includes(item.id));
+    setItems(newItems);
+    setSelectedIds([]);
+  };
 
   return (
     <>
@@ -84,13 +105,26 @@ const BookmarkTyped = () => {
               )}
             </S.MenuWrapper>
           </S.FolderTitleRow>
-          <S.EditButton>편집</S.EditButton>
+          {isEditMode ? (
+            <S.EditRow>
+              <S.DeleteButton onClick={handleDeleteSelected}>삭제</S.DeleteButton>
+              <S.SelectedText>{selectedIds.length}개 선택됨</S.SelectedText>
+            </S.EditRow>
+          ) : (
+            <S.EditButton onClick={handleEditClick}>편집</S.EditButton>
+          )}
         </S.ThumbnailBox>
 
         {/* 북마크 카드 리스트 */}
         <S.CardColumn>
           {items.map((item, idx) => (
-            <HistoryCard key={idx} data={item} onClick={() => handleCardClick(item)} />
+            <HistoryCard
+              key={item.id}
+              data={item}
+              onClick={() => (isEditMode ? handleCardSelect(item.id) : handleCardClick(item))}
+              selected={selectedIds.includes(item.id)}
+              isEditMode={isEditMode}
+            />
           ))}
         </S.CardColumn>
         {/* 팝업 */}
