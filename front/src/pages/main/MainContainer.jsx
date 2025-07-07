@@ -62,7 +62,6 @@ const MainContainer = () => {
   }
 };
 
-
   // 새로고침 버튼
   const handleRefresh = () => {
     setFade(false);
