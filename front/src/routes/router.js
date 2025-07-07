@@ -48,6 +48,11 @@
   import InquiryWrite from "../pages/my_page/InquiryWrite";
   import Terms from "../pages/my_page/Terms";
   import ProfileHomePopup from "../pages/my_page/ProfileHomePopup";
+  import BookmarkMain from "../pages/archive/BookmarkMain";
+import BookmarkAll from "../pages/archive/ BookmarkAll";
+import BookmarkTyped from "../pages/archive/BookmarkTyped";
+  
+  
 
   const router = createBrowserRouter([
     {
@@ -80,87 +85,87 @@
           path: "archive",
           element: <ArchiveContainer />,
           children: [
-            {
-              index: true,
-              element: <Navigate to="history" replace />,
-            },
-            {
-              path: "history",
-              element: <HistoryList />,
-            },
-            {
-              path: "calendar",
-              element: <CalendarHome />,
-            },
-            {
-              path: "calendar/:date",
-              element: <CalendarList />,
-            },
-            {
-              path: "bookmark",
-              element: <BookmarkHome />,
-            },
-            {
-              path: "bookmark/typed",
-              element: <BookmarkTypedList />,
-            },
-            {
-              path: "bookmark/played",
-              element: <BookmarkPlyedList />,
-            },
-            {
-              path: "liked",
-              element: <LikedList />,
-            },
-          ],
-        },
-        // 커뮤니티
-        {
-          path: "community",
-          element: <CommunityContainer />,
-          children: [
-            {
-              index: true,
-              element: <CommunityHome />,
-            },
-            {
-              path: "list",
-              element: <CommunityList />,
-            },
-            {
-              path: "my",
-              element: <CommunityMyPosts />,
-            },
-            {
-              path: "collection",
-              element: <CommunityCollection />,
-            },
-            {
-              path: ":id",
-              element: <PostDetail />,
-            },
-            {
-              path: "communitysonglist",
-              element: <CommunitySongList />,
-            },
-            {
-              path: "collection/collectionAllview", // 추가
-              element: <CollectionAllview />
-            },
-            {
-              path: "collection/detail", // detail 수정(/:id)
-              element: <CollectionDetail />,
-            },
-          ],
-        },
-        {
-          path: "community/write",
-          element: <PostWrite />,
-        },
-        // {
-        //   path: "collection/:id",
-        //   element: <CollectionDetail />,
-        // },
+          {
+            index: true,
+            element: <Navigate to="history" replace />,
+          },
+          {
+            path: "history",
+            element: <HistoryList />,
+          },
+          {
+            path: "calendar",
+            element: <CalendarHome />,
+          },
+          {
+            path: "calendar/:date",
+            element: <CalendarList />,
+          },
+          {
+            path: "bookmark",
+            element: <BookmarkMain />,
+          },
+          {
+            path: "bookmark/:type",
+            element: <BookmarkAll />,
+          },
+          {
+            path: "bookmark/:type/:id",
+            element: <BookmarkTyped />,
+          },
+          {
+            path: "liked",
+            element: <LikedList />,
+          },
+        ],
+      },
+      // 커뮤니티
+      {
+        path: "community",
+        element: <CommunityContainer />,
+        children: [
+          {
+            index: true,
+            element: <CommunityHome />,
+          },
+          {
+            path: "list",
+            element: <CommunityList />,
+          },
+          {
+            path: "my",
+            element: <CommunityMyPosts />,
+          },
+          {
+            path: "collection",
+            element: <CommunityCollection />,
+          },
+          {
+            path: ":id",
+            element: <PostDetail />,
+          },
+          {
+            path: "communitysonglist",
+            element: <CommunitySongList />,
+          },
+          {
+            path: "collection/collectionAllview", // 추가
+            element: <CollectionAllview />,
+          },
+          {
+            path: "collection/detail", // detail 수정(/:id)
+            element: <CollectionDetail />,
+          },
+        ],
+      },
+      {
+        path: "community/write",
+        element: <PostWrite />,
+      },
+      // {
+      //   path: "collection/:id",
+      //   element: <CollectionDetail />,
+      // },
 
         // 마이페이지
         {
