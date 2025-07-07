@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Card from "./community.card.style";
 
 const CommunityCard = ({ data, onClick }) => {
@@ -13,8 +13,12 @@ const CommunityCard = ({ data, onClick }) => {
     comments = 0,
   } = data;
 
+  // 좋아요 토글 버튼
+  const [liked, setLiked] = useState(true);
+  const [musicLiked, setMusicLiked] = useState(true);
+
   return (
-    <Card.Card onClick={onClick}>
+    <Card.Card>
       <Card.Header>
         <Card.LeftInfo>
           <Card.Profile src={profileImg || "../assets/images/profiles/profile2.jpeg"} alt="profile" />
@@ -24,20 +28,33 @@ const CommunityCard = ({ data, onClick }) => {
           </Card.TitleWrapper>
         </Card.LeftInfo>
         <Card.RightInfo>
-          <Card.RightGroup>
-            <Card.LikeIcon src="../assets/images/icons/svg/like.svg" alt="like" />
-            <span>{likes}</span>
-            <Card.CommentIcon src="../assets/images/icons/svg/comment.svg" alt="comment" />
-            <span>{comments}</span>
-          </Card.RightGroup>
+            <Card.IconGroup>
+              <Card.Icon onClick={() => setLiked((prev) => !prev)}>
+                <img
+                  src={liked ? "../assets/images/icons/svg/thumb=on.svg" : "../assets/images/icons/svg/thumb=off.svg"}
+                  alt="like"
+                />
+              </Card.Icon>
+
+              <span>{likes}</span>
+            </Card.IconGroup>
+            <Card.IconGroup>
+              <img src="/assets/images/icons/svg/comment.svg" alt="comment" />
+              <span>{comments}</span>
+            </Card.IconGroup>
         </Card.RightInfo>
       </Card.Header>
 
-      <Card.Content>{content}</Card.Content>
+      <Card.Content onClick={onClick}>{content}</Card.Content>
       <Card.Divider />
       <Card.MusicInfo>
         <Card.MusicLeft>
-          <img src="/assets/images/icons/svg/like=on.svg" alt="like" style={{ width: "18px", height: "18px" }} />
+          <Card.Icon onClick={() => setMusicLiked((prev) => !prev)}>
+            <img
+              src={musicLiked ? "../assets/images/icons/svg/like=on.svg" : "../assets/images/icons/svg/like=off.svg"}
+              alt="like"
+            />
+          </Card.Icon>
           <span role="img" aria-label="music">
             🎵
           </span>

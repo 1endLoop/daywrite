@@ -1,23 +1,19 @@
-import React, { useState, useRef, useEffect } from "react";
-import styled from "styled-components";
+import { useState, useRef, useEffect } from "react";
+import useClickOutside from "../../modules/hooks/useClickOutside";
 import Card from "./history.card.style";
 import Dropdown from "./dropdown.style";
 
 const HistoryCard = ({ data, onClick }) => {
   const { date, content, title, author, music, artist } = data;
+
+  // 북마크, 좋아요 토글 버튼
+  const [bookmarked, setBookmarked] = useState(true);
+  const [liked, setLiked] = useState(true);
+
+  // 드롭다운 (커스텀훅 경로: modules/hooks/useClickOutside.js)
   const [openDropdown, setOpenDropdown] = useState(false);
   const dropdownRef = useRef(null);
-
-  const handleClickOutside = (e) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-      setOpenDropdown(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  useClickOutside(dropdownRef, () => setOpenDropdown(false));
 
   return (
     <Card.Card>
@@ -39,17 +35,27 @@ const HistoryCard = ({ data, onClick }) => {
 
       <Card.MetaWrapper>
         <Card.MetaLeft>
-          <Card.Icon>
-            <img src="../assets/images/icons/svg/bookmark=on.svg" alt="bookmark" />
+          <Card.Icon onClick={() => setBookmarked((prev) => !prev)}>
+            <img
+              src={
+                bookmarked
+                  ? "../assets/images/icons/svg/bookmark=on.svg"
+                  : "../assets/images/icons/svg/bookmark=off.svg"
+              }
+              alt="bookmark"
+            />
           </Card.Icon>
           <span className="title">{title}</span>
           <span className="author">{author}</span>
         </Card.MetaLeft>
 
         <Card.MetaRight>
-          <Card.Action>
-            <img src="../assets/images/icons/svg/like=on.svg" alt="like" />
-          </Card.Action>
+          <Card.Icon onClick={() => setLiked((prev) => !prev)}>
+            <img
+              src={liked ? "../assets/images/icons/svg/like=on.svg" : "../assets/images/icons/svg/like=off.svg"}
+              alt="like"
+            />
+          </Card.Icon>
           <Card.Music>
             <span role="img" aria-label="music">
               🎵
