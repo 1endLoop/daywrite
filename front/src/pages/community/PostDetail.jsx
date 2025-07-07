@@ -1,5 +1,6 @@
 import React from "react";
 import Post from "./post.detail.style";
+import { useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 // ✅ 임시 더미데이터
@@ -31,6 +32,10 @@ const dummyData = [
 ];
 
 const PostDetail = () => {
+  // 좋아요 토글 버튼
+  const [liked, setLiked] = useState(true);
+  const [musicLiked, setMusicLiked] = useState(true);
+
   const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams(); // ✅ URL 파라미터 추출
@@ -70,7 +75,13 @@ const PostDetail = () => {
 
           <Post.RightInfo>
             <Post.IconGroup>
-              <img src="/assets/images/icons/svg/like.svg" alt="like" />
+              <Post.Icon onClick={() => setLiked((prev) => !prev)}>
+                <img
+                  src={liked ? "../assets/images/icons/svg/thumb=on.svg" : "../assets/images/icons/svg/thumb=off.svg"}
+                  alt="like"
+                />
+              </Post.Icon>
+
               <span>{post.likes}</span>
             </Post.IconGroup>
             <Post.IconGroup>
@@ -84,7 +95,12 @@ const PostDetail = () => {
         <Post.Divider />
         <Post.MusicRow>
           <Post.Music>
-            <img src="/assets/images/icons/svg/like=on.svg" alt="like" style={{ width: "18px", height: "18px" }} />
+            <Post.Icon onClick={() => setMusicLiked((prev) => !prev)}>
+              <img
+                src={musicLiked ? "../assets/images/icons/svg/like=on.svg" : "../assets/images/icons/svg/like=off.svg"}
+                alt="like"
+              />
+            </Post.Icon>
             <span role="img" aria-label="music">
               🎵
             </span>

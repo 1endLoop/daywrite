@@ -7,7 +7,6 @@ Card.Card = styled.div`
   padding: 24px 22px 24px 22px;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
-  cursor: pointer;
   /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.08); */
   font-family: pretendard;
 `;
@@ -75,19 +74,30 @@ Card.RightInfo = styled.div`
   color: #444;
 `;
 
+Card.IconGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  span {
+    font-size: 15px;
+    color: #333;
+  }
+`;
+
 Card.RightGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 5px; /* 아이콘과 숫자 간 간격 */
 `;
 
-
-Card.LikeIcon = styled.img`
-  width: 20px;
-`;
-
-Card.CommentIcon = styled.img`
-  width: 20px;
+Card.Icon = styled.div`
+  cursor: pointer;
 `;
 
 Card.Content = styled.p`
@@ -96,6 +106,7 @@ Card.Content = styled.p`
   line-height: 1.7;
   margin-bottom: 20px;
   padding: 0 2px;
+  cursor: pointer;
 
   display: -webkit-box;
   -webkit-line-clamp: 4;
@@ -138,15 +149,6 @@ Card.MetaRight = styled.div`
   display: flex;
   align-items: center;
   gap: 14px;
-`;
-
-Card.Icon = styled.span`
-  font-size: 14px;
-`;
-
-Card.Action = styled.div`
-  font-size: 14px;
-  cursor: pointer;
 `;
 
 Card.MusicInfo = styled.div`

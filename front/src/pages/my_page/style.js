@@ -5,7 +5,7 @@ const S = {};
 S.Wrapper = styled.div`
   width: 1250px;
   min-height: calc(100vh - 30px);
-  margin: 0 auto;
+  margin: 30px auto 0 auto;
   padding: 40px;
   display: flex;
   flex-direction: row;
@@ -19,6 +19,7 @@ S.Sidebar = styled.aside`
   font-size: 20px;
   margin-top: -60px;
   margin-left: -14px;
+
   
 `;
 

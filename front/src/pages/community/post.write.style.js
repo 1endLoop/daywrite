@@ -5,7 +5,7 @@ const S = {};
 S.Container = styled.div`
   width: 100%;
   max-width: 1120px;
-  margin: 0 auto;
+  margin: 45px auto 0;
   overflow: hidden; // 스크롤 방지
 `;
 
@@ -18,14 +18,12 @@ S.TopBar = styled.div`
 S.TitleGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px; // ←과 텍스트 간격 조정
+  gap: 12px; // ←과 텍스트 간격 조정
 `;
 
-S.BackBtn = styled.button`
-  background: none;
-  border: none;
-  font-size: 24px;
+S.Back = styled.div`
   cursor: pointer;
+  font-size: 23px;
 `;
 
 S.Title = styled.h2`
