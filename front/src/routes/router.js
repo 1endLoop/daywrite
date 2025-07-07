@@ -13,7 +13,6 @@
   import TypingPage from "../pages/category/TypingPage";
   import MainCategory from "../pages/main/MainCategory"; // TypingPage.jsx를 위한!
 
-
   // Archive
   import ArchiveContainer from "../pages/archive/ArchiveContainer";
   import HistoryList from "../pages/archive/HistoryList";

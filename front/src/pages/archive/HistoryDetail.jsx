@@ -1,8 +1,13 @@
 import React from "react";
 import S from "./history.detail";
+import { useState } from "react";
 
 const HistoryDetail = ({ data, onClose }) => {
   const { date, title, author, content, music, artist } = data;
+
+  // 북마크, 좋아요 토글 버튼
+  const [bookmarked, setBookmarked] = useState(true);
+  const [liked, setLiked] = useState(true);
 
   return (
     <S.Overlay>
@@ -11,7 +16,16 @@ const HistoryDetail = ({ data, onClose }) => {
           <S.DateRow>
             <S.Date>{date}</S.Date>
             <S.IconGroup>
-              <img src="../assets/images/icons/svg/bookmark=on.svg" alt="bookmark" />
+              <S.Icon onClick={() => setBookmarked((prev) => !prev)}>
+                <img
+                  src={
+                    bookmarked
+                      ? "../assets/images/icons/svg/bookmark=on.svg"
+                      : "../assets/images/icons/svg/bookmark=off.svg"
+                  }
+                  alt="bookmark"
+                />
+              </S.Icon>
               <S.CloseBtn onClick={onClose}>
                 <img src="../assets/images/icons/svg/close.svg" alt="close" />
               </S.CloseBtn>
@@ -32,7 +46,12 @@ const HistoryDetail = ({ data, onClose }) => {
 
         <S.MusicSection>
           <S.MusicInfo>
-            <S.LikeIcon src="../assets/images/icons/svg/like=on.svg" alt="like" />
+            <S.Icon onClick={() => setLiked((prev) => !prev)}>
+              <img
+                src={liked ? "../assets/images/icons/svg/like=on.svg" : "../assets/images/icons/svg/like=off.svg"}
+                alt="like"
+              />
+            </S.Icon>
             <S.AlbumImg src="../assets/images/album-image.png" alt="album" />
             <div>
               <S.MusicTitle>{music}</S.MusicTitle>
