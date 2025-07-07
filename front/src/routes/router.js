@@ -90,14 +90,17 @@ const router = createBrowserRouter([
             path: "calendar/:date",
             element: <CalendarList />,
           },
+          // 북마크 메인
           {
             path: "bookmark",
             element: <BookmarkMain />,
           },
+          // 북마크 목록 전체보기
           {
             path: "bookmark/:type",
             element: <BookmarkAll />,
           },
+          // 북마크 상세보기
           {
             path: "bookmark/:type/:id",
             element: <BookmarkTyped />,
