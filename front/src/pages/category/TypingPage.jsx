@@ -1,57 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 import M from "./typing.page.style";
-import MainPopup from '../main/MainPopup';
-import MainPlaylistPopup from '../main/MainPlaylistPopup';
+import MainPopup from "../main/MainPopup";
+import MainPlaylistPopup from "../main/MainPlaylistPopup";
 import CategoryPopup from "./CategoryPopup";
 import MoodSelect from "./MoodSelect";
 
 const TypingPage = () => {
+  const [writingData, setWritingData] = useState(null);
+  const [inputValue, setInputValue] = useState("");
+  const [isPlaying, setIsPlaying] = useState(false);
   const [showLike, setShowLike] = useState(false);
   const [showBookmark, setShowBookmark] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [fade, setFade] = useState(true);
-  const [inputValue, setInputValue] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [popupType, setPopupType] = useState("");
   const [showPlaylist, setShowPlaylist] = useState(false);
-  const navigate = useNavigate();
-  const isLoggedIn = false;
-
-  const [showCategoryPopup, setShowCategoryPopup] = useState(false);
-
-  
-  // 선택된 키워드/장르 정보 (향후 서버에 사용 가능)
-  const location = useLocation();
-  const { keywords = [], genres = [] } = location.state || {};
-  
-  const [selectedKeywords, setSelectedKeywords] = useState(keywords);
-  const [selectedGenres, setSelectedGenres] = useState(genres)
-
   const [showMoodPopup, setShowMoodPopup] = useState(false);
   const [selectedMood, setSelectedMood] = useState(null);
+  const [showCategoryPopup, setShowCategoryPopup] = useState(false);
+  const [fade, setFade] = useState(true);
 
-  const dummyData = [
-    {
-      typing: `평범한? 그걸로 되겠어?...`,
-      title: "조각들",
-      author: "미나토 가나에",
-      source: "mimyang",
-    },
-    {
-      typing: `연탄재\n함부로 차지마라...`,
-      title: "너에게 묻는다.",
-      author: "안도현",
-      source: "Layal_Post",
-    },
-    {
-      typing: `어떤 이의 밤을 밝힐 기름이...`,
-      title: "피를 마시는 새",
-      author: "이영도",
-      source: "sca",
-    },
-  ];
+  const navigate = useNavigate();
+  const isLoggedIn = false;
+    
+  const location = useLocation();
+  const { keywords = [], genres = [] } = location.state || {};
+  const [selectedKeywords, setSelectedKeywords] = useState(keywords);
+  const [selectedGenres, setSelectedGenres] = useState(genres);
 
   const dummyPlaylist = [
     { img: "/assets/images/album_cover/love-on-top.jpg", title: "Love on Top", artist: "Beyonce", liked: true },
@@ -60,12 +36,45 @@ const TypingPage = () => {
     { img: "/assets/images/album_cover/summernignt.lyn.jpg", title: "한여름 밤", artist: "Lyn", liked: true },
     { img: "/assets/images/album_cover/the-winning.jpg", title: "the winning", artist: "IU", liked: true },
   ];
-
   const [currentSong, setCurrentSong] = useState(dummyPlaylist[0]);
 
-  const currentData = dummyData[currentIndex];
+  // 글 데이터 가져오기 함수
+  const fetchWriting = async () => {
+    try {
+      console.log("요청 중:", selectedKeywords, selectedGenres);
+
+      const res = await axios.post("/api/writing/random", {
+        keywords: selectedKeywords,
+        genres: selectedGenres,
+      });
+
+      console.log("응답데이터:", res.data);
+
+      if (!res?.data) {
+        alert("조건에 맞는 글이 없습니다.");
+        return;
+      }
+
+      setWritingData(res.data);
+    } catch (error) {
+      console.error("글 불러오기 실패:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchWriting();
+  }, [selectedKeywords, selectedGenres]);
+
+  if (!writingData) {
+    console.log("아직 데이터 없음")
+    return (
+      <p>로딩 중...</p>
+    );
+  }
+  console.log("WritingData 있음!! : ", writingData)
+
   const current = inputValue.length;
-  const total = currentData.typing.length;
+  const total = writingData.content.length;
   const percent = Math.floor((current / total) * 100);
 
   const totalWidth = 1126;
@@ -77,34 +86,13 @@ const TypingPage = () => {
   const visibleCount = maxCycles * 4.5;
   const filledCount = Math.floor((percent / 100) * visibleCount);
 
-  const handlePlayToggle = () => {
-    setIsPlaying((prev) => !prev);
-  };
-
+  const handlePlayToggle = () => setIsPlaying((prev) => !prev);
   const handleChange = (e) => {
     const newValue = e.target.value;
-    if (newValue.length <= currentData.typing.length) {
+    if (newValue.length <= writingData.content.length) {
       setInputValue(newValue);
     }
   };
-
-  const handleRefresh = () => {
-    setFade(false);
-    setTimeout(() => {
-      let nextIndex;
-      do {
-        nextIndex = Math.floor(Math.random() * dummyData.length);
-      } while (nextIndex === currentIndex);
-      setCurrentIndex(nextIndex);
-
-      const nextSong = dummyPlaylist[Math.floor(Math.random() * dummyPlaylist.length)];
-      setCurrentSong(nextSong);
-
-      setInputValue("");
-      setFade(true);
-    }, 300);
-  };
-
   const handleSettingClick = () => {
     setPopupType(isLoggedIn ? "member" : "guest");
     setShowPopup(true);
@@ -126,16 +114,14 @@ const TypingPage = () => {
       {showPlaylist && (
         <MainPlaylistPopup onClose={() => setShowPlaylist(false)} data={dummyPlaylist} />
       )}
-      <M.OuterWrap>
 
-      
+      <M.OuterWrap>
         <M.Container>
           <M.Content01>
             <M.TopHeader>
-              {/* 왼쪽: 북마크 */}
               <M.IconButton onClick={() => setShowBookmark(!showBookmark)}>
                 <img
-                  src={ 
+                  src={
                     process.env.PUBLIC_URL +
                     (showBookmark
                       ? "/assets/images/icons/bookmark-on-color.png"
@@ -145,15 +131,14 @@ const TypingPage = () => {
                 />
               </M.IconButton>
 
-              {/* 중앙: 제목, 작가, 작성자 */}
               <M.TextBlock>
                 <M.Heading>
-                  <strong>{currentData.title}</strong> <p>{currentData.author}</p>
-                  <span style={{ marginLeft: 8 }}>| Posted by {currentData.source}</span>
+                  <strong>{writingData.book}</strong>{" "}
+                  <p>{writingData.author ?? "Unknown"}</p>
+                  <span style={{ marginLeft: 8 }}>| Posted by AI</span>
                 </M.Heading>
               </M.TextBlock>
 
-              {/* 오른쪽: 설정, 링크, 연필 */}
               <M.TitleIconWrap>
                 <M.IcBtn onClick={handleSettingClick}>
                   <img src="/assets/images/icons/settings.png" alt="설정" />
@@ -167,7 +152,6 @@ const TypingPage = () => {
               </M.TitleIconWrap>
             </M.TopHeader>
           </M.Content01>
-
 
           <M.Content02>
             <M.TypingSpeedWrap>
@@ -193,10 +177,10 @@ const TypingPage = () => {
               <M.Line style={{ backgroundColor: "#282828" }} />
             </M.TypingSpeedWrap>
 
-            <M.FadeWrapper fade={fade}>
+            <M.FadeWrapper $fade={fade}>
               <M.ContentBox>
                 <M.TypingOverlay aria-hidden>
-                  {currentData.typing.split("").map((char, index) => {
+                  {writingData.content.split("").map((char, index) => {
                     const typedChar = inputValue[index];
                     let color = "#BFBFBF";
                     if (typedChar !== undefined) {
@@ -206,7 +190,11 @@ const TypingPage = () => {
                         color = typedChar === char ? "#282828" : "red";
                       }
                     }
-                    return <span key={index} style={{ color }}>{typedChar ?? char}</span>;
+                    return (
+                      <span key={index} style={{ color }}>
+                        {typedChar ?? char}
+                      </span>
+                    );
                   })}
                 </M.TypingOverlay>
                 <M.HiddenInput value={inputValue} onChange={handleChange} spellCheck={false} />
@@ -219,7 +207,12 @@ const TypingPage = () => {
                 <M.StyledMusic>
                   <M.IconButton onClick={() => setShowLike(!showLike)}>
                     <img
-                      src={process.env.PUBLIC_URL + (showLike ? "/assets/images/icons/like-on-color.png" : "/assets/images/icons/like-off-color.png")}
+                      src={
+                        process.env.PUBLIC_URL +
+                        (showLike
+                          ? "/assets/images/icons/like-on-color.png"
+                          : "/assets/images/icons/like-off-color.png")
+                      }
                       alt="like"
                     />
                   </M.IconButton>
@@ -233,7 +226,9 @@ const TypingPage = () => {
                 </M.StyledMusic>
                 <M.PlayListIconWrap>
                   <M.PlayIconWrap>
-                    <M.PlayIcon><img src="/assets/images/icons/skip_previous.png" alt="이전" /></M.PlayIcon>
+                    <M.PlayIcon>
+                      <img src="/assets/images/icons/skip_previous.png" alt="이전" />
+                    </M.PlayIcon>
                     <M.PlayIcon onClick={handlePlayToggle}>
                       <img
                         src={
@@ -244,7 +239,9 @@ const TypingPage = () => {
                         alt={isPlaying ? "일시정지" : "재생"}
                       />
                     </M.PlayIcon>
-                    <M.PlayIcon><img src="/assets/images/icons/skip_next.png" alt="다음" /></M.PlayIcon>
+                    <M.PlayIcon>
+                      <img src="/assets/images/icons/skip_next.png" alt="다음" />
+                    </M.PlayIcon>
                   </M.PlayIconWrap>
                   <M.PlayListWrap onClick={() => setShowPlaylist(!showPlaylist)}>
                     <h4>PLAY LIST</h4>
@@ -257,60 +254,57 @@ const TypingPage = () => {
 
               <M.Line />
               <M.StyledUnder02>
-
                 <M.CategoryInfoWrap>
-                    <M.ReplayBtn>
-                      <img   src="/assets/images/icons/replay.png" alt="새로고침" />
-                    </M.ReplayBtn>
-                    <M.SelectedInfoBlock>
-                      <M.SelectedTitle>
-                        내가 선택한 카테고리
-                        <M.EditIconWrap onClick={()=> setShowCategoryPopup(true)}>
-                          <M.EditIcon src="/assets/images/icons/edit.png" alt="수정"/>
-                          <span>Edit</span>
-
-                        </M.EditIconWrap>
-                      
-                      </M.SelectedTitle>
-                      <M.KeywordList>
-                        {selectedKeywords.concat(selectedGenres).map((kw, i) => (
-                          <span key={i}>{kw}</span>
-                        ))}
-                      </M.KeywordList>
-                    </M.SelectedInfoBlock>
-                  </M.CategoryInfoWrap>
+                  <M.ReplayBtn onClick={fetchWriting}>
+                    <img src="/assets/images/icons/replay.png" alt="새로고침" />
+                  </M.ReplayBtn>
+                  <M.SelectedInfoBlock>
+                    <M.SelectedTitle>
+                      내가 선택한 카테고리
+                      <M.EditIconWrap onClick={() => setShowCategoryPopup(true)}>
+                        <M.EditIcon src="/assets/images/icons/edit.png" alt="수정" />
+                        <span>Edit</span>
+                      </M.EditIconWrap>
+                    </M.SelectedTitle>
+                    <M.KeywordList>
+                      {selectedKeywords.concat(selectedGenres).map((kw, i) => (
+                        <span key={i}>{kw}</span>
+                      ))}
+                    </M.KeywordList>
+                  </M.SelectedInfoBlock>
+                </M.CategoryInfoWrap>
 
                 <M.SaveBtn onClick={() => setShowMoodPopup(true)}>저장</M.SaveBtn>
-
                 {showMoodPopup && (
                   <MoodSelect
                     onClose={() => setShowMoodPopup(false)}
                     onSave={(mood) => {
                       setSelectedMood(mood);
-                      setShowMoodPopup(false)
-                      console.log("기록할 기분 :", mood); // 나중에 서버로 보내기 위함
-                    }}></MoodSelect>
+                      setShowMoodPopup(false);
+                      console.log("기록할 기분:", mood);
+                    }}
+                  />
                 )}
               </M.StyledUnder02>
             </M.UnderContent>
           </M.Content02>
         </M.Container>
       </M.OuterWrap>
-      {showCategoryPopup && (
-        <CategoryPopup onClose={() => setShowCategoryPopup(false)}
-                       onSave={(newKeywords, newGenres) => {
-                        setSelectedKeywords(newKeywords);
-                        setSelectedGenres(newGenres);
-                        setShowCategoryPopup(false); // 저장하고 닫기
-                       }}
-                       defaultKeywords={[]}
-                       defaultGenrers={[]} />
-      )}
 
+      {showCategoryPopup && (
+        <CategoryPopup
+          onClose={() => setShowCategoryPopup(false)}
+          onSave={(newKeywords, newGenres) => {
+            setSelectedKeywords(newKeywords);
+            setSelectedGenres(newGenres);
+            setShowCategoryPopup(false);
+          }}
+          defaultKeywords={selectedKeywords}
+          defaultGenres={selectedGenres}
+        />
+      )}
     </div>
   );
 };
-
-
 
 export default TypingPage;

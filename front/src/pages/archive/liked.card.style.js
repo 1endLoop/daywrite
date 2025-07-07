@@ -14,7 +14,7 @@ Card.Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 17px;
+  margin-bottom: 10px;
 `;
 
 Card.HeaderLeft = styled.div`
@@ -34,22 +34,8 @@ Card.HeaderLeft = styled.div`
   }
 `;
 
-Card.MetaText = styled.div`
-  display: flex;
-  gap: 6px;
-  margin-bottom: 12px;
-  align-items: center;
-
-  .title {
-    font-size: 16px;
-    color: #282828;
-    font-weight: 600;
-  }
-
-  .author {
-    font-size: 13px;
-    color: #787878;
-  }
+Card.Icon = styled.span`
+  cursor: pointer;
 `;
 
 Card.LikeIcon = styled.div`
@@ -65,16 +51,17 @@ Card.Content = styled.p`
   margin-bottom: 20px;
 
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: justify;
+  cursor: pointer;
 `;
 
 Card.Divider = styled.div`
   border-top: 1px solid #e0e0e0;
-  margin: 16px 0;
+  margin: 0 0 20px 0;
 `;
 
 Card.BottomWrapper = styled.div`

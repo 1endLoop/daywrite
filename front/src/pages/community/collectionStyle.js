@@ -13,6 +13,7 @@ S.TypedTitle = styled.div`
         color: #787878;
         font-size: 15px;
         margin-top: 15px;
+        margin-right: 32px;
     }
 `
 S.TypedWrapper = styled.div`
@@ -101,6 +102,7 @@ S.PlayedTitle = styled.div`
         color: #787878;
         font-size: 15px;
         margin-top: 15px;
+        margin-right: 32px;
     }
 `
 S.PlayedWrapper = styled.div`

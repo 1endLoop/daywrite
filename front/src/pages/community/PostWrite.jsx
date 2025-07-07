@@ -9,7 +9,7 @@ const PostWrite = () => {
     <S.Container>
       <S.TopBar>
         <S.TitleGroup>
-          <S.BackBtn onClick={() => navigate(-1)}>←</S.BackBtn>
+          <S.Back onClick={() => navigate(-1)}>←</S.Back>
           <S.Title>나만의 필사글 작성</S.Title>
         </S.TitleGroup>
 

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import GlobalStyle from "../../global/global";
 
 const Card = {};
 
@@ -8,7 +7,6 @@ Card.Card = styled.div`
   padding: 24px 22px 24px 22px;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
-  /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.08); */
   font-family: pretendard;
 `;
 
@@ -16,7 +14,7 @@ Card.Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 
 Card.Date = styled.div`
@@ -83,10 +81,6 @@ Card.MetaRight = styled.div`
 `;
 
 Card.Icon = styled.span`
-  font-size: 14px;
-`;
-
-Card.Action = styled.div`
   cursor: pointer;
 `;
 
