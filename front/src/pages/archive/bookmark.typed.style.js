@@ -112,12 +112,12 @@ S.EditRow = styled.div`
 `;
 
 S.DeleteButton = styled.button`
-  background-color: orange;
+  background: none;
   border: none;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 4px;
+  color: #f96f3d;
+  font-size: 14px;
   cursor: pointer;
+  padding: 0;
 `;
 
 S.SelectedText = styled.span`
