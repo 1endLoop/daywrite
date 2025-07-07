@@ -140,13 +140,6 @@ S.TypedCardTitle = styled.div`
         font-size: 15px;
         color: #787878;
     }
-    /* 북마크 아이콘 */
-    img {
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        transform: translateX(650px);
-    }
 `
 S.TypedCardDetail = styled.div`
     margin-top: 20px;
@@ -217,7 +210,7 @@ S.PopupContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 1000;
 }    
 /* 팝업 본체 */
 .popup-box {
@@ -264,7 +257,7 @@ S.PopupContainer = styled.div`
     display: flex;
 }
 .bookImg{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin-top: 20px;
     margin-left: 10px;
     width: 200px;
@@ -276,7 +269,7 @@ S.PopupContainer = styled.div`
 }
 // 팝업 내용
 .bookDetail{
-    border: solid 1px black;
+    /* border: solid 1px black; */
     margin-top: 20px;
     margin-left: 50px;
     width: 450px;
@@ -286,7 +279,7 @@ S.PopupContainer = styled.div`
     
 }
 .detailTitle{
-    margin-left: 0;
+    justify-items: left;
     h3{
         font-size: 18px;
     }
@@ -299,6 +292,7 @@ S.PopupContainer = styled.div`
 .author{
     margin-top: 15px;
     display: flex;
+    justify-content: space-between;
     strong{
         font-size: 16px;
         color: #787878;
@@ -308,12 +302,15 @@ S.PopupContainer = styled.div`
         font-size: 16px;
     }
 }
-.blank{
-    width: 80px;
+.popupTitleBox{
+    width: 210px;
+    display: flex;
+    margin-left: 10px;
 }
 .bookDate{
     margin-top: 8px;
     display: flex;
+    justify-content: space-between;
     strong{
         font-size: 16px;
         color: #787878;

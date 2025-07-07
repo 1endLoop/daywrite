@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import HistoryCard from "./HistoryCard";
 import HistoryDetail from "./HistoryDetail";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const dummyData = [
   {

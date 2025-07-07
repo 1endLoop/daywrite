@@ -48,6 +48,11 @@ S.IconGroup = styled.div`
   }
 `;
 
+S.Icon = styled.span`
+  font-size: 14px;
+  cursor: pointer;
+`;
+
 S.Divider = styled.hr`
   height: 1px;
   background-color: #ddd;
@@ -118,12 +123,6 @@ S.MusicInfo = styled.div`
   gap: 12px;
 `;
 
-S.LikeIcon = styled.img`
-  width: 20px;
-  height: 20px;
-  margin-right: 4px;
-`;
-
 S.AlbumImg = styled.img`
   width: 40px;
   height: 40px;
@@ -145,6 +144,7 @@ S.MusicControls = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+  cursor: pointer;
 
   img {
     width: 22px;
