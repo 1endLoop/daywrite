@@ -5,7 +5,6 @@ import MainPopup from "./MainPopup";
 import MainPlaylistPopup from "./MainPlaylistPopup";
 
 const MainContainer = () => {
-  // 상태 선언
   const [showLike, setShowLike] = useState(false);
   const [showBookmark, setShowBookmark] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -13,7 +12,6 @@ const MainContainer = () => {
   const [inputValue, setInputValue] = useState("");
   const [currentData, setCurrentData] = useState(null);
 
-  // 키워드/장르 기본 상태 (필요 시 팝업에서 설정)
   const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
 
