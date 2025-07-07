@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import M from "./main.form.style";
-import { filledButtonCSS } from "../../components/button/style";
-import BasicButton from "../../components/button/BasicButton";
+import MainPopup from './MainPopup';
+import MainPlaylistPopup from './MainPlaylistPopup';
 
 const MainContainer = () => {
 // 좋아요/북마크 상태
@@ -56,10 +56,23 @@ const [inputValue, setInputValue] = useState("");
 // 현재 데이터 (dummyData와 currentIndex가 필요)
 const currentData = dummyData[currentIndex];
 
+
 // 타이핑 게이지 계산 (inputValue와 currentData가 필요)
-const current = inputValue.length;
-const total = currentData.typing.length;
-const percent = Math.floor((current / total) * 100);
+const totalWidth = 1126;
+const tickWidth = 1.5;
+const pointWidth = 7;
+const gap = 20;
+
+const cycleWidth = tickWidth * 3 + pointWidth + gap * 3;
+const maxCycles = Math.floor(totalWidth / cycleWidth); // 한 줄에 들어갈 수 있는 사이클 개수
+const visibleCount = maxCycles * 4.5;
+
+const current = inputValue.length; // 현재 타이핑한 글자 수
+const total = dummyData[currentIndex].typing.length; // 전체 텍스트 길이
+const percent = Math.floor((current / total) * 100); // 퍼센트 계산
+
+// 색칠할 개수 계산 (퍼센트 기준)
+const filledCount = Math.floor((percent / 100) * visibleCount);
 
 // 입력 핸들러
 const handleChange = (e) => {
@@ -69,26 +82,69 @@ const handleChange = (e) => {
   }
 };
 
+
 // 새 추천글 불러오기
 const handleRefresh = () => {
   setFade(false);
   setTimeout(() => {
+    // ➤ 추천글 랜덤 인덱스
     let nextIndex;
     do {
       nextIndex = Math.floor(Math.random() * dummyData.length);
     } while (nextIndex === currentIndex);
-
     setCurrentIndex(nextIndex);
+
+    // ➤ 앨범 랜덤 선택
+    const nextSong = dummyPlaylist[Math.floor(Math.random() * dummyPlaylist.length)];
+    setCurrentSong(nextSong);
+
     setInputValue("");
     setFade(true);
   }, 300);
 };
 
 
+const navigate = useNavigate();
+const [showPopup, setShowPopup] = useState(false);
+const [popupType, setPopupType] = useState("");
+const isLoggedIn = false;
 
+const handleSettingClick = () => {
+  setPopupType(isLoggedIn ? "member" : "guest");
+  setShowPopup(true);
+};
+
+// 플레이리스트
+const [showPlaylist, setShowPlaylist] = useState(false);
+const dummyPlaylist = [
+  { img: "/assets/images/album_cover/love-on-top.jpg", title: "Love on Top", artist: "Beyonce", liked: true },
+  { img: "/assets/images/album_cover/love-sick-girls.jpg", title: "Love Sick Girls", artist: "BlackPink(블랙핑크)", liked: false },
+  { img: "/assets/images/album_cover/smiley.ori.jpg", title: "Smiley", artist: "YENA(최예나)", liked: false },
+  { img: "/assets/images/album_cover/summernignt.lyn.jpg", title: "한여름 밤", artist: "Lyn(린)", liked: true },
+  { img: "/assets/images/album_cover/the-winning.jpg", title: "the winning", artist: "IU(아이유)", liked: true }
+];
+
+const [currentSong, setCurrentSong] = useState(dummyPlaylist[0]);
 
 
   return (
+  <div>
+
+    {showPopup && (
+      <MainPopup
+        type={popupType}
+        onClose={() => setShowPopup(false)}
+        onConfirm={() => {
+          setShowPopup(false);
+          popupType === 'guest' ? navigate('/login') : navigate('/mypage');
+        }}
+      />
+    )}
+
+    {showPlaylist && (
+      <MainPlaylistPopup onClose={() => setShowPlaylist(false)} data={dummyPlaylist} />
+    )}
+
     <M.Container>
       <M.Content01>
         <M.TitleWrap>
@@ -96,10 +152,11 @@ const handleRefresh = () => {
           <div data-layer="추천글" style={{color: '#282828', fontSize: 26, fontFamily: 'Pretendard', fontWeight: '700', wordWrap: 'break-word'}}>추천글</div>
         </M.TitleWrap>
         <M.TitleIconWrap>
-          <M.IcBtn onClick={""}>
-            <img src="/assets/images/icons/settings.png" alt="필사 테마 설정"/>
+          <M.IcBtn onClick={handleSettingClick}>
+            <img src="/assets/images/icons/settings.png" alt="필사 테마 설정" />
           </M.IcBtn>
-          <M.IcBtn onClick={""}>
+          
+          <M.IcBtn  onClick={() => setInputValue("")}>
             <img src="/assets/images/icons/eraser.png" alt="필사글 전체 지우기"/>
           </M.IcBtn>
         </M.TitleIconWrap>
@@ -107,24 +164,31 @@ const handleRefresh = () => {
 
 
       <M.Content02>
-        <M.TypingSpeedWrap>
-          <M.Line style={{ backgroundColor: "#282828" }} />
+      <M.TypingSpeedWrap>
+        <M.Line style={{ backgroundColor: "#282828" }} />
 
-          <M.ProgressBarWrapper>
+        <M.ProgressBarWrapper>
+          <M.ProgressBarContainer>
             <M.ProgressBar>
-              {Array.from({ length: total }, (_, i) =>
+              {Array.from({ length: visibleCount }, (_, i) =>
                 (i + 1) % 4 === 0 ? (
-                  <M.ProgressPoint key={i} active={i < current} />
+                  <M.ProgressPoint key={i} $active={i < filledCount} />
                 ) : (
-                  <M.ProgressTick key={i} active={i < current} />
+                  <M.ProgressTick key={i} $active={i < filledCount} />
                 )
               )}
             </M.ProgressBar>
-            <M.ProgressPercent>{percent}%</M.ProgressPercent>
-          </M.ProgressBarWrapper>
+          </M.ProgressBarContainer>
+            <M.ProgressPercentWrap>
+              <M.Bar />
+              <M.Triangle />
+              <M.PercentText>{percent}%</M.PercentText>
+            </M.ProgressPercentWrap>
+        </M.ProgressBarWrapper>
 
-            <M.Line style={{ backgroundColor: "#282828" }} />
-        </M.TypingSpeedWrap>
+        <M.Line style={{ backgroundColor: "#282828" }} />
+      </M.TypingSpeedWrap>
+
 
         <M.FadeWrapper fade={fade}>
         <M.ContentBox>
@@ -142,7 +206,7 @@ const handleRefresh = () => {
                 }
 
                 return (
-                  <span key={index} style={{ color }}>{typedChar ?? char}</span>
+                  <span key={index} style={{ whiteSpace: 'pre-wrap', color }}>{typedChar ?? char}</span>
                 );
               })}
             </M.TypingOverlay>
@@ -170,10 +234,10 @@ const handleRefresh = () => {
                     alt="like"/>
                 </M.IconButton>
                 <M.Album>
-                  <M.AlbumImg src='/assets/images/profiles/cat.jpg'/>
+                  <M.AlbumImg src={currentSong.img}/>
                   <M.AlbumInfo>
-                    <h5 style={{ color: "#282828" }}>Love on Top</h5>
-                    <h6 style={{ color: "#787878" }}>John Canada</h6>
+                    <h5 style={{ color: "#282828" }}>{currentSong.title}</h5>
+                    <h6 style={{ color: "#787878" }}>{currentSong.artist}</h6>
                   </M.AlbumInfo>
                 </M.Album>
               </M.StyledMusic>
@@ -196,12 +260,12 @@ const handleRefresh = () => {
                     <img src="/assets/images/icons/skip_next.png" alt="재생 다음"/>
                   </M.PlayIcon>
                 </M.PlayIconWrap>
-                <M.PlayListWrap onClick={""}>
-                  <h4>PLAY LIST</h4>
-                  <M.IcBtn>
-                    <img src="/assets/images/icons/list.png" alt="플레이리스트"/>
-                  </M.IcBtn>
-                </M.PlayListWrap>
+                  <M.PlayListWrap onClick={() => setShowPlaylist(!showPlaylist)}>
+                    <h4>PLAY LIST</h4>
+                    <M.IcBtn>
+                      <img src="/assets/images/icons/list.png" alt="플레이리스트" />
+                    </M.IcBtn>
+                  </M.PlayListWrap>
               </M.PlayListIconWrap>
             </M.StyledUnder01>
 
@@ -232,6 +296,7 @@ const handleRefresh = () => {
         </M.UnderContent>
       </M.Content02>
     </M.Container>
+  </div>
   );
 };
 

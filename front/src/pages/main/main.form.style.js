@@ -63,7 +63,7 @@ M.Content02 = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   gap: 21px;
   overflow: hidden;
 `
@@ -76,54 +76,93 @@ M.TypingSpeedWrap = styled.div`
   gap: 6px;
 `
 
-// 게이지 막대 감싸는 영역
+// 게이지 전체 + 퍼센트
 M.ProgressBarWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 `;
 
-// 막대 전체 영역
+// 퍼센트 왼쪽 게이지 감싸는 영역
+M.ProgressBarContainer = styled.div`
+  width: 1126px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 14px;
+`; 
+
+// 게이지 자체
 M.ProgressBar = styled.div`
   display: flex;
-  gap: 4px;
+  flex-wrap: nowrap;
   align-items: center;
-  flex-grow: 1;
+  gap: 14px;
 `;
 
-// 단일 게이지 점 (작은 바)
+// 작은 네모
 M.ProgressTick = styled.div`
   width: 1.5px;
   height: 7px;
-  background: ${({ active }) => (active ? '#F96F3D' : '#282828')};
-  opacity: ${({ active }) => (active ? 0.6 : 1)};
+  background: ${({ $active }) => ($active ? '#F96F3D' : '#282828')};
+  opacity: ${({ $active }) => ($active ? 0.6 : 1)};
 `;
 
-// 단일 포인트 (큰 네모)
+// 큰 네모
 M.ProgressPoint = styled.div`
   width: 7px;
   height: 7px;
-  background: ${({ active }) => (active ? '#F96F3D' : '#BFBFBF')};
+  background: ${({ $active }) => ($active ? '#F96F3D' : '#BFBFBF')};
 `;
 
-// 퍼센트 표시
-M.ProgressPercent = styled.span`
+// 퍼센트 전체 감싸는 래퍼 (가로 74px 고정)
+M.ProgressPercentWrap = styled.div`
+  width: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+`;
+
+// 막대
+M.Bar = styled.div`
+  width: 6px;
+  height: 30px;
+  background-color: #BFBFBF;
+`;
+
+// 회전된 삼각형
+M.Triangle = styled.div`
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 14px solid #787878;
+  transform: rotate(-90deg);
+`;
+
+// 실제 퍼센트 텍스트
+M.PercentText = styled.span`
   font-size: 16px;
   font-family: Pretendard;
   font-weight: 400;
   color: #F96F3D;
   line-height: 24px;
-  padding-left: 6px;
+  text-align: right;
+  padding-left: 10px;
 `;
+
+
+
 
 
 // 본문 내용 부분 --------------------------------
 M.ContentBox = styled.div`
   width: 100%;
-  height: 290px;
+  height: 280px;
   overflow: hidden;
-  padding-right: 4px;
+  /* padding-right: 4px; */
   position: relative;
 
   display: flex;
@@ -160,9 +199,12 @@ M.TypingTextDisplay = styled.div`
 
 M.TypingOverlay = styled.div`
   position: absolute;
+  top: 0;
+  left: 0;
   pointer-events: none;
   color: transparent;
   z-index: 1;
+  letter-spacing: 0;
 
   span {
     color: inherit;
@@ -172,8 +214,13 @@ M.TypingOverlay = styled.div`
 
 M.HiddenInput = styled.textarea`
   position: absolute;
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
+  top: 0;
+  left: 0;
+  /* width: calc(100% - 20px);
+  height: calc(100% - 20px); */
+  width: 100%;
+  height: 100%;
+  padding: 0;
   border: none;
   background: transparent;
   color: transparent;
@@ -183,6 +230,7 @@ M.HiddenInput = styled.textarea`
   line-height: 30px;
   font-family: Pretendard;
   z-index: 2;
+  letter-spacing: 0;
 
   &:focus {
     outline: none;
