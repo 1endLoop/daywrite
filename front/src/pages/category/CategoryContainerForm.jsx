@@ -29,16 +29,28 @@ const CategoryContainerForm = () => {
   } = useForm({ mode: "onSubmit" })
 
   // 버튼 누르면 필사 화면으로 이동
+  // 최소 선택해야 하는 조건 추가
   const navigate =useNavigate();
   
   const onSubmit = async (data) => {
+    if(selectedKeywords.length === 0) {
+      alert("키워드를 최소 1개 이상 선택해주세요!");
+      return;
+    }
+    if (selectedGenres.length === 0){
+      alert("장르를 최소 1개 이상 선택해주세요!")
+      return;
+    }
+
     navigate("/category/typing", {
       state: {
         keywords: selectedKeywords,
-        genres: selectedGenres,
+        genres : selectedGenres,
       }
     });
   };
+
+
 
 
   // 최대 3개까지 선택 허용하는
