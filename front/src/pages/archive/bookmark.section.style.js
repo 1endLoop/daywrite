@@ -15,7 +15,17 @@ S.TitleRow = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  position: relative;
 `;
+
+S.BookmarkFolder = styled.button`
+  font-size: 14px;
+  color: #f86f03;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute; right: 80px;
+`
 
 S.Title = styled.h2`
   font-size: 20px;
