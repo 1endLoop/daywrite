@@ -8,37 +8,33 @@ import CalendarList from './CalendarList';
 
 const CalendarHome = () => {
   return (
-    <Container>     
-      <Content>   
-        <div style={{marginRight:'30px'}}>
-          <S.ProfileHeader>
-            <S.Avatar src="/assets/images/profiles/profile.JPG" />
-            <div>
-              <S.Nickname style={{marginBottom:'10px'}}>예닮</S.Nickname>
-              <S.Email>yedam@email.com</S.Email>
-            </div>
-          </S.ProfileHeader>
-          <C.InfoCard>
-               <Level>
-                <img src="/assets/images/icons/star.png" alt="star" width="24" />
-                <span>레벨 10</span>
-              </Level>
-              <div style={{marginLeft:'15px'}}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', paddingBottom:'5px' }}>
-                  <img src="/assets/images/icons/keyboard.png" alt="keyboard" width="24" />
-                  <span>필사 125개</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' ,paddingTop:'5px'}}>
-                  <img src="/assets/images/icons/fire.png" alt="fire" width="24" />
-                  <span>연속 15일</span>
-                </div>
+    <Container> 
+      <div style={{marginRight:'30px'}}>
+        <S.ProfileHeader>
+          <S.Avatar src="/assets/images/profiles/profile.JPG" />
+          <div>
+            <S.Nickname style={{marginBottom:'10px'}}>예닮</S.Nickname>
+            <S.Email>yedam@email.com</S.Email>
+          </div>
+        </S.ProfileHeader>
+        <C.InfoCard>
+            <Level>
+              <img src="/assets/images/icons/star.png" alt="star" width="24" />
+              <span>레벨 10</span>
+            </Level>
+            <div style={{marginLeft:'15px'}}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '15px', paddingBottom:'5px' }}>
+                <img src="/assets/images/icons/keyboard.png" alt="keyboard" width="24" />
+                <span>필사 125개</span>
               </div>
-          </C.InfoCard>
-        </div>
-        <CalendarList/>
-      </Content>
-
-
+              <div style={{ display: 'flex', alignItems: 'center', gap: '15px' ,paddingTop:'5px'}}>
+                <img src="/assets/images/icons/fire.png" alt="fire" width="24" />
+                <span>연속 15일</span>
+              </div>
+            </div>
+        </C.InfoCard>
+      </div>
+      <CalendarList/>
     </Container>
   );
 };
@@ -49,12 +45,7 @@ const Container = styled.div`
   padding-top: 24px;
   padding-bottom: 24px;
   margin-bottom:100px;
-
-`;
-
-const Content = styled.div`
   display: flex;
-  width: 100%;
 `;
 
 const Level = styled.div`
