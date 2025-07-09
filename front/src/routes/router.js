@@ -51,6 +51,7 @@
   import BookmarkMain from "../pages/archive/BookmarkMain";
 import BookmarkAll from "../pages/archive/ BookmarkAll";
 import BookmarkTyped from "../pages/archive/BookmarkTyped";
+  import BookmarkNewFolder from "../pages/archive/BookmarkNewFolder"; // 추가
   
   
 
@@ -100,6 +101,10 @@ import BookmarkTyped from "../pages/archive/BookmarkTyped";
           {
             path: "calendar/:date",
             element: <CalendarList />,
+          },
+          {
+            path: "bookmark/bookmarkNewFolder",
+            element: <BookmarkNewFolder /> // 추가
           },
           {
             path: "bookmark",
