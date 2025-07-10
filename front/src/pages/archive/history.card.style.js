@@ -5,9 +5,11 @@ const Card = {};
 Card.Card = styled.div`
   background-color: #fff;
   padding: 24px 22px 24px 22px;
-  border: 1px solid #e0e0e0;
+  border: ${({ selected }) => (selected ? "1px solid #f96f3d" : "1px solid #e0e0e0")};
   border-radius: 5px;
   font-family: pretendard;
+  transition: border 0.2s ease;
+  cursor: pointer;
 `;
 
 Card.Header = styled.div`
