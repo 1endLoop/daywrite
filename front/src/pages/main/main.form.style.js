@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import styled, { css } from "styled-components";
-import { justifyContentCenter, justifyContentStart } from '../../global/common';
+import { justifyContentCenter, justifyContentStart } from "../../global/common";
 
 const sharedStyle = `
   font-size: 20px;
@@ -12,8 +12,7 @@ const sharedStyle = `
   white-space: pre-wrap;
 `;
 
-
-const M = { };
+const M = {};
 
 M.Container = styled.div`
   width: 1200px;
@@ -33,18 +32,18 @@ M.Content01 = styled.div`
   justify-content: space-between;
   align-items: start;
   display: inline-flex;
-`
+`;
 
 M.TitleWrap = styled.div`
   ${justifyContentStart}
   gap: 5px;
-  padding-bottom: 19px
-`
+  padding-bottom: 19px;
+`;
 
 M.TitleIconWrap = styled.div`
   gap: 18px;
   display: inline-flex;
-`
+`;
 
 M.IcBtn = styled.button`
   all: unset;
@@ -57,7 +56,6 @@ M.IcBtn = styled.button`
   }
 `;
 
-
 // ------------------------------------------
 M.Content02 = styled.div`
   flex: 1;
@@ -66,7 +64,7 @@ M.Content02 = styled.div`
   /* justify-content: space-between; */
   gap: 21px;
   overflow: hidden;
-`
+`;
 
 // 타이핑 스피드 부분 -----------------------------
 M.TypingSpeedWrap = styled.div`
@@ -74,7 +72,7 @@ M.TypingSpeedWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
-`
+`;
 
 // 게이지 전체 + 퍼센트
 M.ProgressBarWrapper = styled.div`
@@ -91,7 +89,7 @@ M.ProgressBarContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-right: 14px;
-`; 
+`;
 
 // 게이지 자체
 M.ProgressBar = styled.div`
@@ -105,7 +103,7 @@ M.ProgressBar = styled.div`
 M.ProgressTick = styled.div`
   width: 1.5px;
   height: 7px;
-  background: ${({ $active }) => ($active ? '#F96F3D' : '#282828')};
+  background: ${({ $active }) => ($active ? "#F96F3D" : "#282828")};
   opacity: ${({ $active }) => ($active ? 0.6 : 1)};
 `;
 
@@ -113,7 +111,7 @@ M.ProgressTick = styled.div`
 M.ProgressPoint = styled.div`
   width: 7px;
   height: 7px;
-  background: ${({ $active }) => ($active ? '#F96F3D' : '#BFBFBF')};
+  background: ${({ $active }) => ($active ? "#F96F3D" : "#BFBFBF")};
 `;
 
 // 퍼센트 전체 감싸는 래퍼 (가로 74px 고정)
@@ -129,7 +127,7 @@ M.ProgressPercentWrap = styled.div`
 M.Bar = styled.div`
   width: 6px;
   height: 30px;
-  background-color: #BFBFBF;
+  background-color: #bfbfbf;
 `;
 
 // 회전된 삼각형
@@ -147,15 +145,11 @@ M.PercentText = styled.span`
   font-size: 16px;
   font-family: Pretendard;
   font-weight: 400;
-  color: #F96F3D;
+  color: #f96f3d;
   line-height: 24px;
   text-align: right;
   padding-left: 10px;
 `;
-
-
-
-
 
 // 본문 내용 부분 --------------------------------
 M.ContentBox = styled.div`
@@ -183,7 +177,7 @@ M.UnderContent = styled.div`
   flex-direction: column;
   display: flex;
   gap: 15px;
-`
+`;
 
 // 실시간 컬러변경 -------------------------------------------------
 M.TypingTextDisplay = styled.div`
@@ -195,7 +189,6 @@ M.TypingTextDisplay = styled.div`
   word-wrap: break-word;
   z-index: 1;
 `;
-
 
 M.TypingOverlay = styled.div`
   position: absolute;
@@ -237,28 +230,26 @@ M.HiddenInput = styled.textarea`
   }
 `;
 
-
-
 // 음악, 출처, 버튼 -------------------------------------------------
 M.Line = styled.div`
   align-self: stretch;
   height: 1px;
-  background: #BFBFBF;
-`
+  background: #bfbfbf;
+`;
 
 M.StyledUnder01 = styled.div`
   align-self: stretch;
   justify-content: space-between;
   align-items: center;
   display: inline-flex;
-`
+`;
 
 M.StyledUnder02 = styled.div`
   align-self: stretch;
   justify-content: space-between;
   align-items: flex-end;
   display: inline-flex;
-`
+`;
 
 M.SaveBtn = styled.div`
   width: 150px;
@@ -275,26 +266,26 @@ M.SaveBtn = styled.div`
   line-height: 30px;
 
   &:hover {
-    background-color: #F96F3D;
+    background-color: #f96f3d;
   }
 
   &:active {
-    background-color: #663C2D;
+    background-color: #663c2d;
   }
 
   &:disabled {
-    background-color: #BFBFBF;
+    background-color: #bfbfbf;
     color: white;
     cursor: not-allowed;
   }
-`
+`;
 
 M.StyledMusic = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 14px;
   display: inline-flex;
-`
+`;
 
 M.IconButton = styled.button`
   background: none;
@@ -307,56 +298,56 @@ M.IconButton = styled.button`
     height: 24px;
     display: block;
   }
-`
+`;
 
 M.Album = styled.div`
   ${justifyContentStart}
   gap: 12px;
-`
+`;
 
 M.AlbumInfo = styled.div`
   ${justifyContentStart}
   gap: 8px;
-`
+`;
 
 M.AlbumImg = styled.img`
   width: 39px;
   height: 39px;
   border-radius: 1px;
-  border: 0.50px #787878 solid;
+  border: 0.5px #787878 solid;
 `;
 
 M.PlayListIconWrap = styled.div`
   ${justifyContentStart}
   gap: 30px;
-`
+`;
 
 M.PlayIconWrap = styled.div`
   ${justifyContentCenter}
   gap: 10px;
-`
+`;
 
 M.PlayIcon = styled.div`
   ${justifyContentCenter}
   gap: 10px;
 
-  img{
-  width: 30px;
-  height: 30px;
-  position: relative;
-    }
-`
+  img {
+    width: 30px;
+    height: 30px;
+    position: relative;
+  }
+`;
 
-M.PlayListWrap = styled.button`
+M.PlayListWrap = styled.div`
   ${justifyContentCenter}
   background: none;
   gap: 6px;
-`
+`;
 
 M.ReplayBookIconWrap = styled.div`
   ${justifyContentStart}
   gap: 14px;
-`
+`;
 
 M.ReplayBtn = styled.button`
   width: 32px;
@@ -364,34 +355,33 @@ M.ReplayBtn = styled.button`
   background: none;
   padding: 6px;
   border-radius: 50px;
-  outline: 1px #BFBFBF solid;
+  outline: 1px #bfbfbf solid;
   outline-offset: -1px;
   ${justifyContentCenter}
   gap: 10px;
-`
+`;
 
 M.BookmarkInfoWrap = styled.div`
   ${justifyContentCenter}
   gap: 10px;
-`
+`;
 
 M.BookInfoWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   display: inline-flex;
-`
+`;
 
 M.BookInfoWrap = styled.div`
   align-self: stretch;
   ${justifyContentStart}
   gap: 6px;
-`
+`;
 
 M.FadeWrapper = styled.div`
-  opacity: ${({ fade }) => (fade ? 1 : 0)};
+  opacity: ${({ $fade }) => ($fade ? 1 : 0)};
   transition: opacity 0.3s ease-in-out;
-`
-
+`;
 
 export default M;
