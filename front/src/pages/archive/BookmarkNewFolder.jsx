@@ -1,14 +1,43 @@
-import React, { useState } from 'react';
-import S from './bookmarkFolderStyle';
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useRef } from "react";
+// import S from './bookmarkFolderStyle';
 import BookmarkCard from './BookmarkCard';
 import HistoryCard from './HistoryCard';
+import useClickOutside from "../../modules/hooks/useClickOutside";
+import S from "./bookmark.typed.style";
+import BookmarkDetail from "./BookmarkDetail";
 
 const BookmarkNewFolder = () => {
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  useClickOutside(dropdownRef, () => setDropdownOpen(false));
+
+  const dropdownInfo = dropdownOpen && {
+    x: dropdownOpen.x,
+    y: dropdownOpen.y,
+  };
+
+  const handleMoreClick = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setDropdownOpen({
+      x: rect.left,
+      y: rect.bottom,
+    });
+  };
 
     const [selectedCard, setSelectedCard] = useState(null);
     const handleCardClick = (item) => {
         setSelectedCard(item); // 클릭한 카드 데이터 저장
     };
+
+  const handleClose = () => {
+    setSelectedCard(null); // 닫기
+  };
+
+
 
     const items = [
         {
@@ -82,30 +111,44 @@ const BookmarkNewFolder = () => {
 
     return (
         <div>
-            <S.ForderTitle>
-                <h2>New Folder</h2>
-            </S.ForderTitle>
-            <S.ImgWrapper>
-                <S.Label htmlFor='profile'>
-                    {imageSrc ? (
-                        <S.Profile src={imageSrc} />
-                    ) : (
-                        <S.Profile />
-                    )}
-                </S.Label>
-                <input 
-                    id='profile' type='file' placeholder='썸네일'
-                    onChange={handleImageChange}
-                />
-                <S.ImgUpload onClick={handleThumbnailUpload}>이미지 업로드</S.ImgUpload>
-            </S.ImgWrapper>
-            <div className='TypedList'>
+            {/* 상단 타이틀 영역 */}
+            <S.TopRow>
+                <S.BackBtn onClick={() => navigate(-1)}>◀</S.BackBtn>
+                <S.PageTitle>New Folder</S.PageTitle>
+                <S.SearchBar placeholder="검색어를 입력하세요" />
+            </S.TopRow>
+
+            <S.ContentWrapper>
+                {/* 왼쪽: 썸네일 & 폴더 정보 */}
+                <S.ThumbnailBox>
+                {/* <S.Thumbnail src="/assets/images/book-img.jpeg" /> */}
+                <S.ImgWrapper>
+                    <S.Label htmlFor='profile'>
+                        {imageSrc ? (
+                            <S.Profile src={imageSrc} />
+                        ) : (
+                            <S.Profile />
+                        )}
+                    </S.Label>
+                    <input 
+                        id='profile' type='file' placeholder='썸네일'
+                        onChange={handleImageChange}
+                    />
+                    <S.ImgUpload onClick={handleThumbnailUpload}>이미지 업로드</S.ImgUpload>
+                </S.ImgWrapper>
+                <S.NewFolderTextCount>{items.length}개의 글</S.NewFolderTextCount>
+                </S.ThumbnailBox>
+
+                {/* 북마크 카드 리스트 */}
                 <S.CardColumn>
                 {items.map((item, idx) => (
                     <HistoryCard key={idx} data={item} onClick={() => handleCardClick(item)} />
                 ))}
                 </S.CardColumn>
-            </div>
+                {/* 팝업 */}
+                {/* {selectedCard && <BookmarkDetail data={selectedCard} onClose={handleClose} />} */}
+            </S.ContentWrapper>
+
         </div>
     );
 };

@@ -235,4 +235,40 @@ S.Description = styled.div`
   }
 `;
 
+// 폴더 생성
+S.Label = styled.label`
+    /* border: solid 1px red; */
+    width: 100%;
+    height: 120px;
+`
+S.ImgWrapper = styled.div`
+    /* border-radius: 8px; */
+    width: 120px;
+    height: 120px;
+    margin-top: 0px;
+    background-color: #e0e0e0;
+    input{
+        display: none;
+    }
+`
+S.Profile = styled.img`
+    width: 120px;
+    height: 120px;
+    border: none;
+`
+S.ImgUpload = styled.button`
+    background-color: #FEE9E2;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 2px 6px;
+`
+// NewFolder countText
+S.NewFolderTextCount = styled.span`
+  font-size: 14px;
+  color: gray;
+  margin-top: 50px;
+  margin-left: 6px;
+`
+
 export default S;
