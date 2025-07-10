@@ -85,6 +85,7 @@ S.ScrollRightBtn = styled.button`
 S.Card = styled.div`
   width: 160px;
   flex-shrink: 0;
+
 `;
 
 S.Image = styled.img`

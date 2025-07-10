@@ -103,6 +103,28 @@ S.CardColumn = styled.div`
   gap: 16px;
 `;
 
+// 편집 모드
+S.EditRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+`;
+
+S.DeleteButton = styled.button`
+  background: none;
+  border: none;
+  color: #f96f3d;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+`;
+
+S.SelectedText = styled.span`
+  font-size: 14px;
+  color: gray;
+`;
+
 // 디테일 팝업
 
 // 전체 배경 어둡게
