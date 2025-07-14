@@ -80,8 +80,16 @@ S.Wrapper = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  overflow-y: auto;
   z-index: 5;
+
+  overflow-y: scroll;
+
+  /* 스크롤바 숨기기 (크로스 브라우징) */
+  -ms-overflow-style: none;  /* IE, Edge */
+  scrollbar-width: none;     /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;           /* Chrome, Safari, Opera */
+  }
 
   width: 1250px;
   margin: 0 auto 32px;

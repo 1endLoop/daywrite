@@ -1,35 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
-const dummyFaqs = [
-  {
-    question: '주문을 취소를 하고 싶어요',
-    answer: '◆ 주문 상태에 따라 My > 나의 쇼핑정보 > 주문배송조회에서 즉시 취소 또는 취소 요청이 가능합니다.'
-  },
-  {
-    question: '무슨 질문을 할까요 사람들이?',
-    answer: ''
-  },
-  {
-    question: '무슨 질문을 할까요 사람들이?',
-    answer: ''
-  },
-  {
-    question: '무슨 질문을 할까요 사람들이?',
-    answer: ''
-  },
-  {
-    question: '무슨 질문을 할까요 사람들이?',
-    answer: ''
-  },
-];
 
 const Faq = () => {
   const [search, setSearch] = useState('');
   const [expanded, setExpanded] = useState(-1);
+  const [faqs, setFaqs] = useState([]);
+
+  // 페이지네이션 관련 상태
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   const handleToggle = (index) => {
     setExpanded(expanded === index ? -1 : index);
+  };
+
+  // 백엔드에서 FAQ 불러오기
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/faq`)
+      .then((res) => res.json())
+      .then((data) => setFaqs(data))
+      .catch((err) => console.error('FAQ 불러오기 실패:', err));
+  }, []);
+
+  // 검색 필터링
+  const filteredFaqs = faqs.filter((faq) =>
+    faq.question.toLowerCase().includes(search.toLowerCase())
+  );
+
+  // 페이지네이션 로직
+  const indexOfLast = currentPage * itemsPerPage;
+  const indexOfFirst = indexOfLast - itemsPerPage;
+  const currentFaqs = filteredFaqs.slice(indexOfFirst, indexOfLast);
+  const totalPages = Math.ceil(filteredFaqs.length / itemsPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    setExpanded(-1);
   };
 
   return (
@@ -53,28 +59,52 @@ const Faq = () => {
       </SearchBox>
 
       <List>
-        {dummyFaqs.map((faq, idx) => (
+        {currentFaqs.map((faq, idx) => (
           <Item key={idx}>
             <Question onClick={() => handleToggle(idx)}>
               {faq.question}
             </Question>
-            {expanded === idx && faq.answer && <Answer>{faq.answer}</Answer>}
+            {expanded === idx && (
+              <Answer>{faq.answer || '답변이 준비되지 않았습니다.'}</Answer>
+            )}
           </Item>
         ))}
       </List>
 
       <Pagination>
-        <span>&lt;</span>
-        <span className="active">1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>&gt;</span>
+        <span
+          onClick={() =>
+            handlePageChange(currentPage > 1 ? currentPage - 1 : 1)
+          }
+        >
+          &lt;
+        </span>
+        {[...Array(totalPages)].map((_, idx) => (
+          <span
+            key={idx}
+            className={currentPage === idx + 1 ? 'active' : ''}
+            onClick={() => handlePageChange(idx + 1)}
+          >
+            {idx + 1}
+          </span>
+        ))}
+        <span
+          onClick={() =>
+            handlePageChange(
+              currentPage < totalPages ? currentPage + 1 : totalPages
+            )
+          }
+        >
+          &gt;
+        </span>
       </Pagination>
     </Wrapper>
   );
 };
 
 export default Faq;
+
+// ---------------- Styled Components ----------------
 
 const Wrapper = styled.div`
   display: flex;
@@ -102,11 +132,6 @@ const Input = styled.input`
   flex: 1;
   font-size: 14px;
   outline: none;
-`;
-
-const SearchIcon = styled.span`
-  font-size: 16px;
-  color: #888;
 `;
 
 const List = styled.div`
@@ -154,3 +179,5 @@ const Pagination = styled.div`
     text-decoration: underline;
   }
 `;
+
+
