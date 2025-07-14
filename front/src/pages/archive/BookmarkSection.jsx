@@ -119,6 +119,7 @@ const BookmarkSection = ({ title, type }) => {
     <S.Section>
       <S.TitleRow>
         <S.Title>{title}</S.Title>
+        <S.BookmarkFolder>+폴더 생성</S.BookmarkFolder>
         <S.ViewAll onClick={() => navigate(`/archive/bookmark/${type === "글" ? "typed" : "played"}`)}>
           전체보기
         </S.ViewAll>
