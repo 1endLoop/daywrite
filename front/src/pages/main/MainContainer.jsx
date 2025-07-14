@@ -4,12 +4,12 @@ import M from "./main.form.style";
 import MainPopup from "./MainPopup";
 import MainPlaylistPopup from "./MainPlaylistPopup";
 
-const MainContainer = () => {
+const MainContainer = ({isUpdate, setIsUpdate}) => {
   const [showLike, setShowLike] = useState(false);
   const [showBookmark, setShowBookmark] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [fade, setFade] = useState(true);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(""); // 입력 값
   const [currentData, setCurrentData] = useState(null);
 
   const [selectedKeywords, setSelectedKeywords] = useState([]);
@@ -91,6 +91,38 @@ const MainContainer = () => {
   const percent = total > 0 ? Math.floor((current / total) * 100) : 0;
   const filledCount = Math.floor((percent / 100) * visibleCount);
 
+  // 필사 글 저장
+  const [value, setValue] = useState("")
+  // const onChangeValue = (e) => {
+  //   setValue(e.target.value)
+  // }
+// onChange={onChangeValue} value={value} onKeyDown={onKeyDownAddTodo}
+  const onKeyDownAddTodo = async (e) => {
+    if(e.key === 'Enter'){
+      if(!window.confirm('이대로 추가하시겠어요?😄')) return;
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/main/api/register`, {
+        method : "POST",
+        headers : {
+          "Content-Type" : "application/json"
+        },
+        body : JSON.stringify({
+          title : inputValue,
+        })
+      })
+      .then((res) => {
+        if(!res.ok) throw new Error(`Response Fetching Error 여기가 문제`);
+        return res.json()
+      })
+      .then((res) => {
+        console.log(res)
+        if(res.message) alert(res.message);
+        setInputValue("")
+        setIsUpdate(!isUpdate) // 상태 리랜더링
+      })
+      .catch(console.error)
+    }
+  }
+
   return (
     <div>
       {showPopup && (
@@ -167,14 +199,17 @@ const MainContainer = () => {
                       </span>
                     );
                   })}
+                  
                 </M.TypingOverlay>
               )}
 
               <M.HiddenInput
+                onKeyDown={onKeyDownAddTodo}
                 value={inputValue}
                 spellCheck={false}
                 onChange={(e) => {
                   const newValue = e.target.value;
+                  console.log("입력된 값:", newValue);
                   if (currentData && newValue.length <= currentData.typing.length) {
                     setInputValue(newValue);
                   }

@@ -107,6 +107,31 @@ const BookmarkNewFolder = () => {
         const formData = new FormData();
         formData.append("thumbnail", thumbnail)
 
+        try {
+            // const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/images/thumbnail', {
+            //     method : 'POST',
+            //     headers : {
+            //         "Authorization" : `Bearer ${localStorage.getItem("jwtToken")}`
+            //         // "Content-Type": "multipart/form-data",
+            //     },
+            //     body : formData
+            // })
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/images/thumbnail`, {
+                method: 'POST',
+                body: formData, // headers는 안 붙여도 됨
+            });
+
+
+            if(!response.ok){ alert("이미지 업로드 실패!"); return;}
+
+            const data = await response.json()
+            console.log(data)
+
+        } catch (error) {
+            console.log("handleThumbnailUpload error")
+            console.error(error)            
+        }
+
     }
 
     return (

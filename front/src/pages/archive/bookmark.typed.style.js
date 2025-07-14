@@ -261,7 +261,7 @@ S.ImgUpload = styled.button`
     margin-top: 5px;
     border-radius: 5px;
     font-size: 12px;
-    padding: 2px 6px;
+    padding: 2px;
 `
 // NewFolder countText
 S.NewFolderTextCount = styled.span`
