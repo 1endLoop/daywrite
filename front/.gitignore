@@ -1,4 +1,8 @@
 ### react ###
+
+# macOS 시스템 파일
+.DS_Store
+
 .DS_*
 *.log
 logs

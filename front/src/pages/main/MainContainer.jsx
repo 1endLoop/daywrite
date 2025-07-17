@@ -180,7 +180,7 @@ const MainContainer = ({isUpdate, setIsUpdate}) => {
             <M.Line style={{ backgroundColor: "#282828" }} />
           </M.TypingSpeedWrap>
 
-          <M.FadeWrapper fade={fade}>
+          <M.FadeWrapper $fade={fade}>
             <M.ContentBox>
               {currentData && (
                 <M.TypingOverlay aria-hidden>

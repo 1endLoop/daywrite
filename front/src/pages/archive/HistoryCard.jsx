@@ -3,7 +3,7 @@ import useClickOutside from "../../modules/hooks/useClickOutside";
 import Card from "./history.card.style";
 import Dropdown from "./dropdown.style";
 
-const HistoryCard = ({ data, onClick }) => {
+const HistoryCard = ({ data, onClick, selected, isEditMode }) => {
   const { date, content, title, author, music, artist } = data;
 
   // 북마크, 좋아요 토글 버튼
@@ -16,7 +16,7 @@ const HistoryCard = ({ data, onClick }) => {
   useClickOutside(dropdownRef, () => setOpenDropdown(false));
 
   return (
-    <Card.Card>
+    <Card.Card selected={selected} onClick={onClick}>
       <Card.Header>
         <Card.Date>{date}</Card.Date>
         <Dropdown.Wrapper ref={dropdownRef} onClick={(e) => e.stopPropagation()}>
